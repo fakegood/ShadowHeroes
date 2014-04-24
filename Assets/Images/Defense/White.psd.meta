@@ -1,0 +1,549 @@
+fileFormatVersion: 2
+guid: f28dcf18df913464c9c75157ae0499fc
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 10
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Grey_0
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 1831
+        width: 190
+        height: 176
+      alignment: 9
+      pivot: {x: .580736101, y: .0859985352}
+    - name: Grey_1
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 1837
+        width: 184
+        height: 178
+      alignment: 9
+      pivot: {x: .650063872, y: .0734143183}
+    - name: Grey_2
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 1825
+        width: 190
+        height: 184
+      alignment: 9
+      pivot: {x: .625141025, y: .07898812}
+    - name: Grey_3
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 1817
+        width: 194
+        height: 190
+      alignment: 9
+      pivot: {x: .543489456, y: .0761358961}
+    - name: Grey_4
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 1815
+        width: 206
+        height: 200
+      alignment: 9
+      pivot: {x: .559572697, y: .0896594226}
+    - name: Grey_5
+      rect:
+        serializedVersion: 2
+        x: 1237
+        y: 1813
+        width: 228
+        height: 202
+      alignment: 9
+      pivot: {x: .476452202, y: .124097764}
+    - name: Grey_6
+      rect:
+        serializedVersion: 2
+        x: 1505
+        y: 1805
+        width: 180
+        height: 206
+      alignment: 9
+      pivot: {x: .615049243, y: .194692075}
+    - name: Grey_7
+      rect:
+        serializedVersion: 2
+        x: 1733
+        y: 1815
+        width: 230
+        height: 204
+      alignment: 9
+      pivot: {x: .550021231, y: .0864257812}
+    - name: Grey_8
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 1529
+        width: 254
+        height: 244
+      alignment: 9
+      pivot: {x: .58757019, y: .122790724}
+    - name: Grey_9
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 1525
+        width: 288
+        height: 256
+      alignment: 9
+      pivot: {x: .617179573, y: .137476444}
+    - name: Grey_10
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 1551
+        width: 188
+        height: 208
+      alignment: 9
+      pivot: {x: .565276146, y: .131253749}
+    - name: Grey_11
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 1561
+        width: 188
+        height: 194
+      alignment: 9
+      pivot: {x: .622392714, y: .0572000109}
+    - name: Grey_12
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 1527
+        width: 238
+        height: 250
+      alignment: 9
+      pivot: {x: .545117319, y: .107299805}
+    - name: Grey_13
+      rect:
+        serializedVersion: 2
+        x: 1481
+        y: 1507
+        width: 256
+        height: 276
+      alignment: 9
+      pivot: {x: .607858658, y: .147072166}
+    - name: Grey_14
+      rect:
+        serializedVersion: 2
+        x: 1837
+        y: 1557
+        width: 182
+        height: 172
+      alignment: 9
+      pivot: {x: .56742841, y: .0585334264}
+    - name: Grey_15
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1283
+        width: 180
+        height: 172
+      alignment: 9
+      pivot: {x: .58522141, y: .0808297098}
+    - name: Grey_16
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 1285
+        width: 182
+        height: 172
+      alignment: 9
+      pivot: {x: .588499308, y: .0852888227}
+    - name: Grey_17
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 1265
+        width: 184
+        height: 190
+      alignment: 9
+      pivot: {x: .59587431, y: .124577895}
+    - name: Grey_18
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 1247
+        width: 216
+        height: 216
+      alignment: 9
+      pivot: {x: .585221767, y: .162665471}
+    - name: Grey_19
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 1229
+        width: 274
+        height: 246
+      alignment: 9
+      pivot: {x: .667954922, y: .144564494}
+    - name: Grey_20
+      rect:
+        serializedVersion: 2
+        x: 1485
+        y: 1269
+        width: 204
+        height: 180
+      alignment: 9
+      pivot: {x: .676709354, y: .0653706864}
+    - name: Grey_22
+      rect:
+        serializedVersion: 2
+        x: 1747
+        y: 1269
+        width: 204
+        height: 180
+      alignment: 9
+      pivot: {x: .71430701, y: .0696322992}
+    - name: Grey_23
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 959
+        width: 248
+        height: 232
+      alignment: 9
+      pivot: {x: .614839673, y: .127336442}
+    - name: Grey_25
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 993
+        width: 222
+        height: 188
+      alignment: 9
+      pivot: {x: .642034709, y: .0725798905}
+    - name: Grey_26
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 809
+        width: 54
+        height: 276
+      alignment: 9
+      pivot: {x: .295770705, y: .135940105}
+    - name: Grey_27
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 811
+        width: 76
+        height: 290
+      alignment: 9
+      pivot: {x: .23127827, y: .129571319}
+    - name: Grey_28
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 805
+        width: 88
+        height: 312
+      alignment: 9
+      pivot: {x: .490716428, y: .149145469}
+    - name: Grey_29
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 803
+        width: 134
+        height: 314
+      alignment: 9
+      pivot: {x: .53962642, y: .14617686}
+    - name: Grey_30
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 803
+        width: 178
+        height: 370
+      alignment: 9
+      pivot: {x: .511473238, y: .150051296}
+    - name: Grey_31
+      rect:
+        serializedVersion: 2
+        x: 1397
+        y: 809
+        width: 186
+        height: 356
+      alignment: 9
+      pivot: {x: .497804046, y: .146615535}
+    - name: Grey_32
+      rect:
+        serializedVersion: 2
+        x: 1605
+        y: 811
+        width: 128
+        height: 300
+      alignment: 9
+      pivot: {x: .543944359, y: .145844325}
+    - name: Grey_33
+      rect:
+        serializedVersion: 2
+        x: 1747
+        y: 809
+        width: 174
+        height: 290
+      alignment: 9
+      pivot: {x: .535918117, y: .144407704}
+    - name: Grey_34
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 497
+        width: 232
+        height: 360
+      alignment: 9
+      pivot: {x: .460481316, y: .150730222}
+    - name: Grey_35
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 845
+        width: 34
+        height: 138
+      alignment: 9
+      pivot: {x: .475973696, y: .118180871}
+    - name: Grey_36
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 845
+        width: 40
+        height: 178
+      alignment: 9
+      pivot: {x: .357040405, y: .0938370973}
+    - name: Grey_37
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 845
+        width: 44
+        height: 202
+      alignment: 9
+      pivot: {x: .305053711, y: .0733437091}
+    - name: Grey_38
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 811
+        width: 48
+        height: 260
+      alignment: 9
+      pivot: {x: .389376312, y: .143385202}
+    - name: Grey_39
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 497
+        width: 192
+        height: 348
+      alignment: 9
+      pivot: {x: .479534984, y: .155622989}
+    - name: Grey_40
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 521
+        width: 128
+        height: 226
+      alignment: 9
+      pivot: {x: .438604832, y: .172559619}
+    - name: Grey_41
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 475
+        width: 80
+        height: 274
+      alignment: 9
+      pivot: {x: .465198517, y: .488822758}
+    - name: Grey_42
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 473
+        width: 106
+        height: 278
+      alignment: 9
+      pivot: {x: .354243428, y: .49110797}
+    - name: Grey_43
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 465
+        width: 116
+        height: 284
+      alignment: 9
+      pivot: {x: .292221606, y: .493471831}
+    - name: Grey_44
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 459
+        width: 156
+        height: 292
+      alignment: 9
+      pivot: {x: .297958761, y: .491534293}
+    - name: Grey_45
+      rect:
+        serializedVersion: 2
+        x: 1145
+        y: 459
+        width: 186
+        height: 286
+      alignment: 9
+      pivot: {x: .250803292, y: .491356701}
+    - name: White_44
+      rect:
+        serializedVersion: 2
+        x: 1737
+        y: 1367
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: White_45
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 1073
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: White_46
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 499
+        width: 356
+        height: 160
+      alignment: 9
+      pivot: {x: .609370887, y: .175533295}
+    - name: White_47
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 317
+        width: 68
+        height: 64
+      alignment: 9
+      pivot: {x: .454304516, y: .559756279}
+    - name: White_48
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 313
+        width: 72
+        height: 66
+      alignment: 9
+      pivot: {x: .453523844, y: .518108487}
+    - name: White_49
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 309
+        width: 88
+        height: 74
+      alignment: 9
+      pivot: {x: .493181735, y: .51891923}
+    - name: White_50
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 309
+        width: 74
+        height: 74
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: White_51
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 293
+        width: 124
+        height: 108
+      alignment: 9
+      pivot: {x: .55648607, y: .472692996}
+    - name: White_52
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 311
+        width: 88
+        height: 76
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: White_53
+      rect:
+        serializedVersion: 2
+        x: 1161
+        y: 81
+        width: 396
+        height: 270
+      alignment: 9
+      pivot: {x: .595045924, y: .216391951}
+    - name: White_54
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 91
+        width: 360
+        height: 206
+      alignment: 9
+      pivot: {x: .593734741, y: .216485769}
+    - name: White_55
+      rect:
+        serializedVersion: 2
+        x: 1627
+        y: 111
+        width: 348
+        height: 202
+      alignment: 9
+      pivot: {x: .626802981, y: .153045803}
+  spritePackingTag: 
+  userData: 

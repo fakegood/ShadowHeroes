@@ -1,0 +1,630 @@
+fileFormatVersion: 2
+guid: 65c8fd00a128f4bd0bdacede05b688fb
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 10
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Red_0
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 1819
+        width: 170
+        height: 180
+      alignment: 9
+      pivot: {x: .628631771, y: .0471903495}
+    - name: Red_1
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 1813
+        width: 158
+        height: 194
+      alignment: 9
+      pivot: {x: .652821958, y: .0436351039}
+    - name: Red_2
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 1801
+        width: 164
+        height: 212
+      alignment: 9
+      pivot: {x: .641777992, y: .0423083045}
+    - name: Red_3
+      rect:
+        serializedVersion: 2
+        x: 739
+        y: 1783
+        width: 212
+        height: 240
+      alignment: 9
+      pivot: {x: .611786485, y: .114337161}
+    - name: Red_4
+      rect:
+        serializedVersion: 2
+        x: 1005
+        y: 1825
+        width: 180
+        height: 190
+      alignment: 9
+      pivot: {x: .562103927, y: .0599146783}
+    - name: Red_5
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 1815
+        width: 220
+        height: 198
+      alignment: 9
+      pivot: {x: .512194812, y: .0551128983}
+    - name: Red_6
+      rect:
+        serializedVersion: 2
+        x: 1463
+        y: 1809
+        width: 226
+        height: 206
+      alignment: 9
+      pivot: {x: .492085963, y: .0897548646}
+    - name: Red_7
+      rect:
+        serializedVersion: 2
+        x: 1725
+        y: 1801
+        width: 298
+        height: 222
+      alignment: 9
+      pivot: {x: .52250725, y: .115293764}
+    - name: Red_8
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1503
+        width: 302
+        height: 240
+      alignment: 9
+      pivot: {x: .488155246, y: .114337161}
+    - name: Red_9
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 1515
+        width: 226
+        height: 186
+      alignment: 9
+      pivot: {x: .557377219, y: .103338428}
+    - name: Red_10
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 1519
+        width: 178
+        height: 196
+      alignment: 9
+      pivot: {x: .623090744, y: .0619799569}
+    - name: Red_11
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 1485
+        width: 254
+        height: 258
+      alignment: 9
+      pivot: {x: .521124899, y: .181105509}
+    - name: Red_12
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 1491
+        width: 296
+        height: 250
+      alignment: 9
+      pivot: {x: .530212402, y: .111877933}
+    - name: Red_13
+      rect:
+        serializedVersion: 2
+        x: 1603
+        y: 1519
+        width: 156
+        height: 176
+      alignment: 9
+      pivot: {x: .525796771, y: .0731790736}
+    - name: Red_14
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 1519
+        width: 190
+        height: 184
+      alignment: 9
+      pivot: {x: .598842919, y: .0431339443}
+    - name: Red_15
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 1237
+        width: 182
+        height: 178
+      alignment: 9
+      pivot: {x: .578619242, y: .118168175}
+    - name: Red_16
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 1225
+        width: 194
+        height: 190
+      alignment: 9
+      pivot: {x: .509219587, y: .0693282261}
+    - name: Red_17
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 1223
+        width: 236
+        height: 204
+      alignment: 9
+      pivot: {x: .505684018, y: .0638140514}
+    - name: Red_18
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 1165
+        width: 286
+        height: 268
+      alignment: 9
+      pivot: {x: .562537968, y: .219699696}
+    - name: Red_19
+      rect:
+        serializedVersion: 2
+        x: 1217
+        y: 1167
+        width: 286
+        height: 274
+      alignment: 9
+      pivot: {x: .625075519, y: .206254721}
+    - name: Red_20
+      rect:
+        serializedVersion: 2
+        x: 1557
+        y: 1223
+        width: 214
+        height: 194
+      alignment: 9
+      pivot: {x: .589847147, y: .0551594198}
+    - name: Red_21
+      rect:
+        serializedVersion: 2
+        x: 1797
+        y: 1219
+        width: 240
+        height: 186
+      alignment: 9
+      pivot: {x: .636006653, y: .0624704659}
+    - name: Red_22
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 881
+        width: 268
+        height: 232
+      alignment: 9
+      pivot: {x: .585148871, y: .142983541}
+    - name: Red_23
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 895
+        width: 254
+        height: 216
+      alignment: 9
+      pivot: {x: .573204696, y: .073496215}
+    - name: Red_24
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 751
+        width: 46
+        height: 160
+      alignment: 9
+      pivot: {x: .43195641, y: .0919799805}
+    - name: Red_25
+      rect:
+        serializedVersion: 2
+        x: 739
+        y: 751
+        width: 52
+        height: 200
+      alignment: 9
+      pivot: {x: .379615188, y: .0863903835}
+    - name: Red_26
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 747
+        width: 80
+        height: 224
+      alignment: 9
+      pivot: {x: .472053528, y: .0987668708}
+    - name: Red_27
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 737
+        width: 44
+        height: 252
+      alignment: 9
+      pivot: {x: .347564697, y: .157543361}
+    - name: Red_28
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 737
+        width: 58
+        height: 276
+      alignment: 9
+      pivot: {x: .399778157, y: .148439929}
+    - name: Red_29
+      rect:
+        serializedVersion: 2
+        x: 1021
+        y: 725
+        width: 62
+        height: 334
+      alignment: 9
+      pivot: {x: .355760157, y: .118453704}
+    - name: Red_30
+      rect:
+        serializedVersion: 2
+        x: 1123
+        y: 719
+        width: 108
+        height: 348
+      alignment: 9
+      pivot: {x: .508280456, y: .131233484}
+    - name: Red_31
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 719
+        width: 130
+        height: 352
+      alignment: 9
+      pivot: {x: .444966942, y: .132883415}
+    - name: Red_32
+      rect:
+        serializedVersion: 2
+        x: 1445
+        y: 721
+        width: 92
+        height: 266
+      alignment: 9
+      pivot: {x: .461117953, y: .182291359}
+    - name: Red_33
+      rect:
+        serializedVersion: 2
+        x: 1551
+        y: 721
+        width: 72
+        height: 330
+      alignment: 9
+      pivot: {x: .475158691, y: .162608385}
+    - name: Red_34
+      rect:
+        serializedVersion: 2
+        x: 1651
+        y: 713
+        width: 176
+        height: 336
+      alignment: 9
+      pivot: {x: .533028364, y: .181941077}
+    - name: Red_35
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 713
+        width: 162
+        height: 414
+      alignment: 9
+      pivot: {x: .491719574, y: .161940724}
+    - name: Red_36
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 537
+        width: 118
+        height: 230
+      alignment: 9
+      pivot: {x: .373386651, y: .175209373}
+    - name: Red_37
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 523
+        width: 234
+        height: 330
+      alignment: 9
+      pivot: {x: .384276032, y: .259482831}
+    - name: Red_38
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 765
+        width: 38
+        height: 126
+      alignment: 9
+      pivot: {x: .471671671, y: .118961394}
+    - name: Red_39
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 419
+        width: 80
+        height: 270
+      alignment: 9
+      pivot: {x: .470360935, y: .49874562}
+    - name: Red_40
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 421
+        width: 96
+        height: 268
+      alignment: 9
+      pivot: {x: .37826857, y: .498736024}
+    - name: Red_41
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 423
+        width: 110
+        height: 266
+      alignment: 9
+      pivot: {x: .28923285, y: .494124562}
+    - name: Red_42
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 407
+        width: 146
+        height: 282
+      alignment: 9
+      pivot: {x: .465802342, y: .493658394}
+    - name: Red_43
+      rect:
+        serializedVersion: 2
+        x: 987
+        y: 401
+        width: 212
+        height: 294
+      alignment: 9
+      pivot: {x: .322137207, y: .491157383}
+    - name: Red_44
+      rect:
+        serializedVersion: 2
+        x: 1259
+        y: 513
+        width: 346
+        height: 176
+      alignment: 9
+      pivot: {x: .685439646, y: .117214553}
+    - name: Red_45
+      rect:
+        serializedVersion: 2
+        x: 1659
+        y: 493
+        width: 330
+        height: 196
+      alignment: 9
+      pivot: {x: .673954248, y: .0875743926}
+    - name: Red_46
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 229
+        width: 68
+        height: 64
+      alignment: 9
+      pivot: {x: .467598528, y: .556168556}
+    - name: Red_47
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 225
+        width: 72
+        height: 68
+      alignment: 9
+      pivot: {x: .449102402, y: .517963171}
+    - name: Red_48
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 217
+        width: 88
+        height: 76
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Red_49
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 197
+        width: 122
+        height: 112
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Red_50
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 213
+        width: 74
+        height: 76
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Red_51
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 205
+        width: 142
+        height: 108
+      alignment: 9
+      pivot: {x: .591184795, y: .477378577}
+    - name: Red_52
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 219
+        width: 94
+        height: 76
+      alignment: 9
+      pivot: {x: .52079159, y: .461424172}
+    - name: Red_53
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 27
+        width: 10
+        height: 254
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Red_54
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 29
+        width: 106
+        height: 252
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Red_55
+      rect:
+        serializedVersion: 2
+        x: 1237
+        y: 223
+        width: 378
+        height: 246
+      alignment: 9
+      pivot: {x: .602276206, y: .166638255}
+    - name: Red_56
+      rect:
+        serializedVersion: 2
+        x: 1649
+        y: 251
+        width: 352
+        height: 182
+      alignment: 9
+      pivot: {x: .659753621, y: .120219134}
+    - name: Red_57
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 141
+        width: 38
+        height: 12
+      alignment: 9
+      pivot: {x: .798973083, y: .544376373}
+    - name: Red_58
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 123
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Red_59
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 141
+        width: 38
+        height: 14
+      alignment: 9
+      pivot: {x: .210369304, y: .449279785}
+    - name: Red_60
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 87
+        width: 12
+        height: 26
+      alignment: 9
+      pivot: {x: .485210419, y: .80041182}
+    - name: Red_61
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 87
+        width: 10
+        height: 28
+      alignment: 9
+      pivot: {x: .50000155, y: .81699264}
+    - name: Red_62
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 79
+        width: 220
+        height: 42
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Red_64
+      rect:
+        serializedVersion: 2
+        x: 1711
+        y: 0
+        width: 220
+        height: 223
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Red_64
+      rect:
+        serializedVersion: 2
+        x: 1347
+        y: 67
+        width: 182
+        height: 84
+      alignment: 9
+      pivot: {x: .79408282, y: .485407054}
+  spritePackingTag: 
+  userData: 

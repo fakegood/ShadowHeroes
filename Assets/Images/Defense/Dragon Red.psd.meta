@@ -1,0 +1,342 @@
+fileFormatVersion: 2
+guid: 281f9c96392b74cd489759102fc12ff2
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 10
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Dragon Red_0
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 1723
+        width: 208
+        height: 286
+      alignment: 9
+      pivot: {x: .601959884, y: .257318676}
+    - name: Dragon Red_2
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 1713
+        width: 214
+        height: 286
+      alignment: 9
+      pivot: {x: .586386979, y: .241443127}
+    - name: Dragon Red_3
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 1709
+        width: 208
+        height: 314
+      alignment: 9
+      pivot: {x: .550788283, y: .235061541}
+    - name: Dragon Red_4
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 1713
+        width: 244
+        height: 314
+      alignment: 9
+      pivot: {x: .597413123, y: .222445548}
+    - name: Dragon Red_5
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 1683
+        width: 286
+        height: 352
+      alignment: 9
+      pivot: {x: .57387346, y: .237403169}
+    - name: Dragon Red_6
+      rect:
+        serializedVersion: 2
+        x: 1557
+        y: 1713
+        width: 234
+        height: 286
+      alignment: 9
+      pivot: {x: .567717731, y: .227591991}
+    - name: Dragon Red_11
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 1521
+        width: 160
+        height: 132
+      alignment: 9
+      pivot: {x: .0903067365, y: .51460588}
+    - name: Dragon Red_12
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 1521
+        width: 168
+        height: 132
+      alignment: 9
+      pivot: {x: .10092926, y: .501229942}
+    - name: Dragon Red_13
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 1503
+        width: 176
+        height: 158
+      alignment: 9
+      pivot: {x: .127214611, y: .497654408}
+    - name: Dragon Red_14
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 1509
+        width: 192
+        height: 154
+      alignment: 9
+      pivot: {x: .106153488, y: .463894933}
+    - name: Dragon Red_15
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 1513
+        width: 226
+        height: 148
+      alignment: 9
+      pivot: {x: .0915970281, y: .469945133}
+    - name: Dragon Red_16
+      rect:
+        serializedVersion: 2
+        x: 1293
+        y: 1483
+        width: 174
+        height: 152
+      alignment: 9
+      pivot: {x: .118669182, y: .54633534}
+    - name: Dragon Red_17
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 1341
+        width: 90
+        height: 68
+      alignment: 9
+      pivot: {x: .200094014, y: .783524454}
+    - name: Dragon Red_18
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 1331
+        width: 90
+        height: 86
+      alignment: 9
+      pivot: {x: .204303324, y: .79777205}
+    - name: Dragon Red_19
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 1325
+        width: 88
+        height: 92
+      alignment: 9
+      pivot: {x: .243230641, y: .80018419}
+    - name: Dragon Red_20
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 1331
+        width: 100
+        height: 86
+      alignment: 9
+      pivot: {x: .168596804, y: .821127236}
+    - name: Dragon Red_21
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 1325
+        width: 124
+        height: 116
+      alignment: 9
+      pivot: {x: .155801103, y: .837637007}
+    - name: Dragon Red_22
+      rect:
+        serializedVersion: 2
+        x: 1339
+        y: 1341
+        width: 94
+        height: 80
+      alignment: 9
+      pivot: {x: .147442758, y: .83265841}
+    - name: Dragon Red_23
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 1105
+        width: 152
+        height: 176
+      alignment: 9
+      pivot: {x: .862169385, y: .861654818}
+    - name: Dragon Red_24
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 1107
+        width: 152
+        height: 176
+      alignment: 9
+      pivot: {x: .86447084, y: .856344044}
+    - name: Dragon Red_25
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 1107
+        width: 152
+        height: 178
+      alignment: 9
+      pivot: {x: .864470661, y: .846467793}
+    - name: Dragon Red_26
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 1085
+        width: 162
+        height: 198
+      alignment: 9
+      pivot: {x: .880686462, y: .853704274}
+    - name: Dragon Red_27
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 1053
+        width: 174
+        height: 238
+      alignment: 9
+      pivot: {x: .860439241, y: .851352751}
+    - name: Dragon Red_28
+      rect:
+        serializedVersion: 2
+        x: 1345
+        y: 1091
+        width: 162
+        height: 186
+      alignment: 9
+      pivot: {x: .880686045, y: .865284264}
+    - name: Dragon Red_29
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 331
+        width: 66
+        height: 512
+      alignment: 9
+      pivot: {x: .44925794, y: .343016863}
+    - name: Dragon Red_30
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 329
+        width: 98
+        height: 554
+      alignment: 9
+      pivot: {x: .361341357, y: .300001681}
+    - name: Dragon Red_31
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 325
+        width: 130
+        height: 580
+      alignment: 9
+      pivot: {x: .516081095, y: .314373732}
+    - name: Dragon Red_32
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 329
+        width: 130
+        height: 632
+      alignment: 9
+      pivot: {x: .451756626, y: .296568483}
+    - name: Dragon Red_33
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 333
+        width: 140
+        height: 670
+      alignment: 9
+      pivot: {x: .537331283, y: .239461511}
+    - name: Dragon Red_34
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 339
+        width: 112
+        height: 564
+      alignment: 9
+      pivot: {x: .397339404, y: .310961127}
+    - name: Dragon Red_35
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 763
+        width: 232
+        height: 252
+      alignment: 9
+      pivot: {x: .900174916, y: .0797768235}
+    - name: Dragon Red_36
+      rect:
+        serializedVersion: 2
+        x: 1255
+        y: 781
+        width: 126
+        height: 224
+      alignment: 9
+      pivot: {x: .609373033, y: .0563910343}
+    - name: Dragon Red_37
+      rect:
+        serializedVersion: 2
+        x: 971
+        y: 467
+        width: 258
+        height: 234
+      alignment: 9
+      pivot: {x: .49344039, y: .619339883}
+  spritePackingTag: 
+  userData: 

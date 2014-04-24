@@ -1,0 +1,333 @@
+fileFormatVersion: 2
+guid: 37bbcf41b1c0749118578258f630d50b
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 10
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Dragon Green_0
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 1741
+        width: 184
+        height: 258
+      alignment: 9
+      pivot: {x: .613835216, y: .261519074}
+    - name: Dragon Green_1
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 1727
+        width: 190
+        height: 274
+      alignment: 9
+      pivot: {x: .624020517, y: .246778503}
+    - name: Dragon Green_2
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 1721
+        width: 228
+        height: 268
+      alignment: 9
+      pivot: {x: .54019165, y: .270417631}
+    - name: Dragon Green_3
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 1709
+        width: 262
+        height: 294
+      alignment: 9
+      pivot: {x: .599931777, y: .250646055}
+    - name: Dragon Green_4
+      rect:
+        serializedVersion: 2
+        x: 1413
+        y: 1695
+        width: 292
+        height: 308
+      alignment: 9
+      pivot: {x: .526899338, y: .257730454}
+    - name: Dragon Green_5
+      rect:
+        serializedVersion: 2
+        x: 1789
+        y: 1715
+        width: 208
+        height: 264
+      alignment: 9
+      pivot: {x: .588112473, y: .227269486}
+    - name: Dragon Green_6
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 1507
+        width: 156
+        height: 146
+      alignment: 9
+      pivot: {x: .189507067, y: .5}
+    - name: Dragon Green_7
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 1507
+        width: 166
+        height: 146
+      alignment: 9
+      pivot: {x: .168780595, y: .5}
+    - name: Dragon Green_8
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 1505
+        width: 184
+        height: 148
+      alignment: 9
+      pivot: {x: .144264892, y: .5}
+    - name: Dragon Green_9
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 1499
+        width: 184
+        height: 156
+      alignment: 9
+      pivot: {x: .144264892, y: .533566177}
+    - name: Dragon Green_10
+      rect:
+        serializedVersion: 2
+        x: 1275
+        y: 1525
+        width: 226
+        height: 140
+      alignment: 9
+      pivot: {x: .123487085, y: .443894744}
+    - name: Dragon Green_11
+      rect:
+        serializedVersion: 2
+        x: 1631
+        y: 1499
+        width: 168
+        height: 162
+      alignment: 9
+      pivot: {x: .164931521, y: .524242282}
+    - name: Dragon Green_12
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 1355
+        width: 92
+        height: 74
+      alignment: 9
+      pivot: {x: .158494368, y: .818430305}
+    - name: Dragon Green_13
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 1355
+        width: 96
+        height: 74
+      alignment: 9
+      pivot: {x: .159087181, y: .800740004}
+    - name: Dragon Green_14
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 1349
+        width: 94
+        height: 80
+      alignment: 9
+      pivot: {x: .193613902, y: .778184533}
+    - name: Dragon Green_15
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 1353
+        width: 110
+        height: 84
+      alignment: 9
+      pivot: {x: .17867431, y: .796106219}
+    - name: Dragon Green_16
+      rect:
+        serializedVersion: 2
+        x: 1315
+        y: 1335
+        width: 134
+        height: 104
+      alignment: 9
+      pivot: {x: .167839393, y: .802100539}
+    - name: Dragon Green_17
+      rect:
+        serializedVersion: 2
+        x: 1677
+        y: 1347
+        width: 104
+        height: 88
+      alignment: 9
+      pivot: {x: .185310945, y: .797522783}
+    - name: Dragon Green_18
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 1079
+        width: 152
+        height: 176
+      alignment: 9
+      pivot: {x: .861726463, y: .857028604}
+    - name: Dragon Green_19
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 1087
+        width: 152
+        height: 176
+      alignment: 9
+      pivot: {x: .870338857, y: .857028604}
+    - name: Dragon Green_20
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 1063
+        width: 152
+        height: 204
+      alignment: 9
+      pivot: {x: .870338857, y: .865779519}
+    - name: Dragon Green_21
+      rect:
+        serializedVersion: 2
+        x: 1013
+        y: 1079
+        width: 164
+        height: 200
+      alignment: 9
+      pivot: {x: .867188215, y: .84036684}
+    - name: Dragon Green_22
+      rect:
+        serializedVersion: 2
+        x: 1353
+        y: 1041
+        width: 182
+        height: 260
+      alignment: 9
+      pivot: {x: .874030173, y: .867556512}
+    - name: Dragon Green_23
+      rect:
+        serializedVersion: 2
+        x: 1699
+        y: 1085
+        width: 162
+        height: 188
+      alignment: 9
+      pivot: {x: .879802167, y: .841202736}
+    - name: Dragon Green_24
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 305
+        width: 56
+        height: 548
+      alignment: 9
+      pivot: {x: .446202278, y: .285594523}
+    - name: Dragon Green_25
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 301
+        width: 76
+        height: 548
+      alignment: 9
+      pivot: {x: .381078809, y: .28834334}
+    - name: Dragon Green_26
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 289
+        width: 112
+        height: 558
+      alignment: 9
+      pivot: {x: .352056235, y: .273239732}
+    - name: Dragon Green_27
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 295
+        width: 122
+        height: 652
+      alignment: 9
+      pivot: {x: .5, y: .229691207}
+    - name: Dragon Green_28
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 297
+        width: 128
+        height: 698
+      alignment: 9
+      pivot: {x: .405854225, y: .212976053}
+    - name: Dragon Green_29
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 309
+        width: 188
+        height: 564
+      alignment: 9
+      pivot: {x: .5, y: .246273279}
+    - name: Dragon Green_30
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 741
+        width: 230
+        height: 250
+      alignment: 9
+      pivot: {x: .906055748, y: .0782258287}
+    - name: Dragon Green_31
+      rect:
+        serializedVersion: 2
+        x: 1243
+        y: 759
+        width: 126
+        height: 224
+      alignment: 9
+      pivot: {x: .597229004, y: .0528766103}
+  spritePackingTag: 
+  userData: 

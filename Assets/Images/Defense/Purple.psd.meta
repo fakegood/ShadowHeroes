@@ -1,0 +1,522 @@
+fileFormatVersion: 2
+guid: 38d82230d82ad4f039d6f01889416e58
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 10
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Purple_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1823
+        width: 176
+        height: 174
+      alignment: 9
+      pivot: {x: .619261146, y: .0889576897}
+    - name: Purple_1
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 1827
+        width: 178
+        height: 172
+      alignment: 9
+      pivot: {x: .617921114, y: .0841781273}
+    - name: Purple_2
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 1805
+        width: 204
+        height: 206
+      alignment: 9
+      pivot: {x: .587648571, y: .164130643}
+    - name: Purple_3
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 1781
+        width: 254
+        height: 234
+      alignment: 9
+      pivot: {x: .622426212, y: .174419701}
+    - name: Purple_4
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 1813
+        width: 186
+        height: 184
+      alignment: 9
+      pivot: {x: .588035643, y: .148267001}
+    - name: Purple_5
+      rect:
+        serializedVersion: 2
+        x: 1397
+        y: 1807
+        width: 188
+        height: 186
+      alignment: 9
+      pivot: {x: .587099791, y: .15204908}
+    - name: Purple_6
+      rect:
+        serializedVersion: 2
+        x: 1681
+        y: 1803
+        width: 204
+        height: 198
+      alignment: 9
+      pivot: {x: .591735244, y: .145570084}
+    - name: Purple_7
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 1479
+        width: 256
+        height: 246
+      alignment: 9
+      pivot: {x: .567009449, y: .214727134}
+    - name: Purple_8
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 1519
+        width: 214
+        height: 186
+      alignment: 9
+      pivot: {x: .583804548, y: .1185119}
+    - name: Purple_9
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 1517
+        width: 200
+        height: 204
+      alignment: 9
+      pivot: {x: .613063037, y: .0757266805}
+    - name: Purple_10
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 1489
+        width: 248
+        height: 240
+      alignment: 9
+      pivot: {x: .559738636, y: .171857193}
+    - name: Purple_11
+      rect:
+        serializedVersion: 2
+        x: 1213
+        y: 1477
+        width: 278
+        height: 256
+      alignment: 9
+      pivot: {x: .558901548, y: .164953232}
+    - name: Purple_12
+      rect:
+        serializedVersion: 2
+        x: 1583
+        y: 1509
+        width: 156
+        height: 176
+      alignment: 9
+      pivot: {x: .594969153, y: .0658236444}
+    - name: Purple_13
+      rect:
+        serializedVersion: 2
+        x: 1809
+        y: 1487
+        width: 200
+        height: 216
+      alignment: 9
+      pivot: {x: .601367176, y: .218425617}
+    - name: Purple_14
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 1215
+        width: 184
+        height: 178
+      alignment: 9
+      pivot: {x: .580517292, y: .118888251}
+    - name: Purple_15
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 1213
+        width: 196
+        height: 182
+      alignment: 9
+      pivot: {x: .531826437, y: .135833398}
+    - name: Purple_16
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 1207
+        width: 210
+        height: 192
+      alignment: 9
+      pivot: {x: .618818283, y: .118249893}
+    - name: Purple_17
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 1173
+        width: 262
+        height: 250
+      alignment: 9
+      pivot: {x: .627973497, y: .188102052}
+    - name: Purple_18
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 1181
+        width: 284
+        height: 244
+      alignment: 9
+      pivot: {x: .623551488, y: .15486671}
+    - name: Purple_19
+      rect:
+        serializedVersion: 2
+        x: 1509
+        y: 1195
+        width: 224
+        height: 208
+      alignment: 9
+      pivot: {x: .576582253, y: .0576441847}
+    - name: Purple_21
+      rect:
+        serializedVersion: 2
+        x: 1791
+        y: 1185
+        width: 222
+        height: 220
+      alignment: 9
+      pivot: {x: .60888344, y: .0675958842}
+    - name: Purple_22
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 859
+        width: 264
+        height: 258
+      alignment: 9
+      pivot: {x: .602417469, y: .107973084}
+    - name: Purple_23
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 879
+        width: 254
+        height: 218
+      alignment: 9
+      pivot: {x: .570966363, y: .077384457}
+    - name: Purple_25
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 753
+        width: 90
+        height: 232
+      alignment: 9
+      pivot: {x: .475754112, y: .112491213}
+    - name: Purple_26
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 731
+        width: 44
+        height: 252
+      alignment: 9
+      pivot: {x: .380975902, y: .153636634}
+    - name: Purple_27
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 729
+        width: 58
+        height: 276
+      alignment: 9
+      pivot: {x: .402181685, y: .147387072}
+    - name: Purple_28
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 729
+        width: 60
+        height: 332
+      alignment: 9
+      pivot: {x: .427262366, y: .116162591}
+    - name: Purple_29
+      rect:
+        serializedVersion: 2
+        x: 1229
+        y: 721
+        width: 106
+        height: 350
+      alignment: 9
+      pivot: {x: .442359775, y: .13091518}
+    - name: Purple_30
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 723
+        width: 102
+        height: 278
+      alignment: 9
+      pivot: {x: .542785645, y: .15620324}
+    - name: Purple_31
+      rect:
+        serializedVersion: 2
+        x: 1485
+        y: 727
+        width: 86
+        height: 356
+      alignment: 9
+      pivot: {x: .525372148, y: .139587581}
+    - name: Purple_32
+      rect:
+        serializedVersion: 2
+        x: 1599
+        y: 735
+        width: 170
+        height: 322
+      alignment: 9
+      pivot: {x: .515402377, y: .166587681}
+    - name: Purple_33
+      rect:
+        serializedVersion: 2
+        x: 1815
+        y: 721
+        width: 142
+        height: 394
+      alignment: 9
+      pivot: {x: .574300408, y: .145506263}
+    - name: Purple_35
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 763
+        width: 38
+        height: 126
+      alignment: 9
+      pivot: {x: .511484265, y: .122464135}
+    - name: Purple_36
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 765
+        width: 48
+        height: 158
+      alignment: 9
+      pivot: {x: .409079224, y: .0939655527}
+    - name: Purple_37
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 765
+        width: 54
+        height: 198
+      alignment: 9
+      pivot: {x: .403017402, y: .076806888}
+    - name: Purple_38
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 409
+        width: 150
+        height: 242
+      alignment: 9
+      pivot: {x: .379647076, y: .175275564}
+    - name: Purple_39
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 379
+        width: 230
+        height: 318
+      alignment: 9
+      pivot: {x: .414027601, y: .189093247}
+    - name: Purple_40
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 397
+        width: 84
+        height: 270
+      alignment: 9
+      pivot: {x: .479189545, y: .486707002}
+    - name: Purple_41
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 397
+        width: 98
+        height: 268
+      alignment: 9
+      pivot: {x: .375964731, y: .490928769}
+    - name: Purple_42
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 393
+        width: 108
+        height: 268
+      alignment: 9
+      pivot: {x: .290655643, y: .494557381}
+    - name: Purple_43
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 385
+        width: 146
+        height: 282
+      alignment: 9
+      pivot: {x: .221922576, y: .49482739}
+    - name: Purple_44
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 373
+        width: 212
+        height: 294
+      alignment: 9
+      pivot: {x: .326842099, y: .492557853}
+    - name: Purple_42
+      rect:
+        serializedVersion: 2
+        x: 1297
+        y: 447
+        width: 328
+        height: 182
+      alignment: 9
+      pivot: {x: .698271573, y: .130137846}
+    - name: Purple_43
+      rect:
+        serializedVersion: 2
+        x: 1677
+        y: 431
+        width: 346
+        height: 258
+      alignment: 9
+      pivot: {x: .707741797, y: .106422953}
+    - name: Purple_44
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 259
+        width: 68
+        height: 62
+      alignment: 9
+      pivot: {x: .46882242, y: .543964982}
+    - name: Purple_45
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 251
+        width: 74
+        height: 68
+      alignment: 9
+      pivot: {x: .446793228, y: .51781553}
+    - name: Purple_46
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 243
+        width: 88
+        height: 76
+      alignment: 9
+      pivot: {x: .482791722, y: .519925594}
+    - name: Purple_47
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 225
+        width: 122
+        height: 112
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Purple_48
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 243
+        width: 86
+        height: 74
+      alignment: 9
+      pivot: {x: .510564744, y: .461118966}
+    - name: Purple_49
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 231
+        width: 134
+        height: 106
+      alignment: 9
+      pivot: {x: .558764994, y: .477142036}
+    - name: Purple_50
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 249
+        width: 94
+        height: 76
+      alignment: 9
+      pivot: {x: .583771408, y: .48007524}
+    - name: Purple_51
+      rect:
+        serializedVersion: 2
+        x: 1023
+        y: 75
+        width: 438
+        height: 258
+      alignment: 9
+      pivot: {x: .71880883, y: .168333933}
+    - name: Purple_52
+      rect:
+        serializedVersion: 2
+        x: 1597
+        y: 127
+        width: 354
+        height: 182
+      alignment: 9
+      pivot: {x: .712716162, y: .136406288}
+  spritePackingTag: 
+  userData: 

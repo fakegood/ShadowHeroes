@@ -1,0 +1,333 @@
+fileFormatVersion: 2
+guid: 5e0e7437438184725bd071d190dff0c9
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 10
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Dragon Grey_0
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 1717
+        width: 184
+        height: 270
+      alignment: 9
+      pivot: {x: .598101974, y: .232581466}
+    - name: Dragon Grey_1
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 1721
+        width: 192
+        height: 272
+      alignment: 9
+      pivot: {x: .611921787, y: .237707704}
+    - name: Dragon Grey_3
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 1721
+        width: 212
+        height: 270
+      alignment: 9
+      pivot: {x: .589199722, y: .245315671}
+    - name: Dragon Grey_5
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 1693
+        width: 258
+        height: 302
+      alignment: 9
+      pivot: {x: .603280485, y: .221070141}
+    - name: Dragon Grey_6
+      rect:
+        serializedVersion: 2
+        x: 1357
+        y: 1683
+        width: 272
+        height: 312
+      alignment: 9
+      pivot: {x: .525281131, y: .249294966}
+    - name: Dragon Grey_7
+      rect:
+        serializedVersion: 2
+        x: 1743
+        y: 1717
+        width: 208
+        height: 272
+      alignment: 9
+      pivot: {x: .570252657, y: .209266663}
+    - name: Dragon Grey_11
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 1491
+        width: 152
+        height: 146
+      alignment: 9
+      pivot: {x: .16069974, y: .476450473}
+    - name: Dragon Grey_12
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 1493
+        width: 154
+        height: 146
+      alignment: 9
+      pivot: {x: .181851074, y: .452900916}
+    - name: Dragon Grey_13
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 1487
+        width: 172
+        height: 150
+      alignment: 9
+      pivot: {x: .145181701, y: .488539219}
+    - name: Dragon Grey_14
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 1491
+        width: 188
+        height: 150
+      alignment: 9
+      pivot: {x: .138802066, y: .471348464}
+    - name: Dragon Grey_15
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 1483
+        width: 202
+        height: 154
+      alignment: 9
+      pivot: {x: .138303846, y: .488836914}
+    - name: Dragon Grey_16
+      rect:
+        serializedVersion: 2
+        x: 1421
+        y: 1485
+        width: 168
+        height: 154
+      alignment: 9
+      pivot: {x: .141850069, y: .505581915}
+    - name: Dragon Grey_17
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 1359
+        width: 88
+        height: 84
+      alignment: 9
+      pivot: {x: .158129513, y: .786520839}
+    - name: Dragon Grey_18
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 1359
+        width: 88
+        height: 76
+      alignment: 9
+      pivot: {x: .206968129, y: .805370152}
+    - name: Dragon Grey_19
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 1359
+        width: 98
+        height: 84
+      alignment: 9
+      pivot: {x: .166701332, y: .735355914}
+    - name: Dragon Grey_20
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 1343
+        width: 112
+        height: 92
+      alignment: 9
+      pivot: {x: .162315369, y: .77094835}
+    - name: Dragon Grey_21
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 1337
+        width: 128
+        height: 92
+      alignment: 9
+      pivot: {x: .137372971, y: .808320403}
+    - name: Dragon Grey_22
+      rect:
+        serializedVersion: 2
+        x: 1469
+        y: 1341
+        width: 96
+        height: 88
+      alignment: 9
+      pivot: {x: .17250824, y: .783345997}
+    - name: Dragon Grey_23
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 1083
+        width: 152
+        height: 176
+      alignment: 9
+      pivot: {x: .870879114, y: .863422751}
+    - name: Dragon Grey_24
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 1087
+        width: 152
+        height: 176
+      alignment: 9
+      pivot: {x: .878011405, y: .869582415}
+    - name: Dragon Grey_25
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 1075
+        width: 152
+        height: 204
+      alignment: 9
+      pivot: {x: .863746643, y: .861369431}
+    - name: Dragon Grey_26
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 1075
+        width: 162
+        height: 198
+      alignment: 9
+      pivot: {x: .888137639, y: .855894148}
+    - name: Dragon Grey_27
+      rect:
+        serializedVersion: 2
+        x: 1221
+        y: 1047
+        width: 180
+        height: 260
+      alignment: 9
+      pivot: {x: .897506356, y: .866928816}
+    - name: Dragon Grey_28
+      rect:
+        serializedVersion: 2
+        x: 1539
+        y: 1087
+        width: 162
+        height: 186
+      alignment: 9
+      pivot: {x: .881444871, y: .849712431}
+    - name: Dragon Grey_29
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 299
+        width: 82
+        height: 548
+      alignment: 9
+      pivot: {x: .632208169, y: .286343426}
+    - name: Dragon Grey_30
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 305
+        width: 68
+        height: 548
+      alignment: 9
+      pivot: {x: .5, y: .274473757}
+    - name: Dragon Grey_31
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 305
+        width: 100
+        height: 558
+      alignment: 9
+      pivot: {x: .359065562, y: .26685828}
+    - name: Dragon Grey_32
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 297
+        width: 114
+        height: 652
+      alignment: 9
+      pivot: {x: .547548532, y: .207357109}
+    - name: Dragon Grey_33
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 299
+        width: 130
+        height: 690
+      alignment: 9
+      pivot: {x: .366571039, y: .212475538}
+    - name: Dragon Grey_34
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 301
+        width: 162
+        height: 558
+      alignment: 9
+      pivot: {x: .479923964, y: .233829945}
+    - name: Dragon Grey_35
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 753
+        width: 230
+        height: 250
+      alignment: 9
+      pivot: {x: .914789617, y: .0750292987}
+    - name: Dragon Grey_36
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 775
+        width: 126
+        height: 224
+      alignment: 9
+      pivot: {x: .603248239, y: .0547409058}
+  spritePackingTag: 
+  userData: 

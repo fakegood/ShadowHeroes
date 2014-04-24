@@ -1,0 +1,333 @@
+fileFormatVersion: 2
+guid: 98b9f9b79bd7d4649a8d18f011584f47
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 10
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Dragon Yellow_0
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 1743
+        width: 218
+        height: 260
+      alignment: 9
+      pivot: {x: .613130271, y: .253376186}
+    - name: Dragon Yellow_1
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 1729
+        width: 224
+        height: 292
+      alignment: 9
+      pivot: {x: .606430054, y: .243804097}
+    - name: Dragon Yellow_2
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 1735
+        width: 214
+        height: 280
+      alignment: 9
+      pivot: {x: .615244925, y: .241632074}
+    - name: Dragon Yellow_3
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 1715
+        width: 264
+        height: 308
+      alignment: 9
+      pivot: {x: .587190092, y: .23042199}
+    - name: Dragon Yellow_4
+      rect:
+        serializedVersion: 2
+        x: 1423
+        y: 1687
+        width: 266
+        height: 332
+      alignment: 9
+      pivot: {x: .611258805, y: .247433588}
+    - name: Dragon Yellow_5
+      rect:
+        serializedVersion: 2
+        x: 1781
+        y: 1717
+        width: 228
+        height: 292
+      alignment: 9
+      pivot: {x: .593746245, y: .212835446}
+    - name: Dragon Yellow_6
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 1501
+        width: 150
+        height: 146
+      alignment: 9
+      pivot: {x: .143765673, y: .516891718}
+    - name: Dragon Yellow_7
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 1503
+        width: 164
+        height: 146
+      alignment: 9
+      pivot: {x: .149112612, y: .545045614}
+    - name: Dragon Yellow_8
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 1503
+        width: 174
+        height: 146
+      alignment: 9
+      pivot: {x: .140930876, y: .505631149}
+    - name: Dragon Yellow_9
+      rect:
+        serializedVersion: 2
+        x: 1009
+        y: 1509
+        width: 192
+        height: 146
+      alignment: 9
+      pivot: {x: .110368729, y: .494369715}
+    - name: Dragon Yellow_10
+      rect:
+        serializedVersion: 2
+        x: 1325
+        y: 1507
+        width: 202
+        height: 146
+      alignment: 9
+      pivot: {x: .121517971, y: .5}
+    - name: Dragon Yellow_11
+      rect:
+        serializedVersion: 2
+        x: 1649
+        y: 1505
+        width: 170
+        height: 148
+      alignment: 9
+      pivot: {x: .146989897, y: .494445801}
+    - name: Dragon Yellow_12
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 1349
+        width: 94
+        height: 70
+      alignment: 9
+      pivot: {x: .185161352, y: .770111978}
+    - name: Dragon Yellow_13
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 1351
+        width: 90
+        height: 74
+      alignment: 9
+      pivot: {x: .189436853, y: .699966013}
+    - name: Dragon Yellow_14
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 1351
+        width: 124
+        height: 92
+      alignment: 9
+      pivot: {x: .168516591, y: .759134054}
+    - name: Dragon Yellow_15
+      rect:
+        serializedVersion: 2
+        x: 1025
+        y: 1341
+        width: 118
+        height: 100
+      alignment: 9
+      pivot: {x: .172561899, y: .812390149}
+    - name: Dragon Yellow_16
+      rect:
+        serializedVersion: 2
+        x: 1341
+        y: 1339
+        width: 116
+        height: 92
+      alignment: 9
+      pivot: {x: .174003869, y: .821683109}
+    - name: Dragon Yellow_17
+      rect:
+        serializedVersion: 2
+        x: 1693
+        y: 1345
+        width: 92
+        height: 84
+      alignment: 9
+      pivot: {x: .160446838, y: .774026036}
+    - name: Dragon Yellow_18
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 1095
+        width: 152
+        height: 176
+      alignment: 9
+      pivot: {x: .888276935, y: .855055392}
+    - name: Dragon Yellow_19
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 1091
+        width: 152
+        height: 176
+      alignment: 9
+      pivot: {x: .89398694, y: .850124717}
+    - name: Dragon Yellow_20
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 1091
+        width: 152
+        height: 184
+      alignment: 9
+      pivot: {x: .899696767, y: .858485997}
+    - name: Dragon Yellow_21
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 1079
+        width: 162
+        height: 198
+      alignment: 9
+      pivot: {x: .896454215, y: .833138525}
+    - name: Dragon Yellow_22
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 1049
+        width: 210
+        height: 258
+      alignment: 9
+      pivot: {x: .925691128, y: .880132616}
+    - name: Dragon Yellow_23
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 1083
+        width: 162
+        height: 186
+      alignment: 9
+      pivot: {x: .896454215, y: .859297574}
+    - name: Dragon Yellow_24
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 303
+        width: 66
+        height: 514
+      alignment: 9
+      pivot: {x: .513149858, y: .314259619}
+    - name: Dragon Yellow_25
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 299
+        width: 106
+        height: 550
+      alignment: 9
+      pivot: {x: .352618247, y: .30116877}
+    - name: Dragon Yellow_26
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 295
+        width: 116
+        height: 570
+      alignment: 9
+      pivot: {x: .514963865, y: .294441402}
+    - name: Dragon Yellow_27
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 297
+        width: 148
+        height: 630
+      alignment: 9
+      pivot: {x: .552778482, y: .280954987}
+    - name: Dragon Yellow_28
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 299
+        width: 158
+        height: 682
+      alignment: 9
+      pivot: {x: .461547852, y: .248025}
+    - name: Dragon Yellow_29
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 303
+        width: 150
+        height: 518
+      alignment: 9
+      pivot: {x: .546288252, y: .295587838}
+    - name: Dragon Yellow_30
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 735
+        width: 230
+        height: 250
+      alignment: 9
+      pivot: {x: .918862522, y: .0868730471}
+    - name: Dragon Yellow_31
+      rect:
+        serializedVersion: 2
+        x: 1433
+        y: 747
+        width: 126
+        height: 224
+      alignment: 9
+      pivot: {x: .596434593, y: .0582940243}
+  spritePackingTag: 
+  userData: 

@@ -1,0 +1,549 @@
+fileFormatVersion: 2
+guid: 70581442388654b8495b2e34dca9bea8
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 10
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Green_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1853
+        width: 178
+        height: 168
+      alignment: 9
+      pivot: {x: .6379475, y: .0523892343}
+    - name: Green_1
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 1839
+        width: 172
+        height: 192
+      alignment: 9
+      pivot: {x: .642759442, y: .0643787384}
+    - name: Green_2
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 1825
+        width: 220
+        height: 200
+      alignment: 9
+      pivot: {x: .611611962, y: .0626202375}
+    - name: Green_3
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 1813
+        width: 254
+        height: 228
+      alignment: 9
+      pivot: {x: .599692762, y: .139892042}
+    - name: Green_4
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 1791
+        width: 258
+        height: 244
+      alignment: 9
+      pivot: {x: .633836865, y: .116333507}
+    - name: Green_5
+      rect:
+        serializedVersion: 2
+        x: 1273
+        y: 1813
+        width: 204
+        height: 180
+      alignment: 9
+      pivot: {x: .556421638, y: .0907558873}
+    - name: Green_6
+      rect:
+        serializedVersion: 2
+        x: 1533
+        y: 1817
+        width: 204
+        height: 180
+      alignment: 9
+      pivot: {x: .54889816, y: .0907558873}
+    - name: Green_7
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 1807
+        width: 218
+        height: 196
+      alignment: 9
+      pivot: {x: .566877186, y: .10067375}
+    - name: Green_8
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 1547
+        width: 272
+        height: 234
+      alignment: 9
+      pivot: {x: .54231602, y: .13272956}
+    - name: Green_9
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 1571
+        width: 228
+        height: 192
+      alignment: 9
+      pivot: {x: .587502718, y: .120330177}
+    - name: Green_10
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 1557
+        width: 202
+        height: 202
+      alignment: 9
+      pivot: {x: .644349635, y: .203702718}
+    - name: Green_11
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 1545
+        width: 264
+        height: 238
+      alignment: 9
+      pivot: {x: .595916748, y: .164694905}
+    - name: Green_12
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 1515
+        width: 272
+        height: 264
+      alignment: 9
+      pivot: {x: .652338386, y: .194810808}
+    - name: Green_13
+      rect:
+        serializedVersion: 2
+        x: 1585
+        y: 1563
+        width: 200
+        height: 174
+      alignment: 9
+      pivot: {x: .561386108, y: .067824088}
+    - name: Green_14
+      rect:
+        serializedVersion: 2
+        x: 1849
+        y: 1549
+        width: 186
+        height: 178
+      alignment: 9
+      pivot: {x: .574258149, y: .068914175}
+    - name: Green_15
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 1291
+        width: 180
+        height: 172
+      alignment: 9
+      pivot: {x: .623625875, y: .0806437656}
+    - name: Green_16
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 1289
+        width: 182
+        height: 172
+      alignment: 9
+      pivot: {x: .622267187, y: .0806430578}
+    - name: Green_17
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 1273
+        width: 184
+        height: 190
+      alignment: 9
+      pivot: {x: .620938182, y: .136526644}
+    - name: Green_18
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 1269
+        width: 216
+        height: 216
+      alignment: 9
+      pivot: {x: .610126376, y: .148305818}
+    - name: Green_19
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 1249
+        width: 264
+        height: 236
+      alignment: 9
+      pivot: {x: .671487033, y: .132590607}
+    - name: Green_20
+      rect:
+        serializedVersion: 2
+        x: 1253
+        y: 1273
+        width: 204
+        height: 182
+      alignment: 9
+      pivot: {x: .61660409, y: .0699563473}
+    - name: Green_21
+      rect:
+        serializedVersion: 2
+        x: 1515
+        y: 1279
+        width: 206
+        height: 178
+      alignment: 9
+      pivot: {x: .615472019, y: .0732250437}
+    - name: Green_22
+      rect:
+        serializedVersion: 2
+        x: 1783
+        y: 1259
+        width: 246
+        height: 212
+      alignment: 9
+      pivot: {x: .559265614, y: .141670078}
+    - name: Green_23
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 1009
+        width: 232
+        height: 194
+      alignment: 9
+      pivot: {x: .569372594, y: .0644553304}
+    - name: Green_24
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 861
+        width: 38
+        height: 178
+      alignment: 9
+      pivot: {x: .362369746, y: .086819768}
+    - name: Green_25
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 859
+        width: 46
+        height: 202
+      alignment: 9
+      pivot: {x: .336563766, y: .0792743936}
+    - name: Green_26
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 851
+        width: 96
+        height: 252
+      alignment: 9
+      pivot: {x: .350184113, y: .0875193253}
+    - name: Green_27
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 849
+        width: 108
+        height: 270
+      alignment: 9
+      pivot: {x: .406175971, y: .0847520605}
+    - name: Green_28
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 825
+        width: 48
+        height: 260
+      alignment: 9
+      pivot: {x: .329755157, y: .144212931}
+    - name: Green_29
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 825
+        width: 54
+        height: 278
+      alignment: 9
+      pivot: {x: .269978851, y: .140206099}
+    - name: Green_30
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 821
+        width: 76
+        height: 290
+      alignment: 9
+      pivot: {x: .246244729, y: .131424055}
+    - name: Green_31
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 811
+        width: 116
+        height: 328
+      alignment: 9
+      pivot: {x: .285842896, y: .135259122}
+    - name: Green_32
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 815
+        width: 86
+        height: 268
+      alignment: 9
+      pivot: {x: .553211272, y: .162151501}
+    - name: Green_33
+      rect:
+        serializedVersion: 2
+        x: 1195
+        y: 819
+        width: 100
+        height: 378
+      alignment: 9
+      pivot: {x: .286302477, y: .12908338}
+    - name: Green_34
+      rect:
+        serializedVersion: 2
+        x: 1313
+        y: 815
+        width: 162
+        height: 312
+      alignment: 9
+      pivot: {x: .49034816, y: .145842135}
+    - name: Green_35
+      rect:
+        serializedVersion: 2
+        x: 1489
+        y: 811
+        width: 140
+        height: 404
+      alignment: 9
+      pivot: {x: .306406081, y: .1258616}
+    - name: Green_36
+      rect:
+        serializedVersion: 2
+        x: 1631
+        y: 853
+        width: 142
+        height: 222
+      alignment: 9
+      pivot: {x: .316474169, y: .176002294}
+    - name: Green_37
+      rect:
+        serializedVersion: 2
+        x: 1791
+        y: 815
+        width: 230
+        height: 318
+      alignment: 9
+      pivot: {x: .413886815, y: .196778297}
+    - name: Green_38
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 859
+        width: 34
+        height: 136
+      alignment: 9
+      pivot: {x: .5, y: .110638335}
+    - name: Green_39
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 479
+        width: 80
+        height: 274
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Green_40
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 475
+        width: 104
+        height: 278
+      alignment: 9
+      pivot: {x: .342649907, y: .498037875}
+    - name: Green_41
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 467
+        width: 116
+        height: 286
+      alignment: 9
+      pivot: {x: .297796041, y: .498092532}
+    - name: Green_42
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 469
+        width: 158
+        height: 290
+      alignment: 9
+      pivot: {x: .320474744, y: .492476046}
+    - name: Green_43
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 473
+        width: 186
+        height: 286
+      alignment: 9
+      pivot: {x: .253653914, y: .492370814}
+    - name: Green_48
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 283
+        width: 70
+        height: 62
+      alignment: 9
+      pivot: {x: .466717541, y: .552191973}
+    - name: Green_49
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 275
+        width: 74
+        height: 68
+      alignment: 9
+      pivot: {x: .444029123, y: .515228271}
+    - name: Green_50
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 269
+        width: 88
+        height: 74
+      alignment: 9
+      pivot: {x: .51029551, y: .522739291}
+    - name: Green_51
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 247
+        width: 124
+        height: 112
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Green_52
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 251
+        width: 134
+        height: 112
+      alignment: 9
+      pivot: {x: .516420722, y: .493066519}
+    - name: Green_53
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 265
+        width: 86
+        height: 74
+      alignment: 9
+      pivot: {x: .528595686, y: .501749814}
+    - name: Green_54
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 253
+        width: 132
+        height: 106
+      alignment: 9
+      pivot: {x: .558833241, y: .487790078}
+    - name: Green_55
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 267
+        width: 88
+        height: 76
+      alignment: 9
+      pivot: {x: .480879337, y: .472752213}
+    - name: Green_52
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 511
+        width: 358
+        height: 160
+      alignment: 9
+      pivot: {x: .62617588, y: .208270639}
+    - name: Green_53
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 503
+        width: 364
+        height: 194
+      alignment: 9
+      pivot: {x: .582730472, y: .181785345}
+    - name: Green_54
+      rect:
+        serializedVersion: 2
+        x: 1609
+        y: 459
+        width: 398
+        height: 248
+      alignment: 9
+      pivot: {x: .568096817, y: .208574235}
+    - name: Green_55
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 151
+        width: 344
+        height: 190
+      alignment: 9
+      pivot: {x: .605048597, y: .190935403}
+  spritePackingTag: 
+  userData: 

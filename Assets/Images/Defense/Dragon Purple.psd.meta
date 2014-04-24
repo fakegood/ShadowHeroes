@@ -1,0 +1,333 @@
+fileFormatVersion: 2
+guid: f0280b3e207804339828d587c3fff2f9
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 10
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Dragon Purple_0
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 1719
+        width: 202
+        height: 268
+      alignment: 9
+      pivot: {x: .602618814, y: .263409048}
+    - name: Dragon Purple_1
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 1721
+        width: 204
+        height: 270
+      alignment: 9
+      pivot: {x: .565749347, y: .247096986}
+    - name: Dragon Purple_2
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 1701
+        width: 228
+        height: 296
+      alignment: 9
+      pivot: {x: .526740074, y: .256953061}
+    - name: Dragon Purple_3
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 1705
+        width: 244
+        height: 306
+      alignment: 9
+      pivot: {x: .574960172, y: .237001911}
+    - name: Dragon Purple_4
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 1683
+        width: 282
+        height: 320
+      alignment: 9
+      pivot: {x: .564859152, y: .256129086}
+    - name: Dragon Purple_5
+      rect:
+        serializedVersion: 2
+        x: 1779
+        y: 1701
+        width: 222
+        height: 284
+      alignment: 9
+      pivot: {x: .560418189, y: .238096431}
+    - name: Dragon Purple_6
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 1511
+        width: 168
+        height: 134
+      alignment: 9
+      pivot: {x: .151613012, y: .45450148}
+    - name: Dragon Purple_7
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 1515
+        width: 166
+        height: 134
+      alignment: 9
+      pivot: {x: .147415534, y: .481800586}
+    - name: Dragon Purple_8
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 1515
+        width: 178
+        height: 136
+      alignment: 9
+      pivot: {x: .157484755, y: .464136451}
+    - name: Dragon Purple_9
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 1517
+        width: 202
+        height: 142
+      alignment: 9
+      pivot: {x: .143851712, y: .457064778}
+    - name: Dragon Purple_10
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 1511
+        width: 218
+        height: 142
+      alignment: 9
+      pivot: {x: .136430934, y: .457064778}
+    - name: Dragon Purple_11
+      rect:
+        serializedVersion: 2
+        x: 1481
+        y: 1507
+        width: 170
+        height: 152
+      alignment: 9
+      pivot: {x: .198747709, y: .4919779}
+    - name: Dragon Purple_12
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 1345
+        width: 88
+        height: 72
+      alignment: 9
+      pivot: {x: .236730233, y: .770967245}
+    - name: Dragon Purple_13
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 1351
+        width: 92
+        height: 74
+      alignment: 9
+      pivot: {x: .195161238, y: .747165978}
+    - name: Dragon Purple_14
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 1349
+        width: 96
+        height: 84
+      alignment: 9
+      pivot: {x: .195161179, y: .775806248}
+    - name: Dragon Purple_15
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 1345
+        width: 104
+        height: 90
+      alignment: 9
+      pivot: {x: .159987226, y: .811612964}
+    - name: Dragon Purple_16
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 1333
+        width: 118
+        height: 112
+      alignment: 9
+      pivot: {x: .179661632, y: .815726161}
+    - name: Dragon Purple_17
+      rect:
+        serializedVersion: 2
+        x: 1523
+        y: 1353
+        width: 96
+        height: 76
+      alignment: 9
+      pivot: {x: .195161179, y: .756705821}
+    - name: Dragon Purple_18
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 1089
+        width: 152
+        height: 176
+      alignment: 9
+      pivot: {x: .877037048, y: .860264182}
+    - name: Dragon Purple_19
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 1087
+        width: 152
+        height: 176
+      alignment: 9
+      pivot: {x: .885059178, y: .846407831}
+    - name: Dragon Purple_20
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 1081
+        width: 152
+        height: 176
+      alignment: 9
+      pivot: {x: .885059178, y: .853335977}
+    - name: Dragon Purple_21
+      rect:
+        serializedVersion: 2
+        x: 1043
+        y: 1075
+        width: 162
+        height: 198
+      alignment: 9
+      pivot: {x: .883870423, y: .838709354}
+    - name: Dragon Purple_22
+      rect:
+        serializedVersion: 2
+        x: 1381
+        y: 1061
+        width: 174
+        height: 238
+      alignment: 9
+      pivot: {x: .878420055, y: .848387122}
+    - name: Dragon Purple_23
+      rect:
+        serializedVersion: 2
+        x: 1695
+        y: 1083
+        width: 162
+        height: 188
+      alignment: 9
+      pivot: {x: .876344264, y: .856725812}
+    - name: Dragon Purple_24
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 305
+        width: 76
+        height: 532
+      alignment: 9
+      pivot: {x: .564176381, y: .330390692}
+    - name: Dragon Purple_25
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 299
+        width: 94
+        height: 542
+      alignment: 9
+      pivot: {x: .538915455, y: .306523234}
+    - name: Dragon Purple_26
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 297
+        width: 130
+        height: 582
+      alignment: 9
+      pivot: {x: .5, y: .275823206}
+    - name: Dragon Purple_27
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 299
+        width: 134
+        height: 626
+      alignment: 9
+      pivot: {x: .490900308, y: .279892981}
+    - name: Dragon Purple_28
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 301
+        width: 124
+        height: 676
+      alignment: 9
+      pivot: {x: .480332911, y: .258293778}
+    - name: Dragon Purple_29
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 301
+        width: 98
+        height: 584
+      alignment: 9
+      pivot: {x: .549769163, y: .276590943}
+    - name: Dragon Purple_30
+      rect:
+        serializedVersion: 2
+        x: 1015
+        y: 741
+        width: 230
+        height: 250
+      alignment: 9
+      pivot: {x: .897615373, y: .0854196772}
+    - name: Dragon Purple_31
+      rect:
+        serializedVersion: 2
+        x: 1275
+        y: 765
+        width: 126
+        height: 224
+      alignment: 9
+      pivot: {x: .606451154, y: .0645163432}
+  spritePackingTag: 
+  userData: 

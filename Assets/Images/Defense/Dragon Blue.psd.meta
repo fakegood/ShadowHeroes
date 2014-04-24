@@ -1,0 +1,333 @@
+fileFormatVersion: 2
+guid: d6d75294d7c6445a5876a056a9089edf
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 10
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Dragon Blue_0
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 1723
+        width: 216
+        height: 278
+      alignment: 9
+      pivot: {x: .615445018, y: .25226137}
+    - name: Dragon Blue_1
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 1717
+        width: 218
+        height: 290
+      alignment: 9
+      pivot: {x: .630726695, y: .233850524}
+    - name: Dragon Blue_2
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 1725
+        width: 236
+        height: 280
+      alignment: 9
+      pivot: {x: .570440769, y: .2413086}
+    - name: Dragon Blue_3
+      rect:
+        serializedVersion: 2
+        x: 1023
+        y: 1707
+        width: 266
+        height: 306
+      alignment: 9
+      pivot: {x: .584816813, y: .23224476}
+    - name: Dragon Blue_4
+      rect:
+        serializedVersion: 2
+        x: 1391
+        y: 1685
+        width: 266
+        height: 344
+      alignment: 9
+      pivot: {x: .580352545, y: .234207869}
+    - name: Dragon Blue_5
+      rect:
+        serializedVersion: 2
+        x: 1763
+        y: 1719
+        width: 226
+        height: 276
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Dragon Blue_6
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 1493
+        width: 162
+        height: 154
+      alignment: 9
+      pivot: {x: .133507758, y: .600237966}
+    - name: Dragon Blue_7
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 1497
+        width: 168
+        height: 154
+      alignment: 9
+      pivot: {x: .146596819, y: .584816694}
+    - name: Dragon Blue_8
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 1499
+        width: 180
+        height: 162
+      alignment: 9
+      pivot: {x: .137172788, y: .617277145}
+    - name: Dragon Blue_9
+      rect:
+        serializedVersion: 2
+        x: 1047
+        y: 1485
+        width: 190
+        height: 174
+      alignment: 9
+      pivot: {x: .125020564, y: .568242908}
+    - name: Dragon Blue_10
+      rect:
+        serializedVersion: 2
+        x: 1419
+        y: 1523
+        width: 226
+        height: 140
+      alignment: 9
+      pivot: {x: .105939746, y: .474554449}
+    - name: Dragon Blue_11
+      rect:
+        serializedVersion: 2
+        x: 1783
+        y: 1491
+        width: 170
+        height: 166
+      alignment: 9
+      pivot: {x: .150753245, y: .564378142}
+    - name: Dragon Blue_12
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 1355
+        width: 92
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Dragon Blue_13
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 1359
+        width: 92
+        height: 72
+      alignment: 9
+      pivot: {x: .177327365, y: .763873637}
+    - name: Dragon Blue_14
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 1361
+        width: 102
+        height: 86
+      alignment: 9
+      pivot: {x: .162395999, y: .789953887}
+    - name: Dragon Blue_15
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 1349
+        width: 94
+        height: 84
+      alignment: 9
+      pivot: {x: .184192419, y: .782722116}
+    - name: Dragon Blue_16
+      rect:
+        serializedVersion: 2
+        x: 1461
+        y: 1327
+        width: 128
+        height: 112
+      alignment: 9
+      pivot: {x: .166033745, y: .849868774}
+    - name: Dragon Blue_17
+      rect:
+        serializedVersion: 2
+        x: 1827
+        y: 1357
+        width: 116
+        height: 86
+      alignment: 9
+      pivot: {x: .162195668, y: .776147187}
+    - name: Dragon Blue_18
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 1063
+        width: 152
+        height: 176
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Dragon Blue_19
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 1063
+        width: 152
+        height: 176
+      alignment: 9
+      pivot: {x: .882791221, y: .857579291}
+    - name: Dragon Blue_20
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 1077
+        width: 152
+        height: 176
+      alignment: 9
+      pivot: {x: .882791221, y: .85083288}
+    - name: Dragon Blue_21
+      rect:
+        serializedVersion: 2
+        x: 1085
+        y: 1063
+        width: 164
+        height: 198
+      alignment: 9
+      pivot: {x: .898224592, y: .841836929}
+    - name: Dragon Blue_22
+      rect:
+        serializedVersion: 2
+        x: 1349
+        y: 1029
+        width: 214
+        height: 256
+      alignment: 9
+      pivot: {x: .905059516, y: .861796379}
+    - name: Dragon Blue_23
+      rect:
+        serializedVersion: 2
+        x: 1701
+        y: 1057
+        width: 162
+        height: 186
+      alignment: 9
+      pivot: {x: .866491973, y: .857507169}
+    - name: Dragon Blue_24
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 307
+        width: 88
+        height: 518
+      alignment: 9
+      pivot: {x: .621442199, y: .295981139}
+    - name: Dragon Blue_25
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 307
+        width: 122
+        height: 548
+      alignment: 9
+      pivot: {x: .49026677, y: .28764838}
+    - name: Dragon Blue_26
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 305
+        width: 150
+        height: 568
+      alignment: 9
+      pivot: {x: .452502429, y: .276310623}
+    - name: Dragon Blue_27
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 307
+        width: 166
+        height: 632
+      alignment: 9
+      pivot: {x: .621604443, y: .280174255}
+    - name: Dragon Blue_28
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 313
+        width: 142
+        height: 682
+      alignment: 9
+      pivot: {x: .483275503, y: .249280602}
+    - name: Dragon Blue_29
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 315
+        width: 162
+        height: 532
+      alignment: 9
+      pivot: {x: .463350654, y: .296886027}
+    - name: Dragon Blue_30
+      rect:
+        serializedVersion: 2
+        x: 1151
+        y: 717
+        width: 232
+        height: 252
+      alignment: 9
+      pivot: {x: .904341578, y: .0853399858}
+    - name: Dragon Blue_31
+      rect:
+        serializedVersion: 2
+        x: 1463
+        y: 733
+        width: 126
+        height: 224
+      alignment: 9
+      pivot: {x: .603664815, y: .0600125454}
+  spritePackingTag: 
+  userData: 

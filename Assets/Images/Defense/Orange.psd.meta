@@ -1,0 +1,558 @@
+fileFormatVersion: 2
+guid: 2ea0008a72e274a7285b3ef1f2ebdcd0
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 10
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Yellow_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 1837
+        width: 180
+        height: 174
+      alignment: 9
+      pivot: {x: .635984957, y: .0651897565}
+    - name: Yellow_1
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 1837
+        width: 168
+        height: 180
+      alignment: 9
+      pivot: {x: .632452846, y: .0673210993}
+    - name: Yellow_2
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 1825
+        width: 196
+        height: 192
+      alignment: 9
+      pivot: {x: .607854426, y: .0653896332}
+    - name: Yellow_3
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 1811
+        width: 244
+        height: 222
+      alignment: 9
+      pivot: {x: .600316763, y: .134144276}
+    - name: Yellow_4
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 1805
+        width: 266
+        height: 234
+      alignment: 9
+      pivot: {x: .629664361, y: .129132658}
+    - name: Yellow_5
+      rect:
+        serializedVersion: 2
+        x: 1217
+        y: 1831
+        width: 196
+        height: 178
+      alignment: 9
+      pivot: {x: .579472125, y: .149967492}
+    - name: Yellow_6
+      rect:
+        serializedVersion: 2
+        x: 1459
+        y: 1831
+        width: 194
+        height: 178
+      alignment: 9
+      pivot: {x: .574555993, y: .143717214}
+    - name: Yellow_7
+      rect:
+        serializedVersion: 2
+        x: 1717
+        y: 1811
+        width: 198
+        height: 198
+      alignment: 9
+      pivot: {x: .578669369, y: .123512961}
+    - name: Yellow_8
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 1549
+        width: 240
+        height: 234
+      alignment: 9
+      pivot: {x: .577499151, y: .155558795}
+    - name: Yellow_9
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 1561
+        width: 192
+        height: 200
+      alignment: 9
+      pivot: {x: .619939148, y: .20328857}
+    - name: Yellow_10
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 1575
+        width: 196
+        height: 192
+      alignment: 9
+      pivot: {x: .557825506, y: .0606231689}
+    - name: Yellow_11
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 1521
+        width: 246
+        height: 254
+      alignment: 9
+      pivot: {x: .554273427, y: .202137858}
+    - name: Yellow_12
+      rect:
+        serializedVersion: 2
+        x: 1079
+        y: 1525
+        width: 248
+        height: 256
+      alignment: 9
+      pivot: {x: .58972609, y: .134927273}
+    - name: Yellow_13
+      rect:
+        serializedVersion: 2
+        x: 1389
+        y: 1563
+        width: 196
+        height: 184
+      alignment: 9
+      pivot: {x: .573795259, y: .0827736259}
+    - name: Yellow_14
+      rect:
+        serializedVersion: 2
+        x: 1659
+        y: 1563
+        width: 196
+        height: 218
+      alignment: 9
+      pivot: {x: .522706926, y: .076394178}
+    - name: Yellow_15
+      rect:
+        serializedVersion: 2
+        x: 1805
+        y: 1543
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Yellow_16
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 1305
+        width: 186
+        height: 178
+      alignment: 9
+      pivot: {x: .595237017, y: .146712735}
+    - name: Yellow_17
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1295
+        width: 186
+        height: 186
+      alignment: 9
+      pivot: {x: .595237017, y: .142860323}
+    - name: Yellow_18
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 1297
+        width: 192
+        height: 190
+      alignment: 9
+      pivot: {x: .624552071, y: .0944400206}
+    - name: Yellow_19
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 1277
+        width: 238
+        height: 226
+      alignment: 9
+      pivot: {x: .637693524, y: .170799598}
+    - name: Yellow_20
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 1288
+        width: 224
+        height: 187
+      alignment: 9
+      pivot: {x: .64629966, y: .0831971169}
+    - name: Yellow_21
+      rect:
+        serializedVersion: 2
+        x: 1363
+        y: 1289
+        width: 220
+        height: 182
+      alignment: 9
+      pivot: {x: .652985752, y: .0766132027}
+    - name: Yellow_22
+      rect:
+        serializedVersion: 2
+        x: 1637
+        y: 1255
+        width: 260
+        height: 244
+      alignment: 9
+      pivot: {x: .649888277, y: .11885646}
+    - name: Yellow_23
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 961
+        width: 270
+        height: 254
+      alignment: 9
+      pivot: {x: .631215453, y: .126887769}
+    - name: Yellow_24
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 981
+        width: 168
+        height: 200
+      alignment: 9
+      pivot: {x: .510544002, y: .074861452}
+    - name: Yellow_25
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 881
+        width: 44
+        height: 148
+      alignment: 9
+      pivot: {x: .481994629, y: .102103159}
+    - name: Yellow_26
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 881
+        width: 48
+        height: 184
+      alignment: 9
+      pivot: {x: .450486511, y: .0837946385}
+    - name: Yellow_27
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 879
+        width: 54
+        height: 236
+      alignment: 9
+      pivot: {x: .382633924, y: .0680805817}
+    - name: Yellow_28
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 871
+        width: 96
+        height: 248
+      alignment: 9
+      pivot: {x: .453236908, y: .103887253}
+    - name: Yellow_29
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 875
+        width: 116
+        height: 286
+      alignment: 9
+      pivot: {x: .352027118, y: .0891138911}
+    - name: Yellow_30
+      rect:
+        serializedVersion: 2
+        x: 1035
+        y: 847
+        width: 46
+        height: 252
+      alignment: 9
+      pivot: {x: .379444957, y: .149995595}
+    - name: Yellow_31
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 847
+        width: 58
+        height: 276
+      alignment: 9
+      pivot: {x: .459022254, y: .139288858}
+    - name: Yellow_32
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 845
+        width: 60
+        height: 334
+      alignment: 9
+      pivot: {x: .427364081, y: .116003707}
+    - name: Yellow_33
+      rect:
+        serializedVersion: 2
+        x: 1291
+        y: 841
+        width: 106
+        height: 348
+      alignment: 9
+      pivot: {x: .464758545, y: .117139265}
+    - name: Yellow_34
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 837
+        width: 48
+        height: 342
+      alignment: 9
+      pivot: {x: .350746155, y: .13245824}
+    - name: Yellow_35
+      rect:
+        serializedVersion: 2
+        x: 1505
+        y: 833
+        width: 126
+        height: 294
+      alignment: 9
+      pivot: {x: .474155009, y: .158847108}
+    - name: Yellow_36
+      rect:
+        serializedVersion: 2
+        x: 1663
+        y: 835
+        width: 118
+        height: 384
+      alignment: 9
+      pivot: {x: .339936852, y: .120079838}
+    - name: Yellow_37
+      rect:
+        serializedVersion: 2
+        x: 1827
+        y: 833
+        width: 196
+        height: 390
+      alignment: 9
+      pivot: {x: .523260593, y: .134274676}
+    - name: Yellow_38
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 589
+        width: 152
+        height: 228
+      alignment: 9
+      pivot: {x: .34806934, y: .156347707}
+    - name: Yellow_39
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 563
+        width: 244
+        height: 344
+      alignment: 9
+      pivot: {x: .391833961, y: .145158812}
+    - name: Yellow_40
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 509
+        width: 80
+        height: 272
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Yellow_41
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 509
+        width: 82
+        height: 268
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Yellow_42
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 505
+        width: 92
+        height: 274
+      alignment: 9
+      pivot: {x: .276467353, y: .49329862}
+    - name: Yellow_43
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 491
+        width: 134
+        height: 294
+      alignment: 9
+      pivot: {x: .283305615, y: .4883807}
+    - name: Orange_44
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 551
+        width: 350
+        height: 174
+      alignment: 9
+      pivot: {x: .704365253, y: .147646144}
+    - name: Orange_45
+      rect:
+        serializedVersion: 2
+        x: 1563
+        y: 543
+        width: 358
+        height: 204
+      alignment: 9
+      pivot: {x: .637004852, y: .144364595}
+    - name: Orange_46
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 371
+        width: 68
+        height: 62
+      alignment: 9
+      pivot: {x: .45212242, y: .556012571}
+    - name: Orange_47
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 367
+        width: 72
+        height: 68
+      alignment: 9
+      pivot: {x: .454782069, y: .522343338}
+    - name: Orange_48
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 359
+        width: 88
+        height: 76
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Orange_49
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 343
+        width: 122
+        height: 112
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Orange_50
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 341
+        width: 134
+        height: 112
+      alignment: 9
+      pivot: {x: .522676826, y: .492248267}
+    - name: Orange_51
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 363
+        width: 74
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Orange_52
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 351
+        width: 124
+        height: 106
+      alignment: 9
+      pivot: {x: .564764678, y: .483619273}
+    - name: Orange_53
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 369
+        width: 88
+        height: 76
+      alignment: 9
+      pivot: {x: .524665117, y: .440026134}
+    - name: Orange_54
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 59
+        width: 400
+        height: 258
+      alignment: 9
+      pivot: {x: .599627972, y: .187115073}
+    - name: Orange_55
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 85
+        width: 402
+        height: 264
+      alignment: 9
+      pivot: {x: .601674259, y: .178744107}
+    - name: Orange_56
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 113
+        width: 394
+        height: 200
+      alignment: 9
+      pivot: {x: .691916823, y: .137251809}
+  spritePackingTag: 
+  userData: 
