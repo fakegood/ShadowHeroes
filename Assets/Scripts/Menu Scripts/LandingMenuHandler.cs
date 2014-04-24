@@ -92,14 +92,14 @@ public class LandingMenuHandler : MonoBehaviour {
 	private void TopBarHandler()
 	{
 		levelLabel.text = "Lv " + GlobalManager.LocalUser.level;
-		experienceLabel.text = GlobalManager.LocalUser.experience + "/" + 188;
-		experienceBar.value = (float)(GlobalManager.LocalUser.experience / 188);
+		experienceLabel.text = GlobalManager.LocalUser.experience + "/" + GlobalManager.LocalUser.ComputeNeedLevelupExp(GlobalManager.LocalUser.level);
+		experienceBar.value = (float)(GlobalManager.LocalUser.experience / GlobalManager.LocalUser.ComputeNeedLevelupExp(GlobalManager.LocalUser.level));
 		
 		battleLabel.text = GlobalManager.LocalUser.battlePoint + "/" + 188;
 		battleBar.value = (float)(GlobalManager.LocalUser.battlePoint / 188);
 		
-		actionLabel.text = GlobalManager.LocalUser.actionPoint + "/" + 188;
-		actionBar.value = GlobalManager.LocalUser.actionPoint / 188;
+		actionLabel.text = GlobalManager.LocalUser.actionPoint + "/" + GlobalManager.LocalUser.ComputeActionPoint(GlobalManager.LocalUser.level);
+		actionBar.value = GlobalManager.LocalUser.actionPoint / GlobalManager.LocalUser.ComputeActionPoint(GlobalManager.LocalUser.level);
 		
 		goldLabel.text = GlobalManager.LocalUser.gold.ToString();
 		

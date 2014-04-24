@@ -4,22 +4,26 @@ using System.Collections;
 public class UICardScript : MonoBehaviour {
 
 	public CharacterSettings csObj = null;
-	public int cardNum = -1;
-	public int level = 1;
-	public int deckCost = -1;
 	public UILabel cardName;
+	private CharacterCard cardSettings = null;
 
-	// Use this for initialization
-	void Start () {
-		if(csObj == null) return;
+	public CharacterCard Card
+	{
+		set{
+			cardSettings = value;
 
-		if(cardNum < 0)
-		{
-			cardName.text = "None";
+			if(csObj == null) return;
+
+			if(cardSettings == null || cardSettings.cardNumber < 0)
+			{
+				cardName.text = "None";
+			}
+			else
+			{
+				cardName.text = csObj.characterProperties[(cardSettings.cardNumber-1)].cardName;
+			}
 		}
-		else
-		{
-			cardName.text = csObj.characterProperties[(cardNum-1)].cardName;
-		}
+
+		get{ return cardSettings; }
 	}
 }

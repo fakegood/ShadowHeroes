@@ -33,12 +33,12 @@ public class ButtonMainHandler : MonoBehaviour {
 		
 		for(int i=0; i<skillButtonArray.Length; i++){
 			val = i;
-			int deckValue = settingsAmt = GlobalManager.UICard.localUserCardDeck[i] - 1;
+			int deckValue = settingsAmt = GlobalManager.UICard.localUserCardDeck[i].cardNumber - 1;
 
 			UIEventListener.Get(skillButtonArray[i]).onClick += ButtonHandler;
 			
 			// character deck
-			if(GlobalManager.UICard.localUserCardDeck[i] > 0){
+			if(GlobalManager.UICard.localUserCardDeck[i].cardNumber > 0){
 				buttonName = spriteName = characterSettingsPrefab.GetComponent<CharacterSettings>().characterProperties[deckValue].iconSpriteName;
 				tempReferenceNumber = i + 1;
 				category = characterSettingsPrefab.GetComponent<CharacterSettings>().characterProperties[deckValue].category;
@@ -133,7 +133,7 @@ public class ButtonMainHandler : MonoBehaviour {
 		if(GlobalManager.multiplyerGame){
 			this.gameObject.GetComponent<GameNetworkHandler>().NetworkMessage(GlobalManager.NetworkMessage.SpawnUnit, new object[4]{bonusDamageDeck, settingsValue + 1, 5, (int)buttonUnitType});
 		}else{
-			defObj.SpawnCharacter(bonusDamageDeck, settingsValue + 1, GlobalManager.UICard.localUserCardDeckLevel[currentButton], buttonUnitType, CharacterProperties.Team.LEFT);
+			defObj.SpawnCharacter(bonusDamageDeck, settingsValue + 1, GlobalManager.UICard.localUserCardDeck[currentButton].level, buttonUnitType, CharacterProperties.Team.LEFT);
 		}
 	}
 	

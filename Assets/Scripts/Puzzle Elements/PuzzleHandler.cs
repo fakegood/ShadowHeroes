@@ -1796,7 +1796,7 @@ public class PuzzleHandler : MonoBehaviour {
 		GlobalManager.gameover = true;
 		//Time.timeScale = 0f;
 		
-		StartCoroutine(BackToMainMenu());
+		//StartCoroutine(BackToMainMenu());
 	}
 	
 	private IEnumerator BackToMainMenu(){

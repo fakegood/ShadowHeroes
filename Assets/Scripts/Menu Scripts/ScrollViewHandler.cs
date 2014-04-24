@@ -10,7 +10,7 @@ public class ScrollViewHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		backgroundImage = GameObject.FindGameObjectWithTag("MainBackground").GetComponent<UISprite>();
-		Debug.Log(backgroundImage.localSize.y);
+
 		Vector2 size = new Vector2(backgroundImage.localSize.x, (backgroundImage.localSize.y - (backgroundImageHeaderHeight + extraOffset)));
 		Vector2 position = new Vector2(0, -39);
 

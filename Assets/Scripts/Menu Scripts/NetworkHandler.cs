@@ -41,8 +41,8 @@ public class NetworkHandler : MonoBehaviour {
 			Debug.Log("Error: " + w.error);
 			ErrorDelegate(w.text);
 		} else {
+			Debug.Log("Result: " + w.text);
 			ResultDelegate(w.text);
-			//Debug.Log("Result: " + w.text);
 			
 			//var N = JSONNode.Parse(w.text);
 			//RecordLog(N["coin"]);

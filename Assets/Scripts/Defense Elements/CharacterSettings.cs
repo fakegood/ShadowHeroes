@@ -144,11 +144,11 @@ public class CharacterProperties {
 
 public class CharacterCard
 {
+	public int UID = -1;
 	public int rarity = 1;
-	public CharacterProperties.UnitType unitType;
-	public int unitLevel;
-	public CharacterProperties.SkillType skillType;
-	public int skillLevel;
-	public CharacterProperties.CategoryColour element;
-	public int cost;
+	public int level = 1;
+	public int experience = 0;
+	public int cardNumber = -1;
+	public int cost = 1;
+	public int order = -1;
 }

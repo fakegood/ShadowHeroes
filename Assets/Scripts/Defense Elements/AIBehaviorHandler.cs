@@ -10,8 +10,7 @@ public class AIBehaviorHandler : MonoBehaviour {
 	public bool debugMode = false;
 	public bool ignoreCost = false;
 	public bool specialCombination = false;
-	public int[] myDeck = new int[6];
-	public int[] myDeckLevel = new int[6];
+	public CharacterCard[] myDeck = new CharacterCard[6];
 	public int currentArea = -1;
 	public int currentLevel = -1;
 
@@ -34,8 +33,10 @@ public class AIBehaviorHandler : MonoBehaviour {
 		{
 			GlobalManager.GameSettings.chosenArea = areaNum = currentArea - 1;
 			GlobalManager.GameSettings.chosenStage = stageNum = currentLevel - 1;
-			GlobalManager.UICard.localUserCardDeck = myDeck;
-			GlobalManager.UICard.localUserCardDeckLevel = myDeckLevel;
+			for(int i=0; i<myDeck.Length; i++)
+			{
+				GlobalManager.UICard.localUserCardDeck.Add(myDeck[i]);
+			}
 			GlobalManager.ignoreCost = ignoreCost;
 			GlobalManager.specialCombination = specialCombination;
 		}

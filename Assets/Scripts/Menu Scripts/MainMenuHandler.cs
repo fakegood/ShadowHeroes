@@ -32,13 +32,6 @@ public class MainMenuHandler : MonoBehaviour {
 		}
 	}
 	
-	public void ButtonClicked(GlobalManager.RaceType type){
-		//GlobalManager.gameType = type;
-		GlobalManager.playerRaceType = type;
-		
-		//Application.LoadLevel("PlayScene");
-	}
-	
 	void OnClick(){
 		GlobalManager.bossGame = GlobalManager.cherryGame = false;
 		GlobalManager.specialCombination = true;

@@ -50,12 +50,6 @@ public class GlobalManager : MonoBehaviour {
 		ChocolateAndChocolate
 	};
 	
-	public enum RaceType {
-		Zerg,
-		Protoss,
-		Terran
-	}
-	
 	public enum AIType {
 		Aggressive,
 		Defensive
@@ -85,11 +79,16 @@ public class GlobalManager : MonoBehaviour {
 		INIT,
 		REGISTER,
 		START_GAME,
-		END_GAME
+		END_GAME,
+		GET_INVENTORY,
+		SAVE_DECK,
+		ENHANCE,
+		POKI,
+		SELLCARD,
+		RANKING
 	}
 	
 	public static int gameType = 2;
-	public static RaceType playerRaceType = RaceType.Zerg;
 	public static bool jellyGame = false;
 	public static bool bombGame = false;
 	public static bool cherryGame = false;
@@ -98,7 +97,7 @@ public class GlobalManager : MonoBehaviour {
 	public static bool initCheckDone = false;
 	public static bool gameover = false;
 	public static bool paused = false;
-	public static bool specialCombination = false;
+	public static bool specialCombination = true;
 	public static bool ignoreCost = false;
 	public static bool createTrail = true;
 	public static Player playerNumber = Player.One;
@@ -143,11 +142,21 @@ public class GlobalManager : MonoBehaviour {
 		public static int battlePoint = 0;
 		public static int actionPoint = 0;
 		public static int deckCost = 0;
-		public static int maxDeckCost = 20;
+		public static int maxDeckCost = 100;
 		public static int experience = 0;
 		public static int victoryPoint = 0;
 		public static int totalBattle = 0;
 		public static int totalWin = 0;
+
+		public static int ComputeNeedLevelupExp(int level)
+		{
+			return 500 + (100 * (level-1));
+		}
+
+		public static int ComputeActionPoint(int level)
+		{
+			return 20 + (2 * (level-1));
+		}
 	}
 
 	public static class GameSettings
@@ -158,57 +167,35 @@ public class GlobalManager : MonoBehaviour {
 
 	public static class UICard
 	{
-		public static int[] localUserCardDeck = new int[6]{1,2,4,-1,-1,-1};
-		public static int[] localUserCardDeckLevel = new int[6]{1,1,1,1,1,1};
-		public static List<int> localUserCardInventory = new List<int>(){1,2,3,4,5,6,7,8,9,10,11};
-		public static List<int> localUserCardInventoryLevel = new List<int>(){1,1,1,1,1,1,1,1,1,1,1};
+		public static List<CharacterCard> localUserCardDeck = new List<CharacterCard>();
+		public static List<CharacterCard> localUserCardInventory = new List<CharacterCard>();
 
-		public static void SetDeckValue(int index, int deckValue, int deckLevel)
+		public static void SetDeckValue(int index, CharacterCard deckValue)
 		{
 			localUserCardDeck[index-1] = deckValue;
-			localUserCardDeckLevel[index-1] = deckLevel;
 		}
 
-		public static void SetInventoryValue(int index, int deckValue, int deckLevel)
+		public static void SetInventoryValue(int index, CharacterCard deckValue)
 		{
 			localUserCardInventory[index-1] = deckValue;
-			localUserCardInventoryLevel[index-1] = deckLevel;
 		}
 
 		public static void SwapDeckAndInventory(int from, int to)
 		{
 			int tempDeckValue = -1;
-			int tempDeckLevel = -1;
 
-			if(from > 0)
-			{
-				tempDeckValue = localUserCardInventory[from-1];
-				tempDeckLevel = localUserCardInventoryLevel[from-1];
-			}
+			Debug.Log(from + " : " + to);
 
-			if(localUserCardDeck[to-1] != -1 && from == 0)
+			if(from == 0)
 			{
-				localUserCardInventory.Add(localUserCardDeck[to-1]);
-				localUserCardInventoryLevel.Add(localUserCardDeckLevel[to-1]);
-			}
-			else if(localUserCardDeck[to-1] == -1 && from == 0)
-			{
-				// "None" chosen for "None" deck slot -
-				// do nothing
-			}
-			else if(localUserCardDeck[to-1] != -1)
-			{
-				localUserCardInventory[from-1] = localUserCardDeck[to-1];
-				localUserCardInventoryLevel[from-1] = localUserCardDeckLevel[to-1];
+				localUserCardDeck[to-1] = null;
 			}
 			else
 			{
-				localUserCardInventory.RemoveAt(from-1);
-				localUserCardInventoryLevel.RemoveAt(from-1);
+				localUserCardDeck[to-1] = localUserCardInventory[from-1];
+				localUserCardDeck[to-1].order = to;
+				localUserCardInventory[from-1].order = -1;
 			}
-
-			localUserCardDeck[to-1] = tempDeckValue;
-			localUserCardDeckLevel[to-1] = tempDeckLevel;
 		}
 	}
 
@@ -218,6 +205,15 @@ public class GlobalManager : MonoBehaviour {
 		public static string Register = "register.jsp";
 		public static string Init = "init.jsp";
 		public static string EndGame = "endgame.jsp";
+		public static string GetInventory = "getinventory.jsp";
+		public static string SaveDeck = "savedeck.jsp";
+		public static string Enhance = "enhance.jsp";
+		public static string Poki = "poki.jsp";
+		public static string SellCard = "sellcard.jsp";
+		public static string Ranking = "ranking.jsp";
+		public static string ShopList = "shopList.jsp";
+		public static string ShopPayment = "shopPayment.jsp";
+		public static string RefillPoint = "pointRefill.jsp";
 		
 		public static string GetFullURL(GlobalManager.RequestType requestType)
 		{
@@ -234,6 +230,12 @@ public class GlobalManager : MonoBehaviour {
 				break;
 			case RequestType.END_GAME:
 				return NetworkSettings.ServerURL + NetworkSettings.EndGame;
+				break;
+			case RequestType.GET_INVENTORY:
+				return NetworkSettings.ServerURL + NetworkSettings.GetInventory;
+				break;
+			case RequestType.SAVE_DECK:
+				return NetworkSettings.ServerURL + NetworkSettings.SaveDeck;
 				break;
 			default:
 				return "";

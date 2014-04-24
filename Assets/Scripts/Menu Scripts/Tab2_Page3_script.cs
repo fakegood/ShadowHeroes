@@ -42,11 +42,24 @@ public class Tab2_Page3_script : SubPageHandler {
 
 			if(i == 0)
 			{
-				holder.GetComponent<UICardScript>().cardNum = -1;
+				holder.GetComponent<UICardScript>().Card = null;
 			}
 			else
 			{
-				holder.GetComponent<UICardScript>().cardNum = GlobalManager.UICard.localUserCardInventory[i-1];
+				CharacterCard tempCardObj = GlobalManager.UICard.localUserCardInventory[i-1];
+				holder.GetComponent<UICardScript>().Card = tempCardObj;
+
+				for(int j=0; j<6; j++)
+				{
+					if(GlobalManager.UICard.localUserCardDeck[j] != null)
+					{
+						if(tempCardObj.UID == GlobalManager.UICard.localUserCardDeck[j].UID)
+						{
+							holder.GetComponent<UIButton>().isEnabled = false;
+							break;
+						}
+					}
+				}
 			}
 
 			currentCol++;
