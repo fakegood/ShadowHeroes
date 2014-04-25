@@ -150,12 +150,17 @@ public class GlobalManager : MonoBehaviour {
 
 		public static int ComputeNeedLevelupExp(int level)
 		{
-			return 500 + (100 * (level-1));
+			return 500 + (300 * (level-1));
 		}
 
 		public static int ComputeActionPoint(int level)
 		{
 			return 20 + (2 * (level-1));
+		}
+
+		public static int ComputeLevelTotalExp(int level)
+		{
+			return (500*level)+150*((level^2)-level);
 		}
 	}
 
@@ -167,8 +172,9 @@ public class GlobalManager : MonoBehaviour {
 
 	public static class UICard
 	{
-		public static List<CharacterCard> localUserCardDeck = new List<CharacterCard>();
+		public static List<CharacterCard> localUserCardDeck = new List<CharacterCard>(){null, null, null, null, null, null};
 		public static List<CharacterCard> localUserCardInventory = new List<CharacterCard>();
+		public static bool changed = false;
 
 		public static void SetDeckValue(int index, CharacterCard deckValue)
 		{
@@ -182,10 +188,6 @@ public class GlobalManager : MonoBehaviour {
 
 		public static void SwapDeckAndInventory(int from, int to)
 		{
-			int tempDeckValue = -1;
-
-			Debug.Log(from + " : " + to);
-
 			if(from == 0)
 			{
 				localUserCardDeck[to-1] = null;
@@ -196,6 +198,8 @@ public class GlobalManager : MonoBehaviour {
 				localUserCardDeck[to-1].order = to;
 				localUserCardInventory[from-1].order = -1;
 			}
+
+			changed = true;
 		}
 	}
 

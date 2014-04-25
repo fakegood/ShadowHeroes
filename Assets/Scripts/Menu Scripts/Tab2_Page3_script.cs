@@ -16,7 +16,7 @@ public class Tab2_Page3_script : SubPageHandler {
 		SpawnLocalUserInventory();
 		scrollPanel.ResetPosition();
 
-		base.StartSubPage();
+		//base.StartSubPage();
 	}
 
 	private void SpawnLocalUserInventory()
@@ -39,6 +39,7 @@ public class Tab2_Page3_script : SubPageHandler {
 			holder.transform.localPosition = pos;
 			holder.transform.localScale = holder.transform.lossyScale;
 			holder.AddComponent<UIDragScrollView>();
+			UIEventListener.Get(holder).onClick += ButtonHandler;
 
 			if(i == 0)
 			{
@@ -67,6 +68,28 @@ public class Tab2_Page3_script : SubPageHandler {
 			{
 				currentCol = 0;
 			}
+		}
+	}
+
+	private void ButtonHandler(GameObject go)
+	{
+		// chosen card action
+		parent.currentSelectedDeckNum = int.Parse(go.name.Split(new char[]{'_'})[1]) - 1;
+		
+		if(parent.currentSelectedDeckNum == 0)
+		{
+			// "None" selected -- perform swap right away
+			GlobalManager.UICard.SwapDeckAndInventory(parent.currentSelectedDeckNum, parent.currentOpenedDeckNum);
+			
+			parent.currentOpenedDeckNum = -1;
+			parent.currentSelectedDeckNum = -1;
+			
+			parent.OpenSubPage(2);
+		}
+		else
+		{
+			// show popup
+			base.OpenPopup(true);
 		}
 	}
 }

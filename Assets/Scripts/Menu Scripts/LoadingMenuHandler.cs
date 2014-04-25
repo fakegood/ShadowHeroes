@@ -68,24 +68,17 @@ public class LoadingMenuHandler : MonoBehaviour {
 			GlobalManager.LocalUser.totalBattle = N["totalBattle"].AsInt;
 			GlobalManager.LocalUser.totalWin = N["totalWin"].AsInt;
 
-			GlobalManager.UICard.localUserCardDeck.Clear();
-			for(int i = 0; i<6; i++)
+			//GlobalManager.UICard.localUserCardDeck.Clear();
+			for(int i = 0; i<N["cardDeck"].AsArray.Count; i++)
 			{
-				if(i == N["cardDeck"][i]["order"].AsInt-1)
-				{
-					CharacterCard cardObj = new CharacterCard();
-					cardObj.UID = N["cardDeck"][i]["cardId"].AsInt;
-					cardObj.experience = N["cardDeck"][i]["cardExperience"].AsInt;
-					cardObj.cardNumber = N["cardDeck"][i]["cardNumber"].AsInt;
-					cardObj.level = N["cardDeck"][i]["cardLevel"].AsInt;
-					cardObj.order = N["cardDeck"][i]["order"].AsInt;
+				CharacterCard cardObj = new CharacterCard();
+				cardObj.UID = N["cardDeck"][i]["cardId"].AsInt;
+				cardObj.experience = N["cardDeck"][i]["cardExperience"].AsInt;
+				cardObj.cardNumber = N["cardDeck"][i]["cardNumber"].AsInt;
+				cardObj.level = N["cardDeck"][i]["cardLevel"].AsInt;
+				cardObj.order = N["cardDeck"][i]["order"].AsInt;
 
-					GlobalManager.UICard.localUserCardDeck.Add(cardObj);
-				}
-				else
-				{
-					GlobalManager.UICard.localUserCardDeck.Add(null);
-				}
+				GlobalManager.UICard.localUserCardDeck.Insert(N["cardDeck"][i]["order"].AsInt-1, cardObj);
 			}
 
 			Application.LoadLevel("LandingMenu");
@@ -102,7 +95,7 @@ public class LoadingMenuHandler : MonoBehaviour {
 	{
 		NetworkHandler.self.ResultDelegate -= ServerRequestCallback;
 		NetworkHandler.self.ErrorDelegate -= ServerRequestError;
-		Debug.Log("WOW");
+
 		loader.SetActive(false);
 		//var N = JSONNode.Parse(result);
 		//Debug.Log("callback: " + N["userId"]);
