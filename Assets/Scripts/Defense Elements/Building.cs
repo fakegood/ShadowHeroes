@@ -40,7 +40,7 @@ public class Building : Character {
 			if(UnitType == CharacterProperties.UnitType.BUILDING){
 				//globalController.GetComponent<DefenseMainHandler>().Status = "gameover";
 				
-				GlobalManager.Player winteam = GlobalManager.playerNumber == GlobalManager.Player.One ? GlobalManager.Player.Two : GlobalManager.Player.One;
+				GlobalManager.Player winteam = this.Team == CharacterProperties.Team.LEFT ? GlobalManager.Player.Two : GlobalManager.Player.One;
 				globalController.GetComponent<PuzzleHandler>().GameOver(winteam);
 			}
 		}

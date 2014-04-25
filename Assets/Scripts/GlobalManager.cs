@@ -132,6 +132,19 @@ public class GlobalManager : MonoBehaviour {
 	//public static tk2dSpriteCollectionData mainSpriteCollectionData;
 	//public static tk2dSpriteAnimation mainSpriteAnimation;
 
+	public static bool ProbabilityCounter(int percentageToCheck)
+	{
+		bool getLucky = false;
+		
+		int percentage = Mathf.RoundToInt(Random.Range(0, 100));
+		if(percentage >= 0 && percentage <= percentageToCheck)
+		{
+			getLucky = true;
+		}
+		
+		return getLucky;
+	}
+
 	public static class LocalUser
 	{
 		public static int UID = -1;
@@ -150,17 +163,33 @@ public class GlobalManager : MonoBehaviour {
 
 		public static int ComputeNeedLevelupExp(int level)
 		{
-			return 500 + (300 * (level-1));
+			//level = level-1 < 0 ? 0 : level-1;
+			if(level <= 0)
+			{
+				return 0;
+			}
+			else
+			{
+				return 500 + (300 * (level-1));
+			}
 		}
 
 		public static int ComputeActionPoint(int level)
 		{
-			return 20 + (2 * (level-1));
+			level = level-1 <= 0 ? 0 : level-1;
+			return 20 + (2 * level);
 		}
 
 		public static int ComputeLevelTotalExp(int level)
 		{
-			return (500*level)+150*((level^2)-level);
+			if(level <= 0)
+			{
+				return 0;
+			}
+			else
+			{
+				return (500*level)+150*((int)Mathf.Pow(level,2f)-level);
+			}
 		}
 	}
 
@@ -229,9 +258,9 @@ public class GlobalManager : MonoBehaviour {
 			case RequestType.REGISTER:
 				return NetworkSettings.ServerURL + NetworkSettings.Register;
 				break;
-			case RequestType.START_GAME:
-				return NetworkSettings.ServerURL + NetworkSettings.EndGame;
-				break;
+			//case RequestType.START_GAME:
+			//	return NetworkSettings.ServerURL + NetworkSettings.EndGame;
+			//	break;
 			case RequestType.END_GAME:
 				return NetworkSettings.ServerURL + NetworkSettings.EndGame;
 				break;

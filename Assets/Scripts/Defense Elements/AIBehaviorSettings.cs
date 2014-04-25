@@ -47,6 +47,9 @@ public class AISettings
 	public UISprite icon;
 	public int playerCastleHitPoint = 1000;
 	public int enemyCastleHitPoint = 1000;
+	public Vector2 endGameCoin;
+	public Vector2 endGameExperience;
+	public int[] endGameCardReward;
 	public StageSettings[] stageSettings;
 }
 

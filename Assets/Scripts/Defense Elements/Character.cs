@@ -237,7 +237,7 @@ public class Character : MonoBehaviour {
 			//healEffects.renderer.sortingLayerName = "Particle System";
 		}
 
-		if(UnitType != CharacterProperties.UnitType.BUILDING)
+		if(UnitType != CharacterProperties.UnitType.BUILDING && skillSettings != null)
 		{
 			SkillDuration = skillSettings.skillProperties[0].duration[SkillLevel-1];
 			SkillDamageOnHit = skillSettings.skillProperties[0].damageOnHit[SkillLevel-1];
@@ -474,7 +474,7 @@ public class Character : MonoBehaviour {
 		
 		if(SkillType == CharacterProperties.SkillType.KNOCK_BACK && EnemyObject.UnitType != CharacterProperties.UnitType.BUILDING)
 		{
-			if(ProbabilityCounter(SkillProbability))
+			if(GlobalManager.ProbabilityCounter(SkillProbability))
 			{
 				damageApplyObject = new DamageApplyClass();
 				if(SkillDamageOnHit > 0)
@@ -499,7 +499,7 @@ public class Character : MonoBehaviour {
 		}
 		else if(SkillType == CharacterProperties.SkillType.STUN && EnemyObject.UnitType != CharacterProperties.UnitType.BUILDING)
 		{
-			if(ProbabilityCounter(SkillProbability))
+			if(GlobalManager.ProbabilityCounter(SkillProbability))
 			{
 				damageApplyObject = new DamageApplyClass();
 				if(SkillDamageOnHit > 0)
@@ -524,7 +524,7 @@ public class Character : MonoBehaviour {
 		}
 		else if(SkillType == CharacterProperties.SkillType.CRITICAL)
 		{
-			if(ProbabilityCounter(SkillProbability))
+			if(GlobalManager.ProbabilityCounter(SkillProbability))
 			{
 				criticalDamage = TotalDamage * (SkillDamageOnHit / 100f);
 				return criticalDamage;
@@ -532,14 +532,14 @@ public class Character : MonoBehaviour {
 		}
 		else if(SkillType == CharacterProperties.SkillType.RAGE_ATTACK && ExternalStatus == CharacterProperties.ExternalStatus.NONE)
 		{
-			if(ProbabilityCounter(SkillProbability))
+			if(GlobalManager.ProbabilityCounter(SkillProbability))
 			{
 				StartCoroutine(SkillBooster(CharacterProperties.ExternalStatus.RAGE, SkillDuration));
 			}
 		}
 		else if(SkillType == CharacterProperties.SkillType.POISON_DAMAGE && EnemyObject.ExternalStatus == CharacterProperties.ExternalStatus.NONE && EnemyObject.UnitType != CharacterProperties.UnitType.BUILDING)
 		{
-			if(ProbabilityCounter(SkillProbability))
+			if(GlobalManager.ProbabilityCounter(SkillProbability))
 			{
 				damageApplyObject = new DamageApplyClass();
 				if(SkillDamageOnHit > 0)
@@ -646,7 +646,7 @@ public class Character : MonoBehaviour {
 
 		if(SkillType == CharacterProperties.SkillType.PERFECT_DEFENSE && obj.damage < 0)
 		{
-			if(ProbabilityCounter(SkillProbability))
+			if(GlobalManager.ProbabilityCounter(SkillProbability))
 			{
 				applyDamage = false;
 				SpawnSkillEffects(SkillType);
@@ -897,19 +897,6 @@ public class Character : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(duration);
 		SpawnSkillEffects(CharacterProperties.SkillType.NONE);
-	}
-
-	private bool ProbabilityCounter(int percentageToCheck)
-	{
-		bool getLucky = false;
-
-		int percentage = (int)Random.Range(0, 10);
-		if(percentage >= 0 && percentage <= percentageToCheck)
-		{
-			getLucky = true;
-		}
-
-		return getLucky;
 	}
 
 	public void UpdateTargetEnemy()

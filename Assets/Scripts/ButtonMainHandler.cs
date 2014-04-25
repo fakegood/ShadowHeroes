@@ -33,38 +33,41 @@ public class ButtonMainHandler : MonoBehaviour {
 		
 		for(int i=0; i<skillButtonArray.Length; i++){
 			val = i;
-			int deckValue = settingsAmt = GlobalManager.UICard.localUserCardDeck[i].cardNumber - 1;
-
-			UIEventListener.Get(skillButtonArray[i]).onClick += ButtonHandler;
-			
-			// character deck
-			if(GlobalManager.UICard.localUserCardDeck[i].cardNumber > 0){
-				buttonName = spriteName = characterSettingsPrefab.GetComponent<CharacterSettings>().characterProperties[deckValue].iconSpriteName;
-				tempReferenceNumber = i + 1;
-				category = characterSettingsPrefab.GetComponent<CharacterSettings>().characterProperties[deckValue].category;
-				unitType = characterSettingsPrefab.GetComponent<CharacterSettings>().characterProperties[deckValue].unitType;
-				unitLevel = 1;
-				skillType = characterSettingsPrefab.GetComponent<CharacterSettings>().characterProperties[deckValue].skillType;
-				skillLevel = (int)characterSettingsPrefab.GetComponent<CharacterSettings>().characterProperties[deckValue].skillLevel;
-				settingsAmt = deckValue;
-				buttonNumber = i;
-
-				skillButtonArray[i].transform.Find("Background").GetComponent<UISprite>().spriteName = spriteName;
-				UnitButtonHandler obj = skillButtonArray[i].GetComponent<UnitButtonHandler>();
-				obj.referenceNumber = tempReferenceNumber;
-				obj.element = category;
-				obj.unitType = unitType;
-				obj.unitLevel = unitLevel;
-				obj.skillType = skillType;
-				obj.skillLevel = skillLevel;
-				obj.buttonNumber = buttonNumber;
-				obj.settingsReferer = settingsAmt;
-			}
-			else
+			if(GlobalManager.UICard.localUserCardDeck[i] != null)
 			{
-				//skillButtonArray[i].collider.enabled = false;
-				skillButtonArray[i].GetComponent<UIButton>().isEnabled = false;
-				skillButtonArray[i].GetComponent<UnitButtonHandler>().DisableSelf();
+				int deckValue = settingsAmt = GlobalManager.UICard.localUserCardDeck[i].cardNumber - 1;
+				
+				UIEventListener.Get(skillButtonArray[i]).onClick += ButtonHandler;
+				
+				// character deck
+				if(GlobalManager.UICard.localUserCardDeck[i].cardNumber > 0){
+					buttonName = spriteName = characterSettingsPrefab.GetComponent<CharacterSettings>().characterProperties[deckValue].iconSpriteName;
+					tempReferenceNumber = i + 1;
+					category = characterSettingsPrefab.GetComponent<CharacterSettings>().characterProperties[deckValue].category;
+					unitType = characterSettingsPrefab.GetComponent<CharacterSettings>().characterProperties[deckValue].unitType;
+					unitLevel = 1;
+					skillType = characterSettingsPrefab.GetComponent<CharacterSettings>().characterProperties[deckValue].skillType;
+					skillLevel = (int)characterSettingsPrefab.GetComponent<CharacterSettings>().characterProperties[deckValue].skillLevel;
+					settingsAmt = deckValue;
+					buttonNumber = i;
+					
+					skillButtonArray[i].transform.Find("Background").GetComponent<UISprite>().spriteName = spriteName;
+					UnitButtonHandler obj = skillButtonArray[i].GetComponent<UnitButtonHandler>();
+					obj.referenceNumber = tempReferenceNumber;
+					obj.element = category;
+					obj.unitType = unitType;
+					obj.unitLevel = unitLevel;
+					obj.skillType = skillType;
+					obj.skillLevel = skillLevel;
+					obj.buttonNumber = buttonNumber;
+					obj.settingsReferer = settingsAmt;
+				}
+				else
+				{
+					//skillButtonArray[i].collider.enabled = false;
+					skillButtonArray[i].GetComponent<UIButton>().isEnabled = false;
+					skillButtonArray[i].GetComponent<UnitButtonHandler>().DisableSelf();
+				} 
 			}
 			
 			//buttonXPos = ((i+1f)*31f)+(i*52.5f);

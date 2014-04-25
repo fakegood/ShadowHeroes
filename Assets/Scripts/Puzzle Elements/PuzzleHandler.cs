@@ -1780,27 +1780,30 @@ public class PuzzleHandler : MonoBehaviour {
 			//this.gameObject.GetComponent<DefenseMainHandler>().SpawnSkill(6, GlobalManager.playerNumber);
 			break;
 		}
+		
 	}
 	
 	public void GameOver(GlobalManager.Player winTeam){
-		GameObject gameoverPopup = Instantiate(PopupPrefab, Vector3.zero, Quaternion.identity) as GameObject;
-		gameoverPopup.transform.parent = root.transform;
-		gameoverPopup.transform.localScale = Vector3.one;
-		
-		if(winTeam == GlobalManager.Player.One){
-			gameoverPopup.transform.Find("Background/Text").GetComponent<UILabel>().text = "You Win! ;)";
-		}else{
-			gameoverPopup.transform.Find("Background/Text").GetComponent<UILabel>().text = "Game Over :(";
+		if(!GlobalManager.gameover)
+		{
+			bool win = false;
+
+			if(winTeam == GlobalManager.Player.One)
+			{
+				win = true;
+			}
+			
+			defObj.CalculateEndGameReward(win, PopupPrefab, root.transform);
+			
+			GlobalManager.gameover = true;
+			//Time.timeScale = 0f;
+			
+			StartCoroutine(BackToMainMenu());
 		}
-		
-		GlobalManager.gameover = true;
-		//Time.timeScale = 0f;
-		
-		//StartCoroutine(BackToMainMenu());
 	}
-	
+
 	private IEnumerator BackToMainMenu(){
-		yield return new WaitForSeconds(3.0f);
+		yield return new WaitForSeconds(5.0f);
 		if(GlobalManager.multiplyerGame){
 			this.gameObject.GetComponent<GameNetworkHandler>().NetworkMessage(GlobalManager.NetworkMessage.QuitGame);
 		}else{

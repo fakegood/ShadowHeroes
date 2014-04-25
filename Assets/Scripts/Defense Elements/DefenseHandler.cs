@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using SimpleJSON;
 
 public class DefenseHandler : MonoBehaviour {
 
@@ -37,8 +38,8 @@ public class DefenseHandler : MonoBehaviour {
 		string blueMain = "castle";
 		string redMain = "castle";
 
-		int areaNum = GlobalManager.GameSettings.chosenArea;
-		int stageNum = GlobalManager.GameSettings.chosenStage;
+		int areaNum = GlobalManager.GameSettings.chosenArea - 1;
+		int stageNum = GlobalManager.GameSettings.chosenStage - 1;
 		int tempPlayerCastleHP = stageSettingsObj.area[areaNum].subStage[stageNum].playerCastleHitPoint;
 		int tempEnemyCastleHP = stageSettingsObj.area[areaNum].subStage[stageNum].enemyCastleHitPoint;
 
@@ -384,5 +385,115 @@ public class DefenseHandler : MonoBehaviour {
 	public void SpawnSkill(int type, CharacterProperties.Team playerNumber)
 	{
 
+	}
+
+	public void CalculateEndGameReward(bool win, GameObject prefab, Transform parent)
+	{
+		int areaNum = GlobalManager.GameSettings.chosenArea - 1;
+		int stageNum = GlobalManager.GameSettings.chosenStage - 1;
+		int totalCoinGain = 0;
+		int totalExpGain = 0;
+
+		GameObject gameoverPopup = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
+		gameoverPopup.transform.parent = parent;
+		gameoverPopup.transform.localScale = Vector3.one;
+
+		if(win)
+		{
+			totalCoinGain = Mathf.RoundToInt(Random.Range(stageSettingsObj.area[areaNum].subStage[stageNum].endGameCoin.x, stageSettingsObj.area[areaNum].subStage[stageNum].endGameCoin.y));
+			totalExpGain = Mathf.RoundToInt(Random.Range(stageSettingsObj.area[areaNum].subStage[stageNum].endGameExperience.x, stageSettingsObj.area[areaNum].subStage[stageNum].endGameExperience.y));
+
+			gameoverPopup.transform.Find("Background/Title").GetComponent<UILabel>().text = "Victory!";
+			gameoverPopup.transform.Find("Background/Coin Detail").GetComponent<UILabel>().text = totalCoinGain.ToString();
+			gameoverPopup.transform.Find("Background/Experience Detail").GetComponent<UILabel>().text = totalExpGain.ToString();
+		}
+		else
+		{
+			totalCoinGain = Mathf.RoundToInt(Random.Range(stageSettingsObj.area[areaNum].subStage[stageNum].endGameCoin.x, stageSettingsObj.area[areaNum].subStage[stageNum].endGameCoin.y)) / 2;
+			totalExpGain = Mathf.RoundToInt(Random.Range(stageSettingsObj.area[areaNum].subStage[stageNum].endGameExperience.x, stageSettingsObj.area[areaNum].subStage[stageNum].endGameExperience.y)) / 2;
+
+			gameoverPopup.transform.Find("Background/Title").GetComponent<UILabel>().text = "Defeated.";
+			gameoverPopup.transform.Find("Background/Coin Detail").GetComponent<UILabel>().text = totalCoinGain.ToString();
+			gameoverPopup.transform.Find("Background/Experience Detail").GetComponent<UILabel>().text = totalExpGain.ToString();
+		}
+
+		GlobalManager.LocalUser.gold += totalCoinGain;
+		GlobalManager.LocalUser.experience += totalExpGain;
+
+		int userCurrentLevel = GlobalManager.LocalUser.level;
+		float userCurrentExp = (float)GlobalManager.LocalUser.experience;
+		float prevLevelMaxExp = (float)GlobalManager.LocalUser.ComputeNeedLevelupExp(userCurrentLevel-1);
+		float nextLevelMaxExp = (float)GlobalManager.LocalUser.ComputeNeedLevelupExp(userCurrentLevel);
+
+		UIProgressBar expBar = gameoverPopup.transform.Find("Background/Experience Progress Bar").GetComponent<UIProgressBar>();
+		expBar.value = userCurrentExp / nextLevelMaxExp;
+		Debug.Log(nextLevelMaxExp);
+		if(GlobalManager.LocalUser.experience >= nextLevelMaxExp)
+		{
+			GlobalManager.LocalUser.level ++;
+			GlobalManager.LocalUser.experience -= (int)nextLevelMaxExp;
+		}
+
+		int winStatus = win == true ? 1 : 0;
+		WWWForm form = new WWWForm(); //here you create a new form connection
+		form.AddField("userId", GlobalManager.LocalUser.UID);
+		form.AddField("goldAmount", totalCoinGain);
+		form.AddField("expAmount", totalExpGain);
+		//form.AddField("receivedCard", "");
+		form.AddField("victoryPoint", 0);
+		form.AddField("winStatus", winStatus);
+		
+		NetworkHandler.self.ResultDelegate += ServerRequestCallback;
+		NetworkHandler.self.ErrorDelegate += ServerRequestError;
+		NetworkHandler.self.ServerRequest(GlobalManager.NetworkSettings.GetFullURL(GlobalManager.RequestType.END_GAME), form);
+		
+		if(!GlobalManager.multiplyerGame)
+		{
+			//stageSettingsObj.area[areaNum].subStage[stageNum].cardReward[0]
+			if(GlobalManager.ProbabilityCounter(40))
+			{
+
+			}
+
+			if(GlobalManager.ProbabilityCounter(40))
+			{
+
+			}
+		}
+		else
+		{
+			
+		}
+	}
+
+	private void ServerRequestCallback(string result)
+	{
+		NetworkHandler.self.ResultDelegate -= ServerRequestCallback;
+		NetworkHandler.self.ErrorDelegate -= ServerRequestError;
+		//loader.SetActive(false);
+		
+		var N = JSONNode.Parse(result);
+		//Debug.Log("callback: " + N["userId"]);
+		bool status = N["result"].AsBool;
+		if(status)
+		{
+			// user exist -- go to LandingScene
+			//Application.LoadLevel("LandingMenu");
+		}
+		else
+		{
+			// no user -- show register popup
+			//loader.SetActive(false);
+		}
+	}
+	
+	private void ServerRequestError(string result)
+	{
+		NetworkHandler.self.ResultDelegate -= ServerRequestCallback;
+		NetworkHandler.self.ErrorDelegate -= ServerRequestError;
+		
+		//loader.SetActive(false);
+		//var N = JSONNode.Parse(result);
+		//Debug.Log("callback: " + N["userId"]);
 	}
 }

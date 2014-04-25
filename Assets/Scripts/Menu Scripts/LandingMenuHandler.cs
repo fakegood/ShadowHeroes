@@ -91,15 +91,20 @@ public class LandingMenuHandler : MonoBehaviour {
 
 	private void TopBarHandler()
 	{
-		levelLabel.text = "Lv " + GlobalManager.LocalUser.level;
-		experienceLabel.text = GlobalManager.LocalUser.experience + "/" + GlobalManager.LocalUser.ComputeNeedLevelupExp(GlobalManager.LocalUser.level);
-		experienceBar.value = (float)((GlobalManager.LocalUser.experience - GlobalManager.LocalUser.ComputeLevelTotalExp(GlobalManager.LocalUser.level-1)) / GlobalManager.LocalUser.ComputeNeedLevelupExp(GlobalManager.LocalUser.level));
+		int userCurrentLevel = GlobalManager.LocalUser.level;
+		float userCurrentExp = (float)GlobalManager.LocalUser.experience;
+		float prevLevelMaxExp = (float)GlobalManager.LocalUser.ComputeNeedLevelupExp(userCurrentLevel-1);
+		float nextLevelMaxExp = (float)GlobalManager.LocalUser.ComputeNeedLevelupExp(userCurrentLevel);
+
+		levelLabel.text = "Lv " + userCurrentLevel;
+		experienceLabel.text = userCurrentExp + "/" + nextLevelMaxExp;
+		experienceBar.value = userCurrentExp / nextLevelMaxExp;
 		
 		battleLabel.text = GlobalManager.LocalUser.battlePoint + "/" + 188;
 		battleBar.value = (float)(GlobalManager.LocalUser.battlePoint / 188);
 		
-		actionLabel.text = GlobalManager.LocalUser.actionPoint + "/" + GlobalManager.LocalUser.ComputeActionPoint(GlobalManager.LocalUser.level);
-		actionBar.value = GlobalManager.LocalUser.actionPoint / GlobalManager.LocalUser.ComputeActionPoint(GlobalManager.LocalUser.level);
+		actionLabel.text = GlobalManager.LocalUser.actionPoint + "/" + GlobalManager.LocalUser.ComputeActionPoint(userCurrentLevel);
+		actionBar.value = GlobalManager.LocalUser.actionPoint / GlobalManager.LocalUser.ComputeActionPoint(userCurrentLevel);
 		
 		goldLabel.text = GlobalManager.LocalUser.gold.ToString();
 		
