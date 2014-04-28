@@ -3,6 +3,14 @@ using System.Collections;
 
 public class AspectRatioHandler : MonoBehaviour {
 
+	void Awake()
+	{
+		if(GameObject.Find("Network Controller") == null)
+		{
+			Application.LoadLevel("LoadingScene");
+		}
+	}
+
 	// Use this for initialization
 	void Start () {
 		float portraitAspectRatio = (float)Screen.width/(float)Screen.height;

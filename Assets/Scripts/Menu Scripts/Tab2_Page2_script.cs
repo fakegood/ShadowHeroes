@@ -167,7 +167,7 @@ public class Tab2_Page2_script : SubPageHandler {
 				CharacterCard cardObj = new CharacterCard();
 				cardObj.UID = N["cardDeck"][i]["cardId"].AsInt;
 				cardObj.experience = N["cardDeck"][i]["cardExperience"].AsInt;
-				cardObj.cardNumber = N["cardDeck"][i]["cardNumber"].AsInt;
+				cardObj.cardNumber = N["cardDeck"][i]["cardNumber"].AsInt + 1;
 				cardObj.level = N["cardDeck"][i]["cardLevel"].AsInt;
 				
 				GlobalManager.UICard.localUserCardInventory.Add(cardObj);

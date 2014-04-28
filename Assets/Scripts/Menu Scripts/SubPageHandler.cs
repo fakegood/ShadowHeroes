@@ -29,14 +29,7 @@ public class SubPageHandler : MonoBehaviour {
 	
 	private void OverrideClickHandler(GameObject go)
 	{
-		if(go.name == "First Button")
-		{
 
-		}
-		else
-		{
-			parent.OpenSubPage(2);
-		}
 	}
 
 	private void PopupButtonHandler(GameObject go)

@@ -270,6 +270,9 @@ public class GlobalManager : MonoBehaviour {
 			case RequestType.SAVE_DECK:
 				return NetworkSettings.ServerURL + NetworkSettings.SaveDeck;
 				break;
+			case RequestType.RANKING:
+				return NetworkSettings.ServerURL + NetworkSettings.Ranking;
+				break;
 			default:
 				return "";
 				break;
