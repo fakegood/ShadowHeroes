@@ -120,4 +120,9 @@ public class LandingMenuHandler : MonoBehaviour {
 	{
 		mainLoader.gameObject.SetActive(open);
 	}
+
+	public void UpdateUserDetailBar()
+	{
+		TopBarHandler();
+	}
 }

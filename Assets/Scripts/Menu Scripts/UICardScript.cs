@@ -5,6 +5,8 @@ public class UICardScript : MonoBehaviour {
 
 	public CharacterSettings csObj = null;
 	public UILabel cardName;
+	public UISprite cardBackground;
+	public UISprite tick;
 	private CharacterCard cardSettings = null;
 
 	public CharacterCard Card
@@ -21,9 +23,16 @@ public class UICardScript : MonoBehaviour {
 			else
 			{
 				cardName.text = csObj.characterProperties[(cardSettings.cardNumber-1)].cardName;
+				cardBackground.spriteName = cardBackground.GetComponent<UIButton>().normalSprite = cardBackground.GetComponent<UIButton>().hoverSprite = cardBackground.GetComponent<UIButton>().disabledSprite = csObj.characterProperties[(cardSettings.cardNumber-1)].iconSpriteName;
 			}
 		}
 
 		get{ return cardSettings; }
+	}
+
+	public bool Selected
+	{
+		set{ tick.gameObject.SetActive(value); }
+		get{ return tick.gameObject.activeSelf; }
 	}
 }

@@ -25,7 +25,7 @@ public class Tab2_Page5_script : SubPageHandler {
 		int currentRow = 0;
 		int currentCol = 0;
 		
-		for(int i = 0; i<GlobalManager.UICard.localUserCardInventory.Count+1; i++)
+		for(int i = 0; i<GlobalManager.UICard.localUserCardInventory.Count; i++)
 		{
 			Vector3 pos = Vector3.zero;
 			GameObject holder = Instantiate(deckObj, Vector3.zero, Quaternion.identity) as GameObject;
@@ -41,20 +41,8 @@ public class Tab2_Page5_script : SubPageHandler {
 			holder.AddComponent<UIDragScrollView>();
 			UIEventListener.Get(holder).onClick += ButtonHandler;
 
-			CharacterCard tempCardObj = GlobalManager.UICard.localUserCardInventory[i-1];
+			CharacterCard tempCardObj = GlobalManager.UICard.localUserCardInventory[i];
 			holder.GetComponent<UICardScript>().Card = tempCardObj;
-			
-			for(int j=0; j<6; j++)
-			{
-				if(GlobalManager.UICard.localUserCardDeck[j] != null)
-				{
-					if(tempCardObj.UID == GlobalManager.UICard.localUserCardDeck[j].UID)
-					{
-						holder.GetComponent<UIButton>().isEnabled = false;
-						break;
-					}
-				}
-			}
 			
 			currentCol++;
 			if(currentCol >= totalCol)

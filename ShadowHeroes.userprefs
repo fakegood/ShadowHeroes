@@ -1,26 +1,29 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Menu Scripts/Tab2_Page3_script.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Menu Scripts/Tab2_Page1_script.cs">
     <Files>
-      <File FileName="Assets/Scripts/GlobalManager.cs" Line="222" Column="1" />
+      <File FileName="Assets/Scripts/GlobalManager.cs" Line="277" Column="60" />
       <File FileName="Assets/Scripts/Menu Scripts/LoadingMenuHandler.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Menu Scripts/Tab2_Page2_script.cs" Line="45" Column="73" />
-      <File FileName="Assets/Scripts/Menu Scripts/Tab2_Page1_script.cs" Line="38" Column="64" />
-      <File FileName="Assets/Scripts/Menu Scripts/SubPageHandler.cs" Line="32" Column="3" />
-      <File FileName="Assets/Scripts/Menu Scripts/Tab2_Page5_script.cs" Line="32" Column="39" />
-      <File FileName="Assets/Scripts/Menu Scripts/TabPageHandler.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Helper Script/AspectRatioHandler.cs" Line="10" Column="42" />
-      <File FileName="Assets/Scripts/Menu Scripts/Tab2_Page3_script.cs" Line="24" Column="19" />
+      <File FileName="Assets/Scripts/Menu Scripts/SubPageHandler.cs" Line="69" Column="3" />
+      <File FileName="Assets/Scripts/Menu Scripts/Tab3_Page1_script.cs" Line="64" Column="4" />
+      <File FileName="Assets/Scripts/Menu Scripts/LandingMenuHandler.cs" Line="126" Column="19" />
+      <File FileName="Assets/Scripts/Menu Scripts/PokiPopup.cs" Line="93" Column="103" />
+      <File FileName="Assets/Scripts/Helper Script/AspectRatioHandler.cs" Line="10" Column="4" />
+      <File FileName="Assets/Scripts/Menu Scripts/Tab2_Page1_script.cs" Line="34" Column="44" />
+      <File FileName="Assets/Scripts/Menu Scripts/UICardScript.cs" Line="26" Column="5" />
+      <File FileName="Assets/Scripts/Menu Scripts/Tab2_Page2_script.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
+            <Node name="iTween" expanded="True">
+              <Node name="Plugins" expanded="True" />
+            </Node>
             <Node name="Scripts" expanded="True">
-              <Node name="Defense Elements" expanded="True" />
               <Node name="Helper Script" expanded="True" />
               <Node name="Menu Scripts" expanded="True">
-                <Node name="Tab2_Page3_script.cs" selected="True" />
+                <Node name="Tab2_Page1_script.cs" selected="True" />
               </Node>
             </Node>
           </Node>

@@ -273,6 +273,9 @@ public class GlobalManager : MonoBehaviour {
 			case RequestType.RANKING:
 				return NetworkSettings.ServerURL + NetworkSettings.Ranking;
 				break;
+			case RequestType.POKI:
+				return NetworkSettings.ServerURL + NetworkSettings.Poki;
+				break;
 			default:
 				return "";
 				break;

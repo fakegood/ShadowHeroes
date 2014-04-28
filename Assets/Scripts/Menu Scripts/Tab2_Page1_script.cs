@@ -4,6 +4,8 @@ using SimpleJSON;
 
 public class Tab2_Page1_script : SubPageHandler {
 
+	private int whichPage = -1;
+
 	// Use this for initialization
 	void Start () {
 		//base.StartSubPage();
@@ -27,8 +29,9 @@ public class Tab2_Page1_script : SubPageHandler {
 		{
 			parent.OpenSubPage(2);
 		}
-		else if(go.name == "Enhance")
+		else if(go.name == "Enhance" || go.name == "Sell Card")
 		{
+			whichPage = go.name == "Enhance" ? 5 : 7;
 			parent.tabParent.OpenMainLoader(true);
 			WWWForm form = new WWWForm(); //here you create a new form connection
 			form.AddField("userId", GlobalManager.LocalUser.UID);
@@ -36,10 +39,6 @@ public class Tab2_Page1_script : SubPageHandler {
 			NetworkHandler.self.ResultDelegate += InventoryServerRequestCallback;
 			NetworkHandler.self.ErrorDelegate += InventoryServerRequestError;
 			NetworkHandler.self.ServerRequest(GlobalManager.NetworkSettings.GetFullURL(GlobalManager.RequestType.GET_INVENTORY), form);
-		}
-		else if(go.name == "Sell Card")
-		{
-			
 		}
 	}
 
@@ -61,13 +60,14 @@ public class Tab2_Page1_script : SubPageHandler {
 				CharacterCard cardObj = new CharacterCard();
 				cardObj.UID = N["cardDeck"][i]["cardId"].AsInt;
 				cardObj.experience = N["cardDeck"][i]["cardExperience"].AsInt;
-				cardObj.cardNumber = N["cardDeck"][i]["cardNumber"].AsInt + 1;
+				cardObj.cardNumber = N["cardDeck"][i]["cardNumber"].AsInt;
 				cardObj.level = N["cardDeck"][i]["cardLevel"].AsInt;
 				
 				GlobalManager.UICard.localUserCardInventory.Add(cardObj);
 			}
 			
-			parent.OpenSubPage(5);
+			parent.OpenSubPage(whichPage);
+			whichPage = -1;
 		}
 		else
 		{

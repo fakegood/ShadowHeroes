@@ -59,6 +59,10 @@ public class SubPageHandler : MonoBehaviour {
 				Debug.Log("Cannot swap -- not enough cost");
 			}
 		}
+		else if(go.name == "Enhance Unit Button")
+		{
+			parent.OpenSubPage(6);
+		}
 	}
 
 	public void OpenPage(int pageNumber)
