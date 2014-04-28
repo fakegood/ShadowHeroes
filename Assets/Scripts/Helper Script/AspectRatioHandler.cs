@@ -7,7 +7,7 @@ public class AspectRatioHandler : MonoBehaviour {
 	{
 		if(GameObject.Find("Network Controller") == null)
 		{
-			Application.LoadLevel("LoadingScene");
+			//Application.LoadLevel("LoadingScene");
 		}
 	}
 
