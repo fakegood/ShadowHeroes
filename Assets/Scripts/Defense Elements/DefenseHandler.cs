@@ -16,6 +16,7 @@ public class DefenseHandler : MonoBehaviour {
 	public GameObject spawnPointLeft;
 	public GameObject spawnPointRight;
 	public GameObject[] skillEffects;
+	public GameObject cardRewardPrefab;
 
 	private GameObject defenseParent;
 	private List<Character> enemies;
@@ -427,11 +428,53 @@ public class DefenseHandler : MonoBehaviour {
 
 		UIProgressBar expBar = gameoverPopup.transform.Find("Background/Experience Progress Bar").GetComponent<UIProgressBar>();
 		expBar.value = userCurrentExp / nextLevelMaxExp;
-		Debug.Log(nextLevelMaxExp);
+
 		if(GlobalManager.LocalUser.experience >= nextLevelMaxExp)
 		{
 			GlobalManager.LocalUser.level ++;
 			GlobalManager.LocalUser.experience -= (int)nextLevelMaxExp;
+		}
+
+		string cardRewardString = "";
+
+		if(!GlobalManager.multiplyerGame && win)
+		{
+			int rand = Mathf.RoundToInt(Random.Range(0, 100));
+			if(rand >= 0 && rand <= 40)
+			{
+				cardRewardString = cardRewardString == "" ? cardRewardString + stageSettingsObj.area[areaNum].subStage[stageNum].endGameCardReward[0] : cardRewardString + "," + stageSettingsObj.area[areaNum].subStage[stageNum].endGameCardReward[0];
+			}
+			else if(rand >= 41 && rand <= 80)
+			{
+				cardRewardString = cardRewardString == "" ? cardRewardString + stageSettingsObj.area[areaNum].subStage[stageNum].endGameCardReward[1] : cardRewardString + "," + stageSettingsObj.area[areaNum].subStage[stageNum].endGameCardReward[1];
+			}
+			else if(rand >= 81 && rand <= 95)
+			{
+				cardRewardString = cardRewardString == "" ? cardRewardString + stageSettingsObj.area[areaNum].subStage[stageNum].endGameCardReward[2] : cardRewardString + "," + stageSettingsObj.area[areaNum].subStage[stageNum].endGameCardReward[2];
+			}
+			else if(rand >= 96 && rand <= 100)
+			{
+				cardRewardString = cardRewardString == "" ? cardRewardString + stageSettingsObj.area[areaNum].subStage[stageNum].endGameCardReward[3] : cardRewardString + "," + stageSettingsObj.area[areaNum].subStage[stageNum].endGameCardReward[3];
+			}
+		}
+		else
+		{
+			
+		}
+
+		CharacterCard cardObj = new CharacterCard();
+		cardObj.cardNumber = int.Parse(cardRewardString);
+
+		GameObject card = Instantiate(cardRewardPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+		card.transform.parent = gameoverPopup.transform.Find("Background").transform;
+		card.transform.localScale = Vector3.one;
+		card.transform.localPosition = new Vector3(0f, -80f, 0f);
+		card.GetComponent<UICardScript>().Card = cardObj;
+		card.GetComponent<UIButton>().enabled = false;
+
+		if(cardRewardString == "")
+		{
+			cardRewardString = "-1";
 		}
 
 		int winStatus = win == true ? 1 : 0;
@@ -439,31 +482,13 @@ public class DefenseHandler : MonoBehaviour {
 		form.AddField("userId", GlobalManager.LocalUser.UID);
 		form.AddField("goldAmount", totalCoinGain);
 		form.AddField("expAmount", totalExpGain);
-		//form.AddField("receivedCard", "");
+		form.AddField("receivedCard", cardRewardString);
 		form.AddField("victoryPoint", 0);
 		form.AddField("winStatus", winStatus);
 		
 		NetworkHandler.self.ResultDelegate += ServerRequestCallback;
 		NetworkHandler.self.ErrorDelegate += ServerRequestError;
 		NetworkHandler.self.ServerRequest(GlobalManager.NetworkSettings.GetFullURL(GlobalManager.RequestType.END_GAME), form);
-		
-		if(!GlobalManager.multiplyerGame)
-		{
-			//stageSettingsObj.area[areaNum].subStage[stageNum].cardReward[0]
-			if(GlobalManager.ProbabilityCounter(40))
-			{
-
-			}
-
-			if(GlobalManager.ProbabilityCounter(40))
-			{
-
-			}
-		}
-		else
-		{
-			
-		}
 	}
 
 	private void ServerRequestCallback(string result)

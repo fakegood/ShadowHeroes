@@ -14,12 +14,16 @@ public class PuzzleHandler : MonoBehaviour {
 	public GameObject PopupPrefab;
 	public GameObject PausePrefab;
 	public GameObject characterSettingsPrefab;
-	
+
+	public GameObject introBackground;
+	public GameObject introLabel;
+	public GameObject introBlock;
+
 	public AudioClip mainBgm;
 	public AudioClip removeCandySfx;
 	public AudioClip dropCandySfx;
 	public AudioClip flyTrailSfx;
-	
+
 	private float switchSpeed = 0.2f;
 	private float dropSpeed = 0.8f;
 	//private float shrinkSpeed = 0.2f;
@@ -145,44 +149,54 @@ public class PuzzleHandler : MonoBehaviour {
 	}
 	
 	private IEnumerator Init(){
-		//mainArray[2][4].spriteName = "yellow";
-		//mainArray[3][4].spriteName = "yellow";
-		//mainArray[4][3].spriteName = "yellow stripe hort";
-		//mainArray[5][4].spriteName = "yellow";
-		//mainArray[4][4].spriteName = "yellow";
-		
-		//mainArray[4][2].spriteName = "yellow packet";
-		//mainArray[3][6].spriteName = "red packet";
-		//mainArray[4][6].spriteName = "colourful chocolate";
-		
-		//Transform skillButtonContentArea = GameObject.Find("Skill Button Area").transform.Find("Content");
-		
-		//InitSkillButton(skillButtonContentArea);
-		
-		//elementsNeededArray = CalculateTotalElementsNeeded();
-		
-		//int totalNumberOfElements = GameObject.Find("Text Elements").transform.childCount - 1;
 		int totalNumberOfElements = 6;
 		GlobalManager.elementTextArray = new UILabel[totalNumberOfElements];
-		
-		//buttonHandlerObj.UpdateElementText(); // did it in ButtonMainHandler
-		
+
+		loadingScreen.SetActive(true);
+		PuzzleStatus = true;
 		CreateLevel();
 		
 		yield return new WaitForSeconds(0.3f);
 		CheckComboCandy();
 	}
+
+	private void SpawnStageIntro()
+	{
+		introBlock.SetActive(true);
+		if(!GlobalManager.multiplyerGame)
+		{
+			introLabel.GetComponent<UILabel>().text = "Stage " + GlobalManager.GameSettings.chosenArea + "-" + GlobalManager.GameSettings.chosenStage;
+		}
+		else
+		{
+			introLabel.GetComponent<UILabel>().text = "Battle Start!";
+		}
+
+		Vector3 pos = Vector3.zero;
+		pos.x = 320;
+		pos.y = GameObject.Find("Skill Button Area").transform.localPosition.y + 250f;
+		introBackground.transform.localPosition = pos;
+
+		Vector3 pos2 = Vector3.zero;
+		pos2.x = 400;
+		pos2.y = pos.y;
+		introLabel.transform.localPosition = pos2;
+
+		iTween.MoveTo(introBackground, iTween.Hash("x", 0, "time", 0.8f, "islocal", true));
+		iTween.MoveTo(introLabel, iTween.Hash("x", 0, "time", 0.8f, "delay", 0.2f, "islocal", true));
+		iTween.MoveTo(introBackground, iTween.Hash("x", -640, "time", 0.8f, "delay", 1.7f, "islocal", true, "oncompletetarget", this.gameObject, "oncomplete", "DoneIntroAnimation"));
+		iTween.MoveTo(introLabel, iTween.Hash("x", -640, "time", 0.8f, "delay", 1.5f, "islocal", true));
+	}
 	
 	private void InitCheckComplete(){
-		initCheckDone = true;
-		GlobalManager.initCheckDone = true;
-		
 		//GlobalManager.dropSpeed = GlobalManager.oriDropSpeed;
 		//GlobalManager.shrinkSpeed = GlobalManager.oriShrinkSpeed;
 		
 		//shrinkSpeed = GlobalManager.oriShrinkSpeed;
 		dropSpeed = GlobalManager.oriDropSpeed;
-		loadingScreen.SetActive(false);
+
+		// spawn stage intro
+		SpawnStageIntro();
 		
 		//Camera.main.nearClipPlane = 0.3f;
 		Time.timeScale = 1f;
@@ -209,6 +223,16 @@ public class PuzzleHandler : MonoBehaviour {
 		//startCounting = true;
 		timerCounter = delay;
 		hintCounter = hintDelay;
+
+		loadingScreen.SetActive(false);
+	}
+
+	private void DoneIntroAnimation()
+	{
+		PuzzleStatus = false;
+		introBlock.SetActive(false);
+		initCheckDone = true;
+		GlobalManager.initCheckDone = true;
 	}
 	
 	private void CreateLevel(){
@@ -220,20 +244,11 @@ public class PuzzleHandler : MonoBehaviour {
 			
 			for(int j = 0; j < col; j++){
 				//string[] collayout = tempMapLayout[((tempMapLayout.Length-1)-i)].ToString().Trim().Split(new char[] {'-'});
-				
-				//tempPosition.x = offsetX + (j * size) + (j * gap);
-				//tempPosition.y = offsetY + (i * size) + (i * gap);
-				//tempPosition.x = (size/2) + (j * size) + (j * gap);
-				//tempPosition.y = (size/2) + (i * size) + (i * gap);
+
 				tempPosition.x = (j * GlobalManager.sizeForCalc) + (GlobalManager.sizeForCalc/2) + (j * GlobalManager.gap);
 				tempPosition.y = (i * GlobalManager.sizeForCalc) + (GlobalManager.sizeForCalc/2) + (i * GlobalManager.gap);
 				
 				mainArray[i][j] = CreateCandy(tempPosition.x, tempPosition.y);
-				/*if(!collayout[j].Equals("0")){
-					mainArray[i][j] = CreateCandy(tempPosition.x, tempPosition.y, false, false, int.Parse(collayout[j]));
-				}else{
-					mainArray[i][j] = CreateCandy(tempPosition.x, tempPosition.y);
-				}*/
 				
 				//mainArray[i][j].GetComponent<CandyProperties>().objxpos = j;
 				//mainArray[i][j].GetComponent<CandyProperties>().objypos = i;
@@ -439,7 +454,6 @@ public class PuzzleHandler : MonoBehaviour {
 			// check game status
 			if(canTouch && !checkGameStatus){
 				checkGameStatus = true;
-				
 				if(GlobalManager.initCheckDone){
 					hintString = CheckAvailableMove();
 					if(CheckAvailableMove() == ""){
@@ -1502,6 +1516,16 @@ public class PuzzleHandler : MonoBehaviour {
 	}
 	
 	private void ShowHint(){
+		if(hintString == "")
+		{
+			hintString = CheckAvailableMove();
+			if(hintString == "")
+			{
+				// no available move, need to reshuffle
+				return;
+			}
+		}
+
 		string[] position = hintString.Split(new char[]{':'});
 		float size = 1.05f;
 		float duration = 1f;
@@ -1509,7 +1533,9 @@ public class PuzzleHandler : MonoBehaviour {
 		for(int i=0; i<position.Length; i++){
 			string[] xypos = position[i].Split(new char[]{'_'});
 			
-			iTween.PunchScale(mainArray[int.Parse(xypos[0])][int.Parse(xypos[1])].gameObject, iTween.Hash("x", size, "y", size, "time", duration));
+			int tempxpos = int.Parse(xypos[0]);
+			int tempypos = int.Parse(xypos[1]);
+			iTween.PunchScale(mainArray[tempxpos][tempypos].gameObject, iTween.Hash("x", size, "y", size, "time", duration));
 			//iTween.ScaleAdd(mainArray[int.Parse(xypos[0])][int.Parse(xypos[1])].gameObject, iTween.Hash("x", size, "y", size, "time", duration));
 			//iTween.ScaleAdd(mainArray[int.Parse(xypos[0])][int.Parse(xypos[1])].gameObject, iTween.Hash("x", -(size), "y", -(size), "time", duration, "delay", duration));
 		}
@@ -1861,14 +1887,7 @@ public class PuzzleHandler : MonoBehaviour {
 	}
 	
 	public bool PuzzleStatus{
-		set {
-			disablePuzzle = value;
-			if(disablePuzzle){
-				GameObject.Find("Sprite").transform.localScale = new Vector3(20,20,1);
-			}else{
-				GameObject.Find("Sprite").transform.localScale = new Vector3(20,0,1);
-			}
-		}
+		set { disablePuzzle = value; }
 		get {return disablePuzzle;}
 	}
 }

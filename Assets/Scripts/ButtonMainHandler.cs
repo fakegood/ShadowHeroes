@@ -52,6 +52,11 @@ public class ButtonMainHandler : MonoBehaviour {
 					buttonNumber = i;
 					
 					skillButtonArray[i].transform.Find("Background").GetComponent<UISprite>().spriteName = spriteName;
+					skillButtonArray[i].GetComponent<UIButton>().normalSprite = spriteName;
+					skillButtonArray[i].GetComponent<UIButton>().hoverSprite = spriteName;
+					skillButtonArray[i].GetComponent<UIButton>().pressedSprite = spriteName;
+					skillButtonArray[i].GetComponent<UIButton>().disabledSprite = spriteName;
+
 					UnitButtonHandler obj = skillButtonArray[i].GetComponent<UnitButtonHandler>();
 					obj.referenceNumber = tempReferenceNumber;
 					obj.element = category;
