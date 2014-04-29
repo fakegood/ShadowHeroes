@@ -32,7 +32,7 @@ public class Tab2_Page1_script : SubPageHandler {
 		else if(go.name == "Enhance" || go.name == "Sell Card")
 		{
 			whichPage = go.name == "Enhance" ? 5 : 7;
-			parent.tabParent.OpenMainLoader(true);
+			base.parent.tabParent.OpenMainLoader(true);
 			WWWForm form = new WWWForm(); //here you create a new form connection
 			form.AddField("userId", GlobalManager.LocalUser.UID);
 			
@@ -46,7 +46,7 @@ public class Tab2_Page1_script : SubPageHandler {
 	{
 		NetworkHandler.self.ResultDelegate -= InventoryServerRequestCallback;
 		NetworkHandler.self.ErrorDelegate -= InventoryServerRequestError;
-		parent.tabParent.OpenMainLoader(false);
+		base.parent.tabParent.OpenMainLoader(false);
 		
 		var N = JSONNode.Parse(result);
 		//Debug.Log("callback: " + N["userId"]);
@@ -80,7 +80,7 @@ public class Tab2_Page1_script : SubPageHandler {
 	{
 		NetworkHandler.self.ResultDelegate -= InventoryServerRequestCallback;
 		NetworkHandler.self.ErrorDelegate -= InventoryServerRequestError;
-		parent.tabParent.OpenMainLoader(false);
+		base.parent.tabParent.OpenMainLoader(false);
 		//var N = JSONNode.Parse(result);
 		//Debug.Log("callback: " + N["userId"]);
 	}

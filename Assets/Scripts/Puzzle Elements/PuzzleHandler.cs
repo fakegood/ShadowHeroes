@@ -7,6 +7,7 @@ public class PuzzleHandler : MonoBehaviour {
 	//public UISpriteAnimation spriteAnimation;
 	public UIRoot root;
 	public UIAtlas mainAtlas;
+	public GameObject loadingScreen;
 	public GameObject puzzleParent;
 	public DefenseHandler defObj;
 	public ButtonMainHandler buttonHandlerObj;
@@ -181,6 +182,7 @@ public class PuzzleHandler : MonoBehaviour {
 		
 		//shrinkSpeed = GlobalManager.oriShrinkSpeed;
 		dropSpeed = GlobalManager.oriDropSpeed;
+		loadingScreen.SetActive(false);
 		
 		//Camera.main.nearClipPlane = 0.3f;
 		Time.timeScale = 1f;

@@ -84,7 +84,7 @@ public class GlobalManager : MonoBehaviour {
 		SAVE_DECK,
 		ENHANCE,
 		POKI,
-		SELLCARD,
+		SELL_CARD,
 		RANKING
 	}
 	
@@ -275,6 +275,9 @@ public class GlobalManager : MonoBehaviour {
 				break;
 			case RequestType.POKI:
 				return NetworkSettings.ServerURL + NetworkSettings.Poki;
+				break;
+			case RequestType.SELL_CARD:
+				return NetworkSettings.ServerURL + NetworkSettings.SellCard;
 				break;
 			default:
 				return "";

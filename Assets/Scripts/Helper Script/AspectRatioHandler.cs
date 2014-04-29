@@ -7,16 +7,13 @@ public class AspectRatioHandler : MonoBehaviour {
 	{
 		if(GameObject.Find("Network Controller") == null)
 		{
-			//Application.LoadLevel("LoadingScene");
+			Application.LoadLevel("LoadingScene");
 		}
-	}
 
-	// Use this for initialization
-	void Start () {
 		float portraitAspectRatio = (float)Screen.width/(float)Screen.height;
 		float landscapeAspectRatio = (float)Screen.height/(float)Screen.width;
 		float aspectRatio = Mathf.Round(portraitAspectRatio * 100f) / 100f;
-
+		
 		if(aspectRatio == 0.56f) // 9:16 ratio [640:1136 / 720:1280 / 1080:1920]
 		{
 			this.GetComponent<UIRoot>().manualHeight = 1136;
