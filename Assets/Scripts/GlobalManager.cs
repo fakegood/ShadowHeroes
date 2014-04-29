@@ -152,8 +152,8 @@ public class GlobalManager : MonoBehaviour {
 		public static int level = 1;
 		public static int gold = 0;
 		public static int gem = 0;
-		public static int battlePoint = 0;
-		public static int actionPoint = 0;
+		public static int battlePoint = 50;
+		public static int actionPoint = 20;
 		public static int deckCost = 0;
 		public static int maxDeckCost = 100;
 		public static int experience = 0;

@@ -11,11 +11,13 @@ public class LandingMenuHandler : MonoBehaviour {
 	// player fighting point details
 	public UILabel battleLabel;
 	public UIProgressBar battleBar;
+	public UIButton battlePlusButton;
 	
 	// player battle point details
 	public UILabel actionLabel;
 	public UIProgressBar actionBar;
-	
+	public UIButton actionPlusButton;
+
 	// player gold details
 	public UILabel goldLabel;
 	
@@ -23,6 +25,7 @@ public class LandingMenuHandler : MonoBehaviour {
 	public UILabel gemLabel;
 	
 	public UIPanel mainLoader;
+	public UIPanel mainPopup;
 
 	public UIButton[] tabButtons = null;
 	public UIPanel[] tabPages = null;
@@ -72,6 +75,52 @@ public class LandingMenuHandler : MonoBehaviour {
 		tabPages[int.Parse(go.name)-1].gameObject.GetComponent<TabPageHandler>().ActivateTab();
 	}
 
+	public void BattlePointHandler()
+	{
+		mainPopup.GetComponent<MainPopupScript>().ResultDelegate += BattlePointCallBack;
+		OpenMainPopup("Fill Battle Point", "Are you sure you want to fill up Battle Point with 1 Gem?", true, MainPopupScript.PopupType.CONFIRMATION);
+	}
+
+	public void ActionPointHandler()
+	{
+		mainPopup.GetComponent<MainPopupScript>().ResultDelegate += ActionPointCallBack;
+		OpenMainPopup("Fill Action Point", "Are you sure you want to fill up Action Point with 1 Gem?", true, MainPopupScript.PopupType.CONFIRMATION);
+	}
+
+	public void GoldHandler()
+	{
+
+	}
+
+	public void GemHandler()
+	{
+
+	}
+
+	private void BattlePointCallBack(bool result)
+	{
+		mainPopup.GetComponent<MainPopupScript>().ResultDelegate -= BattlePointCallBack;
+		if(result)
+		{
+			GlobalManager.LocalUser.battlePoint = 100;
+			// need to reduce gem
+			// need to call api to reduce gem
+			UpdateUserDetailBar();
+		}
+	}
+
+	private void ActionPointCallBack(bool result)
+	{
+		mainPopup.GetComponent<MainPopupScript>().ResultDelegate -= ActionPointCallBack;
+		if(result)
+		{
+			GlobalManager.LocalUser.actionPoint = GlobalManager.LocalUser.ComputeActionPoint(GlobalManager.LocalUser.level);
+			// need to reduce gem
+			// need to call api to reduce gem
+			UpdateUserDetailBar();
+		}
+	}
+
 	private void OpenTabPage(int tabNumber)
 	{
 		if(currentOpenedPage != null)
@@ -100,15 +149,33 @@ public class LandingMenuHandler : MonoBehaviour {
 		experienceLabel.text = userCurrentExp + "/" + nextLevelMaxExp;
 		experienceBar.value = userCurrentExp / nextLevelMaxExp;
 		
-		battleLabel.text = GlobalManager.LocalUser.battlePoint + "/" + 188;
-		battleBar.value = (float)(GlobalManager.LocalUser.battlePoint / 188);
+		battleLabel.text = GlobalManager.LocalUser.battlePoint + "/" + 100;
+		battleBar.value = (float)(GlobalManager.LocalUser.battlePoint / 100f);
 		
 		actionLabel.text = GlobalManager.LocalUser.actionPoint + "/" + GlobalManager.LocalUser.ComputeActionPoint(userCurrentLevel);
-		actionBar.value = GlobalManager.LocalUser.actionPoint / GlobalManager.LocalUser.ComputeActionPoint(userCurrentLevel);
+		actionBar.value = (float)GlobalManager.LocalUser.actionPoint / (float)GlobalManager.LocalUser.ComputeActionPoint(userCurrentLevel);
 		
 		goldLabel.text = GlobalManager.LocalUser.gold.ToString();
 		
 		gemLabel.text = GlobalManager.LocalUser.gem.ToString();
+
+		if(battleBar.value == 1f)
+		{
+			battlePlusButton.isEnabled = false;
+		}
+		else
+		{
+			battlePlusButton.isEnabled = true;
+		}
+
+		if(actionBar.value == 1)
+		{
+			actionPlusButton.isEnabled = false;
+		}
+		else
+		{
+			actionPlusButton.isEnabled = true;
+		}
 	}
 
 	private void JumpToPage(int tabNum, int pageNum)
@@ -119,6 +186,18 @@ public class LandingMenuHandler : MonoBehaviour {
 	public void OpenMainLoader(bool open = true)
 	{
 		mainLoader.gameObject.SetActive(open);
+	}
+
+	public void OpenMainPopup(string title, string info, bool open = true, MainPopupScript.PopupType type = MainPopupScript.PopupType.INFORMATION)
+	{
+		if(open)
+		{
+			mainPopup.GetComponent<MainPopupScript>().Title = title;
+			mainPopup.GetComponent<MainPopupScript>().Information = info;
+			mainPopup.GetComponent<MainPopupScript>().CurrentPopupType = type;
+		}
+
+		mainPopup.gameObject.SetActive(open);
 	}
 
 	public void UpdateUserDetailBar()

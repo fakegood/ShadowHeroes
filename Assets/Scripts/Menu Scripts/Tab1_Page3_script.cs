@@ -61,7 +61,33 @@ public class Tab1_Page3_script : SubPageHandler {
 	{
 		GlobalManager.GameSettings.chosenStage = int.Parse(go.name.Split(new char[]{'_'})[1]);
 
-		// TO-DO --- need to check for energy before starting game
-		Application.LoadLevel("PlaySceneNGUI");
+		int levelCost = aiStage.area[GlobalManager.GameSettings.chosenArea-1].subStage[GlobalManager.GameSettings.chosenStage-1].energyCost;
+		if((GlobalManager.LocalUser.actionPoint - levelCost) >= 0)
+		{
+			base.parent.tabParent.mainPopup.GetComponent<MainPopupScript>().ResultDelegate += StartGameCallback;
+			base.parent.tabParent.OpenMainPopup("Single Player Game", "Are you sure to start game with " + levelCost + " gems?", true, MainPopupScript.PopupType.CONFIRMATION);
+		}
+		else
+		{
+			base.parent.tabParent.mainPopup.GetComponent<MainPopupScript>().ResultDelegate += ErrorHandler;
+			base.parent.tabParent.OpenMainPopup("Not enough Energy", "You got not enough energy. Do you want to refill you energy bar with 1 gem?", true, MainPopupScript.PopupType.ERROR);
+		}
+	}
+
+	private void StartGameCallback(bool result)
+	{
+		base.parent.tabParent.mainPopup.GetComponent<MainPopupScript>().ResultDelegate -= StartGameCallback;
+		if(result)
+		{
+			int levelCost = aiStage.area[GlobalManager.GameSettings.chosenArea-1].subStage[GlobalManager.GameSettings.chosenStage-1].energyCost;
+			GlobalManager.LocalUser.actionPoint -= levelCost;
+			base.parent.tabParent.UpdateUserDetailBar();
+			Application.LoadLevel("PlaySceneNGUI");
+		}
+	}
+
+	private void ErrorHandler(bool result)
+	{
+		base.parent.tabParent.mainPopup.GetComponent<MainPopupScript>().ResultDelegate -= ErrorHandler;
 	}
 }

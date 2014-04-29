@@ -39,10 +39,10 @@ public class NetworkHandler : MonoBehaviour {
 		
 		if (w.error != null) {
 			Debug.Log("Error: " + w.error);
-			ErrorDelegate(w.text);
+			if(ErrorDelegate != null) ErrorDelegate(w.text);
 		} else {
 			Debug.Log("Result: " + w.text);
-			ResultDelegate(w.text);
+			if(ResultDelegate != null) ResultDelegate(w.text);
 			
 			//var N = JSONNode.Parse(w.text);
 			//RecordLog(N["coin"]);
