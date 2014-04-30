@@ -85,7 +85,8 @@ public class GlobalManager : MonoBehaviour {
 		ENHANCE,
 		POKI,
 		SELL_CARD,
-		RANKING
+		RANKING,
+		SHOP_PAYMENT
 	}
 	
 	public static int gameType = 2;
@@ -163,7 +164,6 @@ public class GlobalManager : MonoBehaviour {
 
 		public static int ComputeNeedLevelupExp(int level)
 		{
-			//level = level-1 < 0 ? 0 : level-1;
 			if(level <= 0)
 			{
 				return 0;
@@ -191,12 +191,67 @@ public class GlobalManager : MonoBehaviour {
 				return (500*level)+150*((int)Mathf.Pow(level,2f)-level);
 			}
 		}
+
+		public static int ComputeCardNeedLevelupExp(int level)
+		{
+			if(level <= 0)
+			{
+				return 0;
+			}
+			else
+			{
+				return 500 + (200 * (level-1));
+			}
+		}
+
+		public static int ComputeCardLevelTotalExp(int level)
+		{
+			if(level <= 0)
+			{
+				return 0;
+			}
+			else
+			{
+				return (500*level)+100*((int)Mathf.Pow(level,2f)-level);
+			}
+		}
+
+		public static int ComputeTotalExpFromCard(CharacterCard card)
+		{
+			int baseExp = 0;
+
+			if(GameSettings.csObj.characterProperties[card.cardNumber-1].rarity == 1)
+			{
+				baseExp = 500;
+			}
+			else if(GameSettings.csObj.characterProperties[card.cardNumber-1].rarity == 2)
+			{
+				baseExp = 1000;
+			}
+			else if(GameSettings.csObj.characterProperties[card.cardNumber-1].rarity == 3)
+			{
+				baseExp = 5000;
+			}
+			else if(GameSettings.csObj.characterProperties[card.cardNumber-1].rarity == 4)
+			{
+				baseExp = 10000;
+			}
+			else if(GameSettings.csObj.characterProperties[card.cardNumber-1].rarity == 5)
+			{
+				baseExp = 20000;
+			}
+
+			int currentExp = card.experience + ComputeCardLevelTotalExp(card.level-1);
+
+			return baseExp + (int)((float)currentExp * 0.1f);
+		}
 	}
 
 	public static class GameSettings
 	{
 		public static int chosenArea = -1;
 		public static int chosenStage = -1;
+		public static CharacterSettings csObj;
 	}
 
 	public static class UICard
@@ -278,6 +333,12 @@ public class GlobalManager : MonoBehaviour {
 				break;
 			case RequestType.SELL_CARD:
 				return NetworkSettings.ServerURL + NetworkSettings.SellCard;
+				break;
+			case RequestType.SHOP_PAYMENT:
+				return NetworkSettings.ServerURL + NetworkSettings.ShopPayment;
+				break;
+			case RequestType.ENHANCE:
+				return NetworkSettings.ServerURL + NetworkSettings.Enhance;
 				break;
 			default:
 				return "";

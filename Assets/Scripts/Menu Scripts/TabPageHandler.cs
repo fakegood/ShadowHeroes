@@ -8,11 +8,21 @@ public class TabPageHandler : MonoBehaviour {
 	public GameObject backButton;
 	public LandingMenuHandler tabParent;
 	public int currentOpenedPageNum = 1;
-	[HideInInspector]
+	[System.NonSerialized]
 	public int currentOpenedDeckNum = -1;
-	[HideInInspector]
+	[System.NonSerialized]
 	public int currentSelectedDeckNum = -1;
+	[System.NonSerialized]
+	public CharacterCard currentSelectedCard = null;
 	private GameObject currentOpenedPage = null;
+	[System.NonSerialized]
+	public int pageSelected = -1;
+	[System.NonSerialized]
+	public int enhanceCardSelected = -1;
+	[System.NonSerialized]
+	public CharacterCard enhanceBaseCard;
+	[System.NonSerialized]
+	public CharacterCard[] enhanceCards = new CharacterCard[5];
 
 	// Use this for initialization
 	void Start () {

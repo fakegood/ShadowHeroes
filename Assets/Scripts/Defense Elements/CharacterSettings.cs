@@ -151,4 +151,5 @@ public class CharacterCard
 	public int cardNumber = -1;
 	public int cost = 1;
 	public int order = -1;
+	public int inventoryIndex = -1;
 }

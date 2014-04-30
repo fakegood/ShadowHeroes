@@ -27,11 +27,16 @@ public class Tab2_Page1_script : SubPageHandler {
 	{
 		if(go.name == "Edit Deck")
 		{
+			base.parent.pageSelected = whichPage = 2;
 			parent.OpenSubPage(2);
 		}
 		else if(go.name == "Enhance" || go.name == "Sell Card")
 		{
-			whichPage = go.name == "Enhance" ? 5 : 7;
+			base.parent.enhanceCardSelected = -1;
+			base.parent.enhanceBaseCard = null;
+			base.parent.enhanceCards = new CharacterCard[5];
+
+			base.parent.pageSelected = whichPage = go.name == "Enhance" ? 5 : 8;
 			base.parent.tabParent.OpenMainLoader(true);
 			WWWForm form = new WWWForm(); //here you create a new form connection
 			form.AddField("userId", GlobalManager.LocalUser.UID);

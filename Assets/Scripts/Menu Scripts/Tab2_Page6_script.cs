@@ -1,95 +1,192 @@
 ﻿using UnityEngine;
 using System.Collections;
+using SimpleJSON;
 
 public class Tab2_Page6_script : SubPageHandler {
 
-	public GameObject deckObj = null;
-	public UIScrollView scrollPanel = null;
-	private int totalCol = 6;
-	private Vector2 deckDimension;
+	public GameObject baseCardObject;
+	public UILabel baseLevelLabel;
+	public UILabel baseExpLabel;
+	public UILabel baseAttackLabel;
+	public UILabel baseHPLabel;
+
+	public UIButton[] cards;
+	public UILabel totalExpLabel;
+	public UIButton confirmEnhanceButton;
+
+	public GameObject popup;
+
+	private CharacterCard cardObj;
 	
 	// Use this for initialization
 	void Start () {
-		if(deckObj == null) return;
-		
-		deckDimension = deckObj.GetComponent<UISprite>().localSize;
-		SpawnLocalUserInventory();
-		scrollPanel.ResetPosition();
-		
+		cardObj = parent.enhanceBaseCard;
+		if(cardObj == null) return;
+
+		for(int i=0; i<cards.Length; i++)
+		{
+			UIEventListener.Get(cards[i].gameObject).onClick += EnhanceCardButtonHandler;
+		}
+
+		FillInformation();
 		//base.StartSubPage();
 	}
-	
-	private void SpawnLocalUserInventory()
+
+	private void FillInformation()
 	{
-		Transform parent = this.transform.Find("ScrollView/Inventory List Holder");
-		int currentRow = 0;
-		int currentCol = 0;
-		
-		for(int i = 0; i<GlobalManager.UICard.localUserCardInventory.Count+1; i++)
+		baseCardObject.GetComponent<UICardScript>().Card = cardObj;
+		//baseLevelLabel.text = base.csObj.characterProperties[cardObj.cardNumber-1];
+
+		baseLevelLabel.text = GlobalManager.UICard.localUserCardInventory[parent.currentSelectedDeckNum].level.ToString();
+		baseExpLabel.text = GlobalManager.UICard.localUserCardInventory[parent.currentSelectedDeckNum].experience.ToString();
+		baseAttackLabel.text = base.csObj.characterProperties[cardObj.cardNumber-1].damage.ToString();
+		baseHPLabel.text = base.csObj.characterProperties[cardObj.cardNumber-1].maxHitPoint.ToString();
+
+		int totalExp = 0;
+		for(int i=0; i<cards.Length; i++)
 		{
-			Vector3 pos = Vector3.zero;
-			GameObject holder = Instantiate(deckObj, Vector3.zero, Quaternion.identity) as GameObject;
-			holder.name = "Inventory_" + (i+1);
-			holder.transform.parent = parent;
-			
-			if(i % 6 == 0 && i != 0){ currentRow++; }
-			pos.x = ((currentCol * deckDimension.x) + (deckDimension.x / 2)) + 3;
-			pos.y = (((currentRow * deckDimension.y) + (deckDimension.y / 2)) + 3) * -1;
-			
-			holder.transform.localPosition = pos;
-			holder.transform.localScale = holder.transform.lossyScale;
-			holder.AddComponent<UIDragScrollView>();
-			UIEventListener.Get(holder).onClick += ButtonHandler;
-			
-			if(i == 0)
+			if(parent.enhanceCards[i] != null)
 			{
-				holder.GetComponent<UICardScript>().Card = null;
+				totalExp += GlobalManager.LocalUser.ComputeTotalExpFromCard(parent.enhanceCards[i]);
 			}
-			else
-			{
-				CharacterCard tempCardObj = GlobalManager.UICard.localUserCardInventory[i-1];
-				holder.GetComponent<UICardScript>().Card = tempCardObj;
-				
-				for(int j=0; j<6; j++)
-				{
-					if(GlobalManager.UICard.localUserCardDeck[j] != null)
-					{
-						if(tempCardObj.UID == GlobalManager.UICard.localUserCardDeck[j].UID)
-						{
-							holder.GetComponent<UIButton>().isEnabled = false;
-							break;
-						}
-					}
-				}
-			}
-			
-			currentCol++;
-			if(currentCol >= totalCol)
-			{
-				currentCol = 0;
-			}
+			cards[i].GetComponent<AddCardButtonHandler>().Card = parent.enhanceCards[i];
 		}
-	}
-	
-	private void ButtonHandler(GameObject go)
-	{
-		// chosen card action
-		parent.currentSelectedDeckNum = int.Parse(go.name.Split(new char[]{'_'})[1]) - 1;
-		
-		if(parent.currentSelectedDeckNum == 0)
+
+		if(totalExp > 0)
 		{
-			// "None" selected -- perform swap right away
-			GlobalManager.UICard.SwapDeckAndInventory(parent.currentSelectedDeckNum, parent.currentOpenedDeckNum);
-			
-			parent.currentOpenedDeckNum = -1;
-			parent.currentSelectedDeckNum = -1;
-			
-			parent.OpenSubPage(2);
+			confirmEnhanceButton.isEnabled = true;
 		}
 		else
 		{
-			// show popup
-			base.OpenPopup(true);
+			confirmEnhanceButton.isEnabled = false;
 		}
+
+		totalExpLabel.text = totalExp.ToString();
+	}
+
+	private void EnhanceCardButtonHandler(GameObject go)
+	{
+		parent.enhanceCardSelected = int.Parse(go.name.Split(new char[1]{' '})[1]) - 1;
+		parent.OpenSubPage(7);
+	}
+
+	public void ConfirmEnhance()
+	{
+		int totalExp = 0;
+		string finalString = "";
+		for(int i=0; i<cards.Length; i++)
+		{
+			CharacterCard tempCard = cards[i].GetComponent<AddCardButtonHandler>().Card;
+			if(tempCard != null)
+			{
+				totalExp += GlobalManager.LocalUser.ComputeTotalExpFromCard(tempCard);
+				finalString = finalString == "" ? finalString += tempCard.UID : finalString += "," + tempCard.UID;
+			}
+		}
+
+		if(totalExp > 0)
+		{
+			base.parent.tabParent.OpenMainLoader(true);
+			WWWForm form = new WWWForm(); //here you create a new form connection
+			form.AddField("userId", GlobalManager.LocalUser.UID);
+			form.AddField("cardId", parent.enhanceBaseCard.UID);
+			form.AddField("enhanceCardIdList", finalString);
+			form.AddField("goldReduce", 200);
+			
+			NetworkHandler.self.ResultDelegate += ServerRequestCallback;
+			NetworkHandler.self.ErrorDelegate += ServerRequestError;
+			NetworkHandler.self.ServerRequest(GlobalManager.NetworkSettings.GetFullURL(GlobalManager.RequestType.ENHANCE), form);
+		}
+		else
+		{
+			// show popup -- no card to enhance
+		}
+	}
+
+	private void ServerRequestCallback(string result)
+	{
+		NetworkHandler.self.ResultDelegate -= ServerRequestCallback;
+		NetworkHandler.self.ErrorDelegate -= ServerRequestError;
+		
+		var N = JSONNode.Parse(result);
+		//Debug.Log("callback: " + N["userId"]);
+		
+		if(N["result"].AsBool)
+		{
+			// done enhancing
+			WWWForm form = new WWWForm(); //here you create a new form connection
+			form.AddField("userId", GlobalManager.LocalUser.UID);
+			
+			NetworkHandler.self.ResultDelegate += InventoryServerRequestCallback;
+			NetworkHandler.self.ErrorDelegate += InventoryServerRequestError;
+			NetworkHandler.self.ServerRequest(GlobalManager.NetworkSettings.GetFullURL(GlobalManager.RequestType.GET_INVENTORY), form);
+		}
+		else
+		{
+			base.parent.tabParent.OpenMainLoader(false);
+		}
+	}
+	
+	private void ServerRequestError(string result)
+	{
+		NetworkHandler.self.ResultDelegate -= ServerRequestCallback;
+		NetworkHandler.self.ErrorDelegate -= ServerRequestError;
+		base.parent.tabParent.OpenMainLoader(false);
+		//var N = JSONNode.Parse(result);
+		//Debug.Log("callback: " + N["userId"]);
+	}
+
+	private void InventoryServerRequestCallback(string result)
+	{
+		NetworkHandler.self.ResultDelegate -= InventoryServerRequestCallback;
+		NetworkHandler.self.ErrorDelegate -= InventoryServerRequestError;
+		base.parent.tabParent.OpenMainLoader(false);
+		
+		var N = JSONNode.Parse(result);
+		//Debug.Log("callback: " + N["userId"]);
+		
+		if(N["cardDeck"].AsArray.Count > 0)
+		{
+			// save all inventory details
+			GlobalManager.UICard.localUserCardInventory.Clear();
+			for(int i = 0; i<N["cardDeck"].AsArray.Count; i++)
+			{
+				CharacterCard cardObj = new CharacterCard();
+				cardObj.UID = N["cardDeck"][i]["cardId"].AsInt;
+				cardObj.experience = N["cardDeck"][i]["cardExperience"].AsInt;
+				cardObj.cardNumber = N["cardDeck"][i]["cardNumber"].AsInt;
+				cardObj.level = N["cardDeck"][i]["cardLevel"].AsInt;
+				
+				GlobalManager.UICard.localUserCardInventory.Add(cardObj);
+			}
+			
+			//int tempTotalExp = 0;
+			for(int i=0; i<cards.Length; i++)
+			{
+				//tempTotalExp += GlobalManager.LocalUser.ComputeTotalExpFromCard(tempCard);
+				parent.enhanceCards[i] = cards[i].GetComponent<AddCardButtonHandler>().Card = null;
+			}
+			totalExpLabel.text = "0";
+			confirmEnhanceButton.isEnabled = false;
+			
+			FillInformation();
+			
+			popup.GetComponent<EnhancePopupHandler>().cardObj = parent.enhanceBaseCard;
+			popup.SetActive(true);
+		}
+		else
+		{
+			// no user -- show register popup
+			//loader.SetActive(false);
+		}
+	}
+	
+	private void InventoryServerRequestError(string result)
+	{
+		NetworkHandler.self.ResultDelegate -= InventoryServerRequestCallback;
+		NetworkHandler.self.ErrorDelegate -= InventoryServerRequestError;
+		base.parent.tabParent.OpenMainLoader(false);
+		//var N = JSONNode.Parse(result);
+		//Debug.Log("callback: " + N["userId"]);
 	}
 }

@@ -27,6 +27,8 @@ public class LandingMenuHandler : MonoBehaviour {
 	public UIPanel mainLoader;
 	public UIPanel mainPopup;
 
+	public CharacterSettings csObj;
+
 	public UIButton[] tabButtons = null;
 	public UIPanel[] tabPages = null;
 	private GameObject currentOpenedPage = null;
@@ -37,6 +39,8 @@ public class LandingMenuHandler : MonoBehaviour {
 
 		GlobalManager.GameSettings.chosenArea = -1;
 		GlobalManager.GameSettings.chosenStage = -1;
+
+		GlobalManager.GameSettings.csObj = csObj;
 
 		Screen.sleepTimeout = SleepTimeout.SystemSetting;
 

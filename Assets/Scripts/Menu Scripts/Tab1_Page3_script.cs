@@ -64,8 +64,12 @@ public class Tab1_Page3_script : SubPageHandler {
 		int levelCost = aiStage.area[GlobalManager.GameSettings.chosenArea-1].subStage[GlobalManager.GameSettings.chosenStage-1].energyCost;
 		if((GlobalManager.LocalUser.actionPoint - levelCost) >= 0)
 		{
-			base.parent.tabParent.mainPopup.GetComponent<MainPopupScript>().ResultDelegate += StartGameCallback;
-			base.parent.tabParent.OpenMainPopup("Single Player Game", "Are you sure to start game with " + levelCost + " gems?", true, MainPopupScript.PopupType.CONFIRMATION);
+			//base.parent.tabParent.mainPopup.GetComponent<MainPopupScript>().ResultDelegate += StartGameCallback;
+			//base.parent.tabParent.OpenMainPopup("Single Player Game", "Are you sure to start game with " + levelCost + " gems?", true, MainPopupScript.PopupType.CONFIRMATION);
+
+			GlobalManager.LocalUser.actionPoint -= levelCost;
+			base.parent.tabParent.UpdateUserDetailBar();
+			Application.LoadLevel("PlaySceneNGUI");
 		}
 		else
 		{

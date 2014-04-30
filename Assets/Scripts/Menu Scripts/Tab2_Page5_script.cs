@@ -43,6 +43,7 @@ public class Tab2_Page5_script : SubPageHandler {
 
 			CharacterCard tempCardObj = GlobalManager.UICard.localUserCardInventory[i];
 			holder.GetComponent<UICardScript>().Card = tempCardObj;
+			holder.GetComponent<UICardScript>().inventoryIndex = i;
 			
 			currentCol++;
 			if(currentCol >= totalCol)
@@ -56,6 +57,7 @@ public class Tab2_Page5_script : SubPageHandler {
 	{
 		// chosen card action
 		parent.currentSelectedDeckNum = int.Parse(go.name.Split(new char[]{'_'})[1]) - 1;
+		parent.enhanceBaseCard = parent.currentSelectedCard = GlobalManager.UICard.localUserCardInventory[go.GetComponent<UICardScript>().inventoryIndex];
 
 		// show popup
 		base.OpenPopup(true);

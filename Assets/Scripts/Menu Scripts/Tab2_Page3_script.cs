@@ -49,6 +49,7 @@ public class Tab2_Page3_script : SubPageHandler {
 			{
 				CharacterCard tempCardObj = GlobalManager.UICard.localUserCardInventory[i-1];
 				holder.GetComponent<UICardScript>().Card = tempCardObj;
+				holder.GetComponent<UICardScript>().inventoryIndex = i-1;
 
 				for(int j=0; j<6; j++)
 				{
@@ -75,6 +76,7 @@ public class Tab2_Page3_script : SubPageHandler {
 	{
 		// chosen card action
 		parent.currentSelectedDeckNum = int.Parse(go.name.Split(new char[]{'_'})[1]) - 1;
+		parent.currentSelectedCard = GlobalManager.UICard.localUserCardInventory[go.GetComponent<UICardScript>().inventoryIndex];
 		
 		if(parent.currentSelectedDeckNum == 0)
 		{

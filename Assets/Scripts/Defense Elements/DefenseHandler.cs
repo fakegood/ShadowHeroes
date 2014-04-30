@@ -35,7 +35,7 @@ public class DefenseHandler : MonoBehaviour {
 		Physics2D.IgnoreLayerCollision(14, 14, true);
 
 		float widthOffset = 30f;
-		float heightOffset = 130f;
+		float heightOffset = 90f;
 		string blueMain = "castle";
 		string redMain = "castle";
 

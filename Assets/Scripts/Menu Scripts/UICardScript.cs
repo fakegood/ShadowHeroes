@@ -7,6 +7,7 @@ public class UICardScript : MonoBehaviour {
 	public UILabel cardName;
 	public UISprite cardBackground;
 	public UISprite tick;
+	public int inventoryIndex = -1;
 	private CharacterCard cardSettings = null;
 
 	public CharacterCard Card
@@ -23,7 +24,11 @@ public class UICardScript : MonoBehaviour {
 			else
 			{
 				cardName.text = csObj.characterProperties[(cardSettings.cardNumber-1)].cardName;
-				cardBackground.spriteName = cardBackground.GetComponent<UIButton>().normalSprite = cardBackground.GetComponent<UIButton>().hoverSprite = cardBackground.GetComponent<UIButton>().disabledSprite = csObj.characterProperties[(cardSettings.cardNumber-1)].iconSpriteName;
+				cardBackground.spriteName = csObj.characterProperties[(cardSettings.cardNumber-1)].iconSpriteName;
+				if(cardBackground.GetComponent<UIButton>() != null)
+				{
+					cardBackground.GetComponent<UIButton>().normalSprite = cardBackground.GetComponent<UIButton>().hoverSprite = cardBackground.GetComponent<UIButton>().disabledSprite = csObj.characterProperties[(cardSettings.cardNumber-1)].iconSpriteName;
+				}
 			}
 		}
 
