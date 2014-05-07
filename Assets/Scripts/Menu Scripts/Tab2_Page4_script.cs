@@ -15,7 +15,11 @@ public class Tab2_Page4_script : SubPageHandler {
 	public UILabel expLabel;
 	public UIProgressBar expProgressBar;
 	public UILabel unitNameLabel;
+	public UISprite rarityIcon;
+	public UILabel unitSkillLabel;
 	public UILabel unitDescriptionLabel;
+	public GameObject characterPrefab;
+	public GameObject dragonPrefab;
 	[System.NonSerialized]
 	public int inventoryIndex = -1;
 	private int selectedIndex = -1;
@@ -48,10 +52,84 @@ public class Tab2_Page4_script : SubPageHandler {
 		costLabel.text = cardObj.cost.ToString();
 		hpLabel.text = base.csObj.characterProperties[cardObj.cardNumber-1].maxHitPoint.ToString();
 		attackLabel.text = base.csObj.characterProperties[cardObj.cardNumber-1].damage.ToString();
-		expLabel.text = "100/1000";
-		expProgressBar.value = 100f/1000f;
-		unitNameLabel.text = base.csObj.characterProperties[cardObj.cardNumber-1].characterName;
+		expLabel.text = cardObj.experience.ToString() + "/" + GlobalManager.LocalUser.ComputeCardNeedLevelupExp(cardObj.level).ToString();
+		expProgressBar.value = (float)cardObj.experience / (float)GlobalManager.LocalUser.ComputeCardNeedLevelupExp(cardObj.level);
+		unitNameLabel.text = base.csObj.characterProperties[cardObj.cardNumber-1].characterName.ToString();
+		rarityIcon.width = base.csObj.characterProperties[cardObj.cardNumber-1].rarity * 32;
+		unitSkillLabel.text = base.csObj.characterProperties[cardObj.cardNumber-1].skillType.ToString().Replace("_", " ");
 		unitDescriptionLabel.text = "None";
+
+		SpawnCharacter(cardObj.cardNumber, UnitType);
+	}
+
+	public void SpawnCharacter(int cardNum, CharacterProperties.UnitType unit)
+	{
+		CharacterProperties.Team tempOwner = CharacterProperties.Team.LEFT;
+		CharacterProperties.CategoryColour colour = GlobalManager.GameSettings.csObj.characterProperties[cardNum].category;
+		int rankLevel = cardNum;
+		
+		if(unit != CharacterProperties.UnitType.DRAGON)
+		{
+			GameObject go = Instantiate(characterPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+			go.transform.parent = this.transform.Find("Holder/Character Unit Holder").transform;
+			go.transform.localScale = Vector3.one * 10;
+			Vector3 pos = Vector3.zero;
+			pos.y = 36f;
+			go.transform.localPosition = pos;
+			go.rigidbody2D.isKinematic = true;
+			go.collider2D.enabled = false;
+			
+			switch(unit)
+			{
+			case CharacterProperties.UnitType.ARCHER:
+			case CharacterProperties.UnitType.CANNON:
+				Archer rangeObj = go.AddComponent<Archer>();
+				rangeObj.characterSettings = GlobalManager.GameSettings.csObj;
+				rangeObj.rank = rankLevel;
+				rangeObj.Category = colour;
+				rangeObj.UnitType = unit;
+				rangeObj.Team = tempOwner;
+				rangeObj.DisplayUnit = true;
+				break;
+			case CharacterProperties.UnitType.ONE_HANDED_WARRIOR:
+			case CharacterProperties.UnitType.TWO_HANDED_WARRIOR:
+			case CharacterProperties.UnitType.SPEAR_WARRIOR:
+				Warrior meleeObj = go.AddComponent<Warrior>();
+				meleeObj.characterSettings = GlobalManager.GameSettings.csObj;
+				meleeObj.rank = rankLevel;
+				meleeObj.Category = colour;
+				meleeObj.UnitType = unit;
+				meleeObj.Team = tempOwner;
+				meleeObj.DisplayUnit = true;
+				break;
+			case CharacterProperties.UnitType.HEALER:
+				Healer healerObj = go.AddComponent<Healer>();
+				healerObj.characterSettings = GlobalManager.GameSettings.csObj;
+				healerObj.rank = rankLevel;
+				healerObj.Category = colour;
+				healerObj.UnitType = unit;
+				healerObj.Team = tempOwner;
+				healerObj.DisplayUnit = true;
+				break;
+			}
+		}
+		else if(unit == CharacterProperties.UnitType.DRAGON)
+		{
+			GameObject go = Instantiate(dragonPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+			go.transform.parent = this.transform.Find("Holder/Character Unit Holder").transform;
+			go.transform.localScale = Vector3.one * 6;
+			Vector3 pos = Vector3.zero;
+			pos.y = 20f;
+			go.transform.localPosition = pos;
+			go.rigidbody2D.isKinematic = true;
+			go.collider2D.enabled = false;
+
+			go.GetComponent<DragonRider>().characterSettings = GlobalManager.GameSettings.csObj;
+			go.GetComponent<DragonRider>().rank = rankLevel;
+			go.GetComponent<DragonRider>().Category = colour;
+			go.GetComponent<DragonRider>().Team = tempOwner;
+			go.GetComponent<DragonRider>().DisplayUnit = true;
+		}
 	}
 
 	public CharacterProperties.CategoryColour UnitCategory

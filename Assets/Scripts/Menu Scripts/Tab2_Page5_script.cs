@@ -5,7 +5,7 @@ public class Tab2_Page5_script : SubPageHandler {
 
 	public GameObject deckObj = null;
 	public UIScrollView scrollPanel = null;
-	private int totalCol = 6;
+	private int totalCol = 5;
 	private Vector2 deckDimension;
 	
 	// Use this for initialization
@@ -32,9 +32,9 @@ public class Tab2_Page5_script : SubPageHandler {
 			holder.name = "Inventory_" + (i+1);
 			holder.transform.parent = parent;
 			
-			if(i % 6 == 0 && i != 0){ currentRow++; }
-			pos.x = ((currentCol * deckDimension.x) + (deckDimension.x / 2)) + 3;
-			pos.y = (((currentRow * deckDimension.y) + (deckDimension.y / 2)) + 3) * -1;
+			if(i % totalCol == 0 && i != 0){ currentRow++; }
+			pos.x = ((currentCol * deckDimension.x) + (deckDimension.x / 2)) + (currentCol * 25f);
+			pos.y = (((currentRow * deckDimension.y) + (deckDimension.y / 2)) + (currentRow * 40f)) * -1;
 			
 			holder.transform.localPosition = pos;
 			holder.transform.localScale = holder.transform.lossyScale;

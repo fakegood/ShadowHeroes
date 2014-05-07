@@ -40,7 +40,7 @@ public class Archer : Character {
 			base.MoveSpeed = cp[tempRank].moveSpeed / 10f;
 			base.AttackSpeed = cp[tempRank].attackSpeed;
 			base.AttackRange = cp[tempRank].attackRange;
-			base.UnitSize = cp[tempRank].unitSize;
+			if(!base.DisplayUnit) base.UnitSize = cp[tempRank].unitSize;
 			base.Category = cp[tempRank].category;
 			base.SkillType = cp[tempRank].skillType;
 			base.SkillLevel = (int)cp[tempRank].skillLevel + 1;

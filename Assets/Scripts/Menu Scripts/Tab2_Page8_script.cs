@@ -8,7 +8,7 @@ public class Tab2_Page8_script : SubPageHandler {
 	public UIScrollView scrollPanel = null;
 	public UILabel costLabel;
 	public GameObject bottomHolder;
-	private int totalCol = 6;
+	private int totalCol = 5;
 	private Vector2 deckDimension;
 	private float gap = 50f;
 	private int totalSellCost = 0;
@@ -44,10 +44,11 @@ public class Tab2_Page8_script : SubPageHandler {
 			holder.name = "Inventory_" + (i+1);
 			holder.transform.parent = parent;
 			
-			if(i % 6 == 0 && i != 0){ currentRow++; }
+			if(i % totalCol == 0 && i != 0){ currentRow++; }
 			if(currentRow == 0) startingGap = 10f;
-			pos.x = ((currentCol * deckDimension.x) + (deckDimension.x / 2)) + 3f;
+			pos.x = ((currentCol * deckDimension.x) + (deckDimension.x / 2)) + (currentCol * 25f);
 			pos.y = (((currentRow * deckDimension.y) + (deckDimension.y / 2)) + (gap * currentRow) + 6f + startingGap) * -1;
+			//pos.y = (((currentRow * deckDimension.y) + (deckDimension.y / 2)) + (currentRow * 40f)) * -1;
 			
 			holder.transform.localPosition = pos;
 			holder.transform.localScale = holder.transform.lossyScale;

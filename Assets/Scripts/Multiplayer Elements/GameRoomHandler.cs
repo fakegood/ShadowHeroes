@@ -49,7 +49,7 @@ public class GameRoomHandler : Photon.MonoBehaviour {
 		GlobalManager.multiplyerGame = true;
 		//GlobalManager.bossGame = GlobalManager.cherryGame = true;
 		GlobalManager.specialCombination = true;
-		Application.LoadLevel("PlayScene");
+		Application.LoadLevel("PlaySceneNGUI");
 	}
 	
 	public void OnJoinedRoom()

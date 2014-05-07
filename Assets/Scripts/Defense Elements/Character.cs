@@ -70,6 +70,7 @@ public class Character : MonoBehaviour {
 	private float headSize = 0f;
 
 	private DefenseHandler defObj;
+	private bool displayUnit = false;
 
 	public virtual void OnAwake()
 	{
@@ -106,9 +107,13 @@ public class Character : MonoBehaviour {
 	{
 		//OnAwake ();
 		animator = this.GetComponent<Animator>();
-		defObj = GameObject.FindGameObjectWithTag("DefenseHandler").GetComponent<DefenseHandler>();
-		rightSpawnPosition = GameObject.FindGameObjectWithTag("Spawner Right").transform.localPosition.x;
-		leftSpawnPosition = GameObject.FindGameObjectWithTag("Spawner Left").transform.localPosition.x;
+
+		if(GameObject.FindGameObjectWithTag("DefenseHandler"))
+		{
+			defObj = GameObject.FindGameObjectWithTag("DefenseHandler").GetComponent<DefenseHandler>();
+			rightSpawnPosition = GameObject.FindGameObjectWithTag("Spawner Right").transform.localPosition.x;
+			leftSpawnPosition = GameObject.FindGameObjectWithTag("Spawner Left").transform.localPosition.x;
+		}
 
 		if(this.transform.Find("Healthbar") != null)
 		{
@@ -125,22 +130,25 @@ public class Character : MonoBehaviour {
 			sr.renderer.sortingLayerName = "Weapon Particle System";
 		}
 
-		if(team == CharacterProperties.Team.LEFT)
+		if(!DisplayUnit)
 		{
-			characterLeft.Add(this);
-
-			for(int j=0; j<characterRight.Count; j++)
+			if(team == CharacterProperties.Team.LEFT)
 			{
-				characterRight[j].UpdateTargetEnemy();
+				characterLeft.Add(this);
+				
+				for(int j=0; j<characterRight.Count; j++)
+				{
+					characterRight[j].UpdateTargetEnemy();
+				}
 			}
-		}
-		else if(team == CharacterProperties.Team.RIGHT)
-		{
-			characterRight.Add(this);
-
-			for(int i=0; i<characterLeft.Count; i++)
+			else if(team == CharacterProperties.Team.RIGHT)
 			{
-				characterLeft[i].UpdateTargetEnemy();
+				characterRight.Add(this);
+				
+				for(int i=0; i<characterLeft.Count; i++)
+				{
+					characterLeft[i].UpdateTargetEnemy();
+				}
 			}
 		}
 
@@ -159,7 +167,7 @@ public class Character : MonoBehaviour {
 			originalAir = this.transform.position.y;
 		}
 
-		if(UnitType != CharacterProperties.UnitType.BUILDING)
+		if(UnitType != CharacterProperties.UnitType.BUILDING && !DisplayUnit)
 		{
 			ApplyConstantBonusDamage();
 		}
@@ -249,20 +257,23 @@ public class Character : MonoBehaviour {
 
 	private void Update()
 	{
-		if(EnemyObject != null)
+		if(!DisplayUnit)
 		{
-			if(team == CharacterProperties.Team.LEFT)
+			if(EnemyObject != null)
 			{
-				if(EnemyObject.transform.localPosition.x - this.gameObject.transform.localPosition.x < 0)
+				if(team == CharacterProperties.Team.LEFT)
 				{
-					EnemyObject = null;
+					if(EnemyObject.transform.localPosition.x - this.gameObject.transform.localPosition.x < 0)
+					{
+						EnemyObject = null;
+					}
 				}
-			}
-			else
-			{
-				if(EnemyObject.transform.localPosition.x - this.gameObject.transform.localPosition.x > 0)
+				else
 				{
-					EnemyObject = null;
+					if(EnemyObject.transform.localPosition.x - this.gameObject.transform.localPosition.x > 0)
+					{
+						EnemyObject = null;
+					}
 				}
 			}
 		}
@@ -270,7 +281,7 @@ public class Character : MonoBehaviour {
 
 	private void LateUpdate()
 	{
-		if(GlobalManager.initCheckDone)
+		if(GlobalManager.initCheckDone && !DisplayUnit)
 		{
 			if(movementState == CharacterProperties.CharacterState.WALKING)
 			{
@@ -915,7 +926,7 @@ public class Character : MonoBehaviour {
 
 	public float HitPoint
 	{
-		set{ maxHitPoint = currentHitPoint = Mathf.Round(value); }
+		set{ maxHitPoint = CurrentHitPoint = Mathf.Round(value); }
 		get{ return maxHitPoint; }
 	}
 
@@ -924,6 +935,7 @@ public class Character : MonoBehaviour {
 		set{
 			currentHitPoint = value;
 			if(currentHitPoint > HitPoint) currentHitPoint = HitPoint;
+
 			if(hitPointProgressBar)
 			{
 				float hpPercentage = CurrentHitPoint / HitPoint;
@@ -933,10 +945,16 @@ public class Character : MonoBehaviour {
 					hitPointProgressBar.value = hpPercentage;
 					hitPointProgressBar.gameObject.SetActive(false);
 				}
+				else if(hpPercentage >= 1f)
+				{
+					hitPointProgressBar.gameObject.SetActive(false);
+				}
 				else
 				{
 					hitPointProgressBar.value = hpPercentage;
 				}
+
+				if(DisplayUnit) hitPointProgressBar.gameObject.SetActive(false);
 			}
 		}
 		get{ return currentHitPoint; }
@@ -1156,6 +1174,12 @@ public class Character : MonoBehaviour {
 	{
 		set{ category = value; }
 		get{ return category; }
+	}
+
+	public bool DisplayUnit
+	{
+		set{ displayUnit = value; }
+		get{ return displayUnit; }
 	}
 
 	#endregion

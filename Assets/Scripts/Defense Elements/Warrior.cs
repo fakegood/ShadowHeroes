@@ -40,8 +40,8 @@ public class Warrior : Character {
 			base.MoveSpeed = cp[tempRank].moveSpeed / 10f;
 			base.AttackSpeed = cp[tempRank].attackSpeed;
 			base.AttackRange = cp[tempRank].attackRange;
-			base.UnitSize = cp[tempRank].unitSize;
-			//base.Category = cp[tempRank].category;
+			if(!base.DisplayUnit) base.UnitSize = cp[tempRank].unitSize;
+			base.Category = cp[tempRank].category;
 			base.SkillType = cp[tempRank].skillType;
 			base.SkillLevel = (int)cp[tempRank].skillLevel + 1;
 			base.PositionType = cp[tempRank].positionType;

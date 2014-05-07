@@ -38,11 +38,18 @@ public class DefenseHandler : MonoBehaviour {
 		float heightOffset = 90f;
 		string blueMain = "castle";
 		string redMain = "castle";
+		int areaNum = 0;
+		int stageNum = 0;
+		int tempPlayerCastleHP = 50000;
+		int tempEnemyCastleHP = 50000;
 
-		int areaNum = GlobalManager.GameSettings.chosenArea - 1;
-		int stageNum = GlobalManager.GameSettings.chosenStage - 1;
-		int tempPlayerCastleHP = stageSettingsObj.area[areaNum].subStage[stageNum].playerCastleHitPoint;
-		int tempEnemyCastleHP = stageSettingsObj.area[areaNum].subStage[stageNum].enemyCastleHitPoint;
+		if(!GlobalManager.multiplyerGame)
+		{
+			areaNum = GlobalManager.GameSettings.chosenArea - 1;
+			stageNum = GlobalManager.GameSettings.chosenStage - 1;
+			tempPlayerCastleHP = stageSettingsObj.area[areaNum].subStage[stageNum].playerCastleHitPoint;
+			tempEnemyCastleHP = stageSettingsObj.area[areaNum].subStage[stageNum].enemyCastleHitPoint;
+		}
 
 		// spawn blue castle
 		Vector3 startPos = new Vector3(spawnPointLeft.transform.localPosition.x, heightOffset, 0);
@@ -462,17 +469,19 @@ public class DefenseHandler : MonoBehaviour {
 			
 		}
 
-		CharacterCard cardObj = new CharacterCard();
-		cardObj.cardNumber = int.Parse(cardRewardString);
+		if(cardRewardString != "")
+		{
+			CharacterCard cardObj = new CharacterCard();
+			cardObj.cardNumber = int.Parse(cardRewardString);
 
-		GameObject card = Instantiate(cardRewardPrefab, Vector3.zero, Quaternion.identity) as GameObject;
-		card.transform.parent = gameoverPopup.transform.Find("Background").transform;
-		card.transform.localScale = Vector3.one;
-		card.transform.localPosition = new Vector3(0f, -80f, 0f);
-		card.GetComponent<UICardScript>().Card = cardObj;
-		card.GetComponent<UIButton>().enabled = false;
-
-		if(cardRewardString == "")
+			GameObject card = Instantiate(cardRewardPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+			card.transform.parent = gameoverPopup.transform.Find("Background").transform;
+			card.transform.localScale = Vector3.one;
+			card.transform.localPosition = new Vector3(0f, -80f, 0f);
+			card.GetComponent<UICardScript>().Card = cardObj;
+			card.GetComponent<UIButton>().enabled = false;
+		}
+		else
 		{
 			cardRewardString = "-1";
 		}
