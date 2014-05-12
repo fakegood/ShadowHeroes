@@ -8,6 +8,7 @@ public class Tab2_Page8_script : SubPageHandler {
 	public UIScrollView scrollPanel = null;
 	public UILabel costLabel;
 	public GameObject bottomHolder;
+	public UIPopupList sortingList;
 	private int totalCol = 5;
 	private Vector2 deckDimension;
 	private float gap = 50f;
@@ -27,6 +28,10 @@ public class Tab2_Page8_script : SubPageHandler {
 
 		costLabel.text = totalSellCost.ToString();
 
+		Vector3 pos2 = new Vector3(sortingList.transform.localPosition.x, 0, sortingList.transform.localPosition.z);
+		pos2.y = this.transform.localPosition.y + (scrollPanel.panel.finalClipRegion.w/2) - 10f;
+		sortingList.transform.localPosition = pos2;
+
 		//base.StartSubPage();
 	}
 	
@@ -35,6 +40,8 @@ public class Tab2_Page8_script : SubPageHandler {
 		Transform parent = this.transform.Find("ScrollView/Inventory List Holder");
 		int currentRow = 0;
 		int currentCol = 0;
+
+		GlobalManager.SortInventory();
 		
 		for(int i = 0; i<GlobalManager.UICard.localUserCardInventory.Count; i++)
 		{
@@ -57,6 +64,7 @@ public class Tab2_Page8_script : SubPageHandler {
 
 			CharacterCard tempCardObj = GlobalManager.UICard.localUserCardInventory[i];
 			holder.GetComponent<UICardScript>().Card = tempCardObj;
+			holder.GetComponent<UICardScript>().SortType = GlobalManager.cardSorting;
 			
 			for(int j=0; j<6; j++)
 			{
@@ -76,6 +84,8 @@ public class Tab2_Page8_script : SubPageHandler {
 				currentCol = 0;
 			}
 		}
+
+		parent.GetComponent<UIWidget>().SetDimensions((int)scrollPanel.bounds.size.x, (int)scrollPanel.bounds.size.y);
 	}
 	
 	private void ButtonHandler(GameObject go)
@@ -217,5 +227,46 @@ public class Tab2_Page8_script : SubPageHandler {
 		base.parent.tabParent.OpenMainLoader(false);
 		//var N = JSONNode.Parse(result);
 		//Debug.Log("callback: " + N["userId"]);
+	}
+
+	private void ClearList()
+	{
+		Transform parent = this.transform.Find("ScrollView/Inventory List Holder");
+		UICardScript[] cards = parent.GetComponentsInChildren<UICardScript>();
+		
+		foreach(UICardScript card in cards)
+		{
+			Destroy(card.gameObject);
+		}
+	}
+
+	public void SortingChange(string currentItem)
+	{
+		switch(currentItem)
+		{
+		case "Rarity":
+			GlobalManager.cardSorting = GlobalManager.CardSortType.RARITY;
+			break;
+		case "HP":
+			GlobalManager.cardSorting = GlobalManager.CardSortType.HP;
+			break;
+		case "Damage":
+			GlobalManager.cardSorting = GlobalManager.CardSortType.DAMAGE;
+			break;
+		case "Level":
+			GlobalManager.cardSorting = GlobalManager.CardSortType.LEVEL;
+			break;
+		case "Name":
+			GlobalManager.cardSorting = GlobalManager.CardSortType.NAME;
+			break;
+		case "Cost":
+			GlobalManager.cardSorting = GlobalManager.CardSortType.COST;
+			break;
+		}
+		
+		GlobalManager.SortInventory();
+		ClearList();
+		SpawnLocalUserInventory();
+		scrollPanel.ResetPosition();
 	}
 }

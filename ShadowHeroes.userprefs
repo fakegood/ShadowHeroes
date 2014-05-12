@@ -1,24 +1,35 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Defense Elements/DefenseHandler.cs">
     <Files>
       <File FileName="Assets/Scripts/GlobalManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Menu Scripts/LoadingMenuHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Menu Scripts/LoadingMenuHandler.cs" Line="84" Column="4" />
       <File FileName="Assets/Scripts/Menu Scripts/SubPageHandler.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Menu Scripts/LandingMenuHandler.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Defense Elements/DefenseHandler.cs" Line="421" Column="88" />
-      <File FileName="Assets/Scripts/Multiplayer Elements/GameRoomHandler.cs" Line="52" Column="39" />
+      <File FileName="Assets/Scripts/Defense Elements/DefenseHandler.cs" Line="379" Column="56" />
+      <File FileName="Assets/Scripts/Multiplayer Elements/GameRoomHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Defense Elements/Character.cs" Line="940" Column="4" />
+      <File FileName="Assets/Scripts/Menu Scripts/UICardScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Menu Scripts/Tab2_Page5_script.cs" Line="101" Column="16" />
+      <File FileName="Assets/NGUI/Scripts/Internal/UIWidget.cs" Line="1024" Column="1" />
+      <File FileName="Assets/Scripts/Defense Elements/Building.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
+            <Node name="NGUI" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="Internal" expanded="True" />
+                <Node name="UI" expanded="True" />
+              </Node>
+            </Node>
             <Node name="Scripts" expanded="True">
               <Node name="Defense Elements" expanded="True">
                 <Node name="DefenseHandler.cs" selected="True" />
               </Node>
+              <Node name="Helper Script" expanded="True" />
               <Node name="Menu Scripts" expanded="True" />
-              <Node name="Multiplayer Elements" expanded="True" />
             </Node>
           </Node>
         </State>

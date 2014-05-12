@@ -37,8 +37,11 @@ public class UIAtlasMaker : EditorWindow
 
 	void OnSelectAtlas (Object obj)
 	{
-		NGUISettings.atlas = obj as UIAtlas;
-		Repaint();
+		if (NGUISettings.atlas != obj)
+		{
+			NGUISettings.atlas = obj as UIAtlas;
+			Repaint();
+		}
 	}
 
 	/// <summary>
@@ -369,6 +372,33 @@ public class UIAtlasMaker : EditorWindow
 	}
 
 	/// <summary>
+	/// Duplicate the specified sprite.
+	/// </summary>
+
+	static public SpriteEntry DuplicateSprite (UIAtlas atlas, string spriteName)
+	{
+		if (atlas == null || atlas.texture == null) return null;
+		UISpriteData sd = atlas.GetSprite(spriteName);
+		if (sd == null) return null;
+
+		Texture2D tex = NGUIEditorTools.ImportTexture(atlas.texture, true, true, false);
+		SpriteEntry se = ExtractSprite(sd, tex);
+
+		if (se != null)
+		{
+			se.name = se.name + " (Copy)";
+
+			List<UIAtlasMaker.SpriteEntry> sprites = new List<UIAtlasMaker.SpriteEntry>();
+			UIAtlasMaker.ExtractSprites(atlas, sprites);
+			sprites.Add(se);
+			UIAtlasMaker.UpdateAtlas(atlas, sprites);
+			if (se.temporaryTexture) DestroyImmediate(se.tex);
+		}
+		else NGUIEditorTools.ImportTexture(atlas.texture, false, false, !atlas.premultipliedAlpha);
+		return se;
+	}
+
+	/// <summary>
 	/// Extract the specified sprite from the atlas.
 	/// </summary>
 
@@ -378,7 +408,7 @@ public class UIAtlasMaker : EditorWindow
 		UISpriteData sd = atlas.GetSprite(spriteName);
 		if (sd == null) return null;
 
-		Texture2D tex = NGUIEditorTools.ImportTexture(atlas.texture, true, false, !atlas.premultipliedAlpha);
+		Texture2D tex = NGUIEditorTools.ImportTexture(atlas.texture, true, true, false);
 		SpriteEntry se = ExtractSprite(sd, tex);
 		NGUIEditorTools.ImportTexture(atlas.texture, false, false, !atlas.premultipliedAlpha);
 		return se;
@@ -447,7 +477,7 @@ public class UIAtlasMaker : EditorWindow
 		ShowProgress(0f);
 
 		// Make the atlas texture readable
-		Texture2D tex = NGUIEditorTools.ImportTexture(atlas.texture, true, false, !atlas.premultipliedAlpha);
+		Texture2D tex = NGUIEditorTools.ImportTexture(atlas.texture, true, true, false);
 
 		if (tex != null)
 		{
@@ -524,7 +554,7 @@ public class UIAtlasMaker : EditorWindow
 		else
 		{
 			// Make the atlas readable so we can save it
-			tex = NGUIEditorTools.ImportTexture(oldPath, true, false, !atlas.premultipliedAlpha);
+			tex = NGUIEditorTools.ImportTexture(oldPath, true, false, false);
 		}
 
 		// Pack the sprites into this texture
@@ -536,7 +566,7 @@ public class UIAtlasMaker : EditorWindow
 
 			// Load the texture we just saved as a Texture2D
 			AssetDatabase.SaveAssets();
-			AssetDatabase.Refresh();
+			AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
 			tex = NGUIEditorTools.ImportTexture(newPath, false, true, !atlas.premultipliedAlpha);
 
 			// Update the atlas texture
@@ -547,7 +577,7 @@ public class UIAtlasMaker : EditorWindow
 				ReleaseSprites(sprites);
 				
 				AssetDatabase.SaveAssets();
-				AssetDatabase.Refresh();
+				AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
 			}
 			return true;
 		}
@@ -855,7 +885,7 @@ public class UIAtlasMaker : EditorWindow
 
 						// Save the material
 						AssetDatabase.CreateAsset(mat, matPath);
-						AssetDatabase.Refresh();
+						AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
 
 						// Load the material so it's usable
 						mat = AssetDatabase.LoadAssetAtPath(matPath, typeof(Material)) as Material;
@@ -874,7 +904,7 @@ public class UIAtlasMaker : EditorWindow
 					PrefabUtility.ReplacePrefab(go, prefab);
 					DestroyImmediate(go);
 					AssetDatabase.SaveAssets();
-					AssetDatabase.Refresh();
+					AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
 
 					// Select the atlas
 					go = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject)) as GameObject;

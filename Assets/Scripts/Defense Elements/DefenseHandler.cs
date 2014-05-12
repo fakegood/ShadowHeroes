@@ -370,7 +370,7 @@ public class DefenseHandler : MonoBehaviour {
 		unit.transform.localScale = tempScale;
 		unit.transform.localPosition = tempPosition;
 		unit.name = tempName;
-		
+
 		UISprite spriteObj = unit.GetComponent<UISprite>();
 		//spriteObj.SetSprite(tempSpriteName);
 		spriteObj.spriteName = tempSpriteName;

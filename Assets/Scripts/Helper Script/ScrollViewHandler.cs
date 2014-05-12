@@ -8,7 +8,7 @@ public class ScrollViewHandler : MonoBehaviour {
 	private float extraOffset = 12f;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		backgroundImage = GameObject.FindGameObjectWithTag("MainBackground").GetComponent<UISprite>();
 
 		Vector2 size = new Vector2(backgroundImage.localSize.x, (backgroundImage.localSize.y - (backgroundImageHeaderHeight + extraOffset)));

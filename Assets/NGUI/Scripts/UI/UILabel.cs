@@ -58,7 +58,7 @@ public class UILabel : UIWidget
 	[HideInInspector][SerializeField] int mMaxLineCount = 0; // 0 denotes unlimited
 	[HideInInspector][SerializeField] Effect mEffectStyle = Effect.None;
 	[HideInInspector][SerializeField] Color mEffectColor = Color.black;
-	[HideInInspector][SerializeField] NGUIText.SymbolStyle mSymbols = NGUIText.SymbolStyle.Uncolored;
+	[HideInInspector][SerializeField] NGUIText.SymbolStyle mSymbols = NGUIText.SymbolStyle.Normal;
 	[HideInInspector][SerializeField] Vector2 mEffectDistance = Vector2.one;
 	[HideInInspector][SerializeField] Overflow mOverflow = Overflow.ShrinkContent;
 	[HideInInspector][SerializeField] Material mMaterial;
@@ -76,6 +76,7 @@ public class UILabel : UIWidget
 	[HideInInspector][SerializeField] bool mMultiline = true;
 
 #if DYNAMIC_FONT
+	[System.NonSerialized]
 	Font mActiveTTF = null;
 	float mDensity = 1f;
 #endif
@@ -1169,9 +1170,10 @@ public class UILabel : UIWidget
 				int h = height;
 
 				Overflow over = mOverflow;
-				mOverflow = Overflow.ShrinkContent;
-				mWidth = 100000;
+				if (over != Overflow.ResizeHeight) mWidth = 100000;
 				mHeight = 100000;
+
+				mOverflow = Overflow.ShrinkContent;
 				ProcessText(false, true);
 				mOverflow = over;
 
@@ -1283,8 +1285,13 @@ public class UILabel : UIWidget
 
 			if (linkStart != linkEnd)
 			{
-				string word = mText.Substring(linkStart, linkEnd - linkStart);
-				return NGUIText.StripSymbols(word);
+				int len = linkEnd - linkStart;
+
+				if (len > 0)
+				{
+					string word = mText.Substring(linkStart, len);
+					return NGUIText.StripSymbols(word);
+				}
 			}
 		}
 		return null;

@@ -88,6 +88,16 @@ public class GlobalManager : MonoBehaviour {
 		RANKING,
 		SHOP_PAYMENT
 	}
+
+	public enum CardSortType
+	{
+		DAMAGE,
+		HP,
+		LEVEL,
+		RARITY,
+		NAME,
+		COST
+	}
 	
 	public static int gameType = 2;
 	public static bool jellyGame = false;
@@ -121,6 +131,7 @@ public class GlobalManager : MonoBehaviour {
 	public static float oriShrinkSpeed = 0.2f;
 	
 	public static iTween.EaseType dropTweenEaseType = iTween.EaseType.easeOutBounce;
+	public static CardSortType cardSorting = CardSortType.DAMAGE;
 	
 	public static int[] totalCandyOnScreen = new int[6];
 
@@ -128,10 +139,7 @@ public class GlobalManager : MonoBehaviour {
 	//public static string[,] characterDetails;
 	public static string[,] skillDetails;
 	//public static int[] pebbleCounter;
-	
 	public static UILabel[] elementTextArray;
-	//public static tk2dSpriteCollectionData mainSpriteCollectionData;
-	//public static tk2dSpriteAnimation mainSpriteAnimation;
 
 	public static bool ProbabilityCounter(int percentageToCheck)
 	{
@@ -144,6 +152,68 @@ public class GlobalManager : MonoBehaviour {
 		}
 		
 		return getLucky;
+	}
+
+	public static void SortInventory()
+	{
+		if(GlobalManager.cardSorting == GlobalManager.CardSortType.RARITY)
+		{
+			GlobalManager.UICard.localUserCardInventory = GlobalManager.UICard.localUserCardInventory.OrderByDescending(x=>x.rarity).ToList();
+		}
+		else if(GlobalManager.cardSorting == GlobalManager.CardSortType.DAMAGE)
+		{
+			GlobalManager.UICard.localUserCardInventory.Sort(SortByDamage);
+		}
+		else if(GlobalManager.cardSorting == GlobalManager.CardSortType.COST)
+		{
+			GlobalManager.UICard.localUserCardInventory.Sort(SortByCost);
+		}
+		else if(GlobalManager.cardSorting == GlobalManager.CardSortType.HP)
+		{
+			GlobalManager.UICard.localUserCardInventory.Sort(SortByHitPoint);
+		}
+		else if(GlobalManager.cardSorting == GlobalManager.CardSortType.LEVEL)
+		{
+			GlobalManager.UICard.localUserCardInventory.Sort(SortByLevel);
+		}
+		else if(GlobalManager.cardSorting == GlobalManager.CardSortType.NAME)
+		{
+			GlobalManager.UICard.localUserCardInventory.Sort(SortByName);
+		}
+	}
+	
+	// sorting functions
+	public static int SortByDamage(CharacterCard go1, CharacterCard go2)
+	{
+		int totalDamage1 = (int)GlobalManager.GameSettings.csObj.characterProperties[go1.cardNumber-1].damage + (int)(go1.level * GlobalManager.GameSettings.csObj.characterProperties[go1.cardNumber-1].damageIncreament);
+		int totalDamage2 = (int)GlobalManager.GameSettings.csObj.characterProperties[go2.cardNumber-1].damage + (int)(go2.level * GlobalManager.GameSettings.csObj.characterProperties[go2.cardNumber-1].damageIncreament);
+		return totalDamage1.CompareTo(totalDamage2);
+	}
+	
+	public static int SortByCost(CharacterCard go1, CharacterCard go2)
+	{
+		int cost1 = (int)GlobalManager.GameSettings.csObj.characterProperties[go1.cardNumber-1].unitCost;
+		int cost2 = (int)GlobalManager.GameSettings.csObj.characterProperties[go2.cardNumber-1].unitCost;
+		return cost1.CompareTo(cost2);
+	}
+	
+	public static int SortByHitPoint(CharacterCard go1, CharacterCard go2)
+	{
+		int totalHitPoint1 = (int)GlobalManager.GameSettings.csObj.characterProperties[go1.cardNumber-1].maxHitPoint + (int)(go1.level * GlobalManager.GameSettings.csObj.characterProperties[go1.cardNumber-1].hitPointIncreament);
+		int totalHitPoint2 = (int)GlobalManager.GameSettings.csObj.characterProperties[go2.cardNumber-1].maxHitPoint + (int)(go2.level * GlobalManager.GameSettings.csObj.characterProperties[go2.cardNumber-1].hitPointIncreament);
+		return totalHitPoint1.CompareTo(totalHitPoint2);
+	}
+	
+	public static int SortByLevel(CharacterCard go1, CharacterCard go2)
+	{
+		return go1.level.CompareTo(go2.level);
+	}
+	
+	public static int SortByName(CharacterCard go1, CharacterCard go2)
+	{
+		string name1 = GlobalManager.GameSettings.csObj.characterProperties[go1.cardNumber-1].characterName;
+		string name2 = GlobalManager.GameSettings.csObj.characterProperties[go2.cardNumber-1].characterName;
+		return name1.CompareTo(name2);
 	}
 
 	public static class LocalUser

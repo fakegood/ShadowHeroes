@@ -131,20 +131,20 @@ public class UIScrollView : MonoBehaviour
 	// Deprecated functionality. Use 'contentPivot' instead.
 	[SerializeField][HideInInspector] Vector2 relativePositionOnReset = Vector2.zero;
 
-	Transform mTrans;
-	UIPanel mPanel;
-	Plane mPlane;
-	Vector3 mLastPos;
-	bool mPressed = false;
-	Vector3 mMomentum = Vector3.zero;
-	float mScroll = 0f;
-	Bounds mBounds;
-	bool mCalculatedBounds = false;
-	bool mShouldMove = false;
-	bool mIgnoreCallbacks = false;
-	int mDragID = -10;
-	Vector2 mDragStartOffset = Vector2.zero;
-	bool mDragStarted = false;
+	protected Transform mTrans;
+	protected UIPanel mPanel;
+	protected Plane mPlane;
+	protected Vector3 mLastPos;
+	protected bool mPressed = false;
+	protected Vector3 mMomentum = Vector3.zero;
+	protected float mScroll = 0f;
+	protected Bounds mBounds;
+	protected bool mCalculatedBounds = false;
+	protected bool mShouldMove = false;
+	protected bool mIgnoreCallbacks = false;
+	protected int mDragID = -10;
+	protected Vector2 mDragStartOffset = Vector2.zero;
+	protected bool mDragStarted = false;
 
 	/// <summary>
 	/// Panel that's being dragged.
@@ -162,7 +162,7 @@ public class UIScrollView : MonoBehaviour
 	/// Calculate the bounds used by the widgets.
 	/// </summary>
 
-	public Bounds bounds
+	public virtual Bounds bounds
 	{
 		get
 		{
@@ -214,7 +214,7 @@ public class UIScrollView : MonoBehaviour
 		{
 			float size = bounds.size.x;
 			if (mPanel.clipping == UIDrawCall.Clipping.SoftClip) size += mPanel.clipSoftness.x * 2f;
-			return size > mPanel.width;
+			return Mathf.RoundToInt(size - mPanel.width) > 0;
 		}
 	}
 
@@ -228,7 +228,7 @@ public class UIScrollView : MonoBehaviour
 		{
 			float size = bounds.size.y;
 			if (mPanel.clipping == UIDrawCall.Clipping.SoftClip) size += mPanel.clipSoftness.y * 2f;
-			return size > mPanel.height;
+			return Mathf.RoundToInt(size - mPanel.height) > 0;
 		}
 	}
 
@@ -327,7 +327,7 @@ public class UIScrollView : MonoBehaviour
 	/// Set the initial drag value and register the listener delegates.
 	/// </summary>
 
-	void Start ()
+	protected virtual void Start ()
 	{
 		//UpdatePosition();
 
@@ -365,7 +365,7 @@ public class UIScrollView : MonoBehaviour
 		if (!horizontal) constraint.x = 0f;
 		if (!vertical) constraint.y = 0f;
 
-		if (constraint.magnitude > 1f)
+		if (constraint.sqrMagnitude > 0.1f)
 		{
 			if (!instant && dragEffect == DragEffect.MomentumAndSpring)
 			{
@@ -396,6 +396,12 @@ public class UIScrollView : MonoBehaviour
 		SpringPanel sp = GetComponent<SpringPanel>();
 		if (sp != null) sp.enabled = false;
 	}
+
+	/// <summary>
+	/// Update the values of the associated scroll bars.
+	/// </summary>
+
+	public void UpdateScrollbars () { UpdateScrollbars(true); }
 
 	/// <summary>
 	/// Update the values of the associated scroll bars.
@@ -438,7 +444,7 @@ public class UIScrollView : MonoBehaviour
 				contentMin = viewMin - contentMin;
 				contentMax = contentMax - viewMax;
 
-				UpdateScrollbars(horizontalScrollBar as UIScrollBar, contentMin, contentMax, contentSize, viewSize, false);
+				UpdateScrollbars(horizontalScrollBar, contentMin, contentMax, contentSize, viewSize, false);
 			}
 
 			if (verticalScrollBar != null && bmax.y > bmin.y)
@@ -462,7 +468,7 @@ public class UIScrollView : MonoBehaviour
 				contentMin = viewMin - contentMin;
 				contentMax = contentMax - viewMax;
 
-				UpdateScrollbars(verticalScrollBar as UIScrollBar, contentMin, contentMax, contentSize, viewSize, true);
+				UpdateScrollbars(verticalScrollBar, contentMin, contentMax, contentSize, viewSize, true);
 			}
 		}
 		else if (recalculateBounds)
@@ -475,24 +481,41 @@ public class UIScrollView : MonoBehaviour
 	/// Helper function used in UpdateScrollbars(float) function above.
 	/// </summary>
 
-	void UpdateScrollbars (UIScrollBar sb, float contentMin, float contentMax, float contentSize, float viewSize, bool inverted)
+	protected void UpdateScrollbars (UIProgressBar slider, float contentMin, float contentMax, float contentSize, float viewSize, bool inverted)
 	{
-		if (viewSize < contentSize)
-		{
-			contentMin = Mathf.Clamp01(contentMin / contentSize);
-			contentMax = Mathf.Clamp01(contentMax / contentSize);
-		}
-		else
-		{
-			contentMin = Mathf.Clamp01(-contentMin / contentSize);
-			contentMax = Mathf.Clamp01(-contentMax / contentSize);
-		}
+		if (slider == null) return;
 
 		mIgnoreCallbacks = true;
 		{
-			float contentPadding = contentMin + contentMax;
-			sb.value = inverted ? ((contentPadding > 0.001f) ? 1f - contentMin / contentPadding : 0f) :
-				((contentPadding > 0.001f) ? contentMin / contentPadding : 1f);
+			float contentPadding;
+
+			if (viewSize < contentSize)
+			{
+				contentMin = Mathf.Clamp01(contentMin / contentSize);
+				contentMax = Mathf.Clamp01(contentMax / contentSize);
+
+				contentPadding = contentMin + contentMax;
+				slider.value = inverted ? ((contentPadding > 0.001f) ? 1f - contentMin / contentPadding : 0f) :
+					((contentPadding > 0.001f) ? contentMin / contentPadding : 1f);
+			}
+			else
+			{
+				contentMin = Mathf.Clamp01(-contentMin / contentSize);
+				contentMax = Mathf.Clamp01(-contentMax / contentSize);
+
+				contentPadding = contentMin + contentMax;
+				slider.value = inverted ? ((contentPadding > 0.001f) ? 1f - contentMin / contentPadding : 0f) :
+					((contentPadding > 0.001f) ? contentMin / contentPadding : 1f);
+
+				if (contentSize > 0)
+				{
+					contentMin = Mathf.Clamp01(contentMin / contentSize);
+					contentMax = Mathf.Clamp01(contentMax / contentSize);
+					contentPadding = contentMin + contentMax;
+				}
+			}
+
+			UIScrollBar sb = slider as UIScrollBar;
 			if (sb != null) sb.barSize = 1f - contentPadding;
 		}
 		mIgnoreCallbacks = false;
@@ -513,10 +536,6 @@ public class UIScrollView : MonoBehaviour
 		if (b.min.x == b.max.x || b.min.y == b.max.y) return;
 
 		Vector4 clip = mPanel.finalClipRegion;
-		clip.x = Mathf.Round(clip.x);
-		clip.y = Mathf.Round(clip.y);
-		clip.z = Mathf.Round(clip.z);
-		clip.w = Mathf.Round(clip.w);
 
 		float hx = clip.z * 0.5f;
 		float hy = clip.w * 0.5f;
@@ -536,9 +555,6 @@ public class UIScrollView : MonoBehaviour
 		// Calculate the offset based on the scroll value
 		float ox = Mathf.Lerp(left, right, x);
 		float oy = Mathf.Lerp(top, bottom, y);
-
-		ox = Mathf.Round(ox);
-		oy = Mathf.Round(oy);
 
 		// Update the position
 		if (!updateScrollbars)
@@ -589,7 +605,7 @@ public class UIScrollView : MonoBehaviour
 
 	public void UpdatePosition ()
 	{
-		if (!mIgnoreCallbacks)
+		if (!mIgnoreCallbacks && (horizontalScrollBar != null || verticalScrollBar != null))
 		{
 			mIgnoreCallbacks = true;
 			mCalculatedBounds = false;
@@ -619,7 +635,7 @@ public class UIScrollView : MonoBehaviour
 	}
 
 	/// <summary>
-	/// Move the scroll view by the specified amount.
+	/// Move the scroll view by the specified local space amount.
 	/// </summary>
 
 	public virtual void MoveRelative (Vector3 relative)
@@ -629,11 +645,13 @@ public class UIScrollView : MonoBehaviour
 		co.x -= relative.x;
 		co.y -= relative.y;
 		mPanel.clipOffset = co;
+
+		// Update the scroll bars
 		UpdateScrollbars(false);
 	}
 
 	/// <summary>
-	/// Move the scroll view by the specified amount.
+	/// Move the scroll view by the specified world space amount.
 	/// </summary>
 
 	public void MoveAbsolute (Vector3 absolute)
@@ -731,7 +749,7 @@ public class UIScrollView : MonoBehaviour
 				Vector3 offset = currentPos - mLastPos;
 				mLastPos = currentPos;
 
-				if (offset.x != 0f || offset.y != 0f)
+				if (offset.x != 0f || offset.y != 0f || offset.z != 0f)
 				{
 					offset = mTrans.InverseTransformDirection(offset);
 
@@ -760,9 +778,9 @@ public class UIScrollView : MonoBehaviour
 				mMomentum = Vector3.Lerp(mMomentum, mMomentum + offset * (0.01f * momentumAmount), 0.67f);
 
 				// Move the scroll view
-				if (!iOSDragEmulation)
+				if (!iOSDragEmulation || dragEffect != DragEffect.MomentumAndSpring)
 				{
-					MoveAbsolute(offset);	
+					MoveAbsolute(offset);
 				}
 				else
 				{

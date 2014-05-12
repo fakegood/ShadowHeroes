@@ -46,6 +46,11 @@ public class PokiPopup : MonoBehaviour {
 				this.gameObject.SetActive(false);
 			}
 		}
+		else
+		{
+			iTween.Stop();
+			UpdateBrightStuff(-1f);
+		}
 	}
 
 	private void StartAnimation()
@@ -81,7 +86,7 @@ public class PokiPopup : MonoBehaviour {
 
 	void UpdateBrightStuff(float value)
 	{
-		if(value >= 0.95f && !showed)
+		if((value >= 0.95f || value == -1f) && !showed)
 		{
 			showed = true;
 			twirl.SetActive(false);

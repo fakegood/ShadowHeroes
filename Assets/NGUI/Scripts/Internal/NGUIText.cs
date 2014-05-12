@@ -28,7 +28,7 @@ static public class NGUIText
 	public enum SymbolStyle
 	{
 		None,
-		Uncolored,
+		Normal,
 		Colored,
 	}
 
@@ -162,7 +162,7 @@ static public class NGUIText
 		else if (dynamicFont != null)
 		{
 			if (dynamicFont.GetCharacterInfo((char)ch, out mTempChar, finalSize, fontStyle))
-				return Mathf.Round(mTempChar.width * fontScale * pixelDensity);
+				return mTempChar.width * fontScale * pixelDensity;
 		}
 #endif
 		return 0f;
@@ -235,8 +235,6 @@ static public class NGUIText
 					glyph.v1 *= pd;
 					glyph.advance *= pd;
 				}
-
-				glyph.advance = Mathf.Round(glyph.advance);
 				return glyph;
 			}
 		}
@@ -411,7 +409,7 @@ static public class NGUIText
 		if (text[index + 1] == 'u' && text[index + 2] == 'r' && text[index + 3] == 'l' && text[index + 4] == '=')
 		{
 			int closingBracket = text.IndexOf(']', index + 4);
-			
+
 			if (closingBracket != -1)
 			{
 				index = closingBracket + 1;
@@ -539,7 +537,7 @@ static public class NGUIText
 				for (int i = indexOffset + 4, charIndex = 1; i < verts.size; ++charIndex)
 				{
 					float x0 = verts.buffer[i].x;
-					float x1 = verts.buffer[i+2].x;
+					float x1 = verts.buffer[i + 2].x;
 					float w = x1 - x0;
 					float x0a = x0 * scale;
 					float x1a = x0a + w;
@@ -665,7 +663,7 @@ static public class NGUIText
 				if (symbol == null)
 				{
 					float w = GetGlyphWidth(ch, prev);
-					
+
 					if (w != 0f)
 					{
 						w += finalSpacingX;
@@ -801,11 +799,14 @@ static public class NGUIText
 		float remainingWidth = rectWidth;
 		int start = 0, offset = 0, lineCount = 1, prev = 0;
 		bool lineIsEmpty = true;
+		bool fits = true;
+		bool eastern = false;
 
 		// Run through all characters
 		for (; offset < textLength; ++offset)
 		{
 			char ch = text[offset];
+			if (ch > 12287) eastern = true;
 
 			// New line character -- start a new line
 			if (ch == '\n')
@@ -846,27 +847,36 @@ static public class NGUIText
 			remainingWidth -= glyphWidth;
 
 			// If this marks the end of a word, add it to the final string.
-			if (ch == ' ' && prev != ' ' && start < offset)
+			if (ch == ' ' && !eastern)
 			{
-				int end = offset - start + 1;
+				if (prev == ' ')
+				{
+					sb.Append(' ');
+					start = offset;
+				}
+				else if (prev != ' ' && start < offset)
+				{
+					int end = offset - start + 1;
 
-				// Last word on the last line should not include an invisible character
-				if (lineCount == maxLineCount && remainingWidth <= 0f && offset < textLength && text[offset] <= ' ') --end;
+					// Last word on the last line should not include an invisible character
+					if (lineCount == maxLineCount && remainingWidth <= 0f && offset < textLength && text[offset] <= ' ') --end;
 
-				sb.Append(text.Substring(start, end));
-				lineIsEmpty = false;
-				start = offset + 1;
-				prev = ch;
+					sb.Append(text.Substring(start, end));
+					lineIsEmpty = false;
+					start = offset + 1;
+					prev = ch;
+				}
 			}
 
 			// Doesn't fit?
-			if (remainingWidth < 0f)
+			if (Mathf.RoundToInt(remainingWidth) < 0)
 			{
 				// Can't start a new line
 				if (lineIsEmpty || lineCount == maxLineCount)
 				{
 					// This is the first word on the line -- add it up to the character that fits
 					sb.Append(text.Substring(start, Mathf.Max(0, offset - start)));
+					if (ch != ' ' && !eastern) fits = false;
 
 					if (lineCount++ == maxLineCount)
 					{
@@ -894,9 +904,6 @@ static public class NGUIText
 				}
 				else
 				{
-					// Skip all spaces before the word
-					while (start < textLength && text[start] == ' ') ++start;
-
 					// Revert the position to the beginning of the word and reset the line
 					lineIsEmpty = true;
 					remainingWidth = rectWidth;
@@ -921,7 +928,7 @@ static public class NGUIText
 
 		if (start < offset) sb.Append(text.Substring(start, offset - start));
 		finalText = sb.ToString();
-		return (offset == textLength) || (lineCount <= Mathf.Min(maxLines, maxLineCount));
+		return fits && ((offset == textLength) || (lineCount <= Mathf.Min(maxLines, maxLineCount)));
 	}
 
 	static Color32 s_c0, s_c1;

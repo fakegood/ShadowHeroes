@@ -926,7 +926,9 @@ public class Character : MonoBehaviour {
 
 	public float HitPoint
 	{
-		set{ maxHitPoint = CurrentHitPoint = Mathf.Round(value); }
+		set{
+			CurrentHitPoint = maxHitPoint = Mathf.Round(value);
+		}
 		get{ return maxHitPoint; }
 	}
 

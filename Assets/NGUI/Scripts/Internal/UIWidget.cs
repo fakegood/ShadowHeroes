@@ -213,7 +213,7 @@ public class UIWidget : UIRect
 			int min = minHeight;
 			if (value < min) value = min;
 
-			if (mHeight != value && keepAspectRatio != AspectRatioSource.BasedOnHeight)
+			if (mHeight != value && keepAspectRatio != AspectRatioSource.BasedOnWidth)
 			{
 				if (isAnchoredVertically)
 				{
@@ -290,7 +290,7 @@ public class UIWidget : UIRect
 	/// Whether the widget is currently visible.
 	/// </summary>
 
-	public bool isVisible { get { return mIsVisibleByPanel && mIsVisibleByAlpha && mIsInFront && finalAlpha > 0.001f; } }
+	public bool isVisible { get { return mIsVisibleByPanel && mIsVisibleByAlpha && mIsInFront && finalAlpha > 0.001f && NGUITools.GetActive(this); } }
 
 	/// <summary>
 	/// Whether the widget has vertices to draw.
@@ -659,7 +659,7 @@ public class UIWidget : UIRect
 
 		if (panel != null)
 		{
-			bool vis = (hideIfOffScreen || panel.clipsChildren) ? panel.IsVisible(this) : true;
+			bool vis = (hideIfOffScreen || panel.hasCumulativeClipping) ? panel.IsVisible(this) : true;
 			UpdateVisibility(CalculateCumulativeAlpha(Time.frameCount) > 0.001f, vis);
 			UpdateFinalAlpha(Time.frameCount);
 			if (includeChildren) base.Invalidate(true);
@@ -680,7 +680,7 @@ public class UIWidget : UIRect
 	/// Set the widget's rectangle.
 	/// </summary>
 
-	public void SetRect (float x, float y, float width, float height)
+	public override void SetRect (float x, float y, float width, float height)
 	{
 		Vector2 po = pivotOffset;
 
@@ -702,8 +702,8 @@ public class UIWidget : UIRect
 		if (finalHeight < minHeight) finalHeight = minHeight;
 
 		t.localPosition = pos;
-		width = finalWidth;
-		height = finalHeight;
+		this.width = finalWidth;
+		this.height = finalHeight;
 
 		if (isAnchored)
 		{
@@ -1016,7 +1016,20 @@ public class UIWidget : UIRect
 	/// Virtual Start() functionality for widgets.
 	/// </summary>
 
-	protected override void OnStart () { CreatePanel(); }
+	protected override void OnStart ()
+	{
+#if UNITY_EDITOR
+		if (GetComponent<UIPanel>() != null)
+		{
+			Debug.LogError("Widgets and panels should not be on the same object! Widget must be a child of the panel.", this);
+		}
+		else if (!Application.isPlaying && GetComponents<UIWidget>().Length > 1)
+		{
+			Debug.LogError("You should not place more than one widget on the same object. Weird stuff will happen!", this);
+		}
+#endif
+		CreatePanel();
+	}
 
 	/// <summary>
 	/// Update the anchored edges and ensure the widget is registered with a panel.

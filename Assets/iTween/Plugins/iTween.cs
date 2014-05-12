@@ -6460,6 +6460,8 @@ public class iTween : MonoBehaviour{
 	/// The <see cref="System.String"/> name of iTween you would like to stop.
 	/// </param>	
 	public static void StopByName(GameObject target, string name){
+		if(target == null) return;
+
 		Component[] tweens = target.GetComponents<iTween>();
 		foreach (iTween item in tweens){
 			/*string targetType = item.type+item.method;

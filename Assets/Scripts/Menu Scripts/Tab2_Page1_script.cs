@@ -67,6 +67,7 @@ public class Tab2_Page1_script : SubPageHandler {
 				cardObj.experience = N["cardDeck"][i]["cardExperience"].AsInt;
 				cardObj.cardNumber = N["cardDeck"][i]["cardNumber"].AsInt;
 				cardObj.level = N["cardDeck"][i]["cardLevel"].AsInt;
+				cardObj.rarity = GlobalManager.GameSettings.csObj.characterProperties[cardObj.cardNumber-1].rarity;
 				
 				GlobalManager.UICard.localUserCardInventory.Add(cardObj);
 			}
