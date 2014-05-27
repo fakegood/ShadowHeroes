@@ -85,7 +85,9 @@ public class Tab2_Page8_script : SubPageHandler {
 			}
 		}
 
-		parent.GetComponent<UIWidget>().SetDimensions((int)scrollPanel.bounds.size.x, (int)scrollPanel.bounds.size.y);
+		parent.GetComponent<UIWidget>().SetDimensions(0, 0);
+		Bounds contentBound = NGUIMath.CalculateRelativeWidgetBounds(parent);
+		parent.GetComponent<UIWidget>().SetDimensions((int)contentBound.size.x, (int)contentBound.size.y);
 	}
 	
 	private void ButtonHandler(GameObject go)
@@ -195,6 +197,7 @@ public class Tab2_Page8_script : SubPageHandler {
 				cardObj.experience = N["cardDeck"][i]["cardExperience"].AsInt;
 				cardObj.cardNumber = N["cardDeck"][i]["cardNumber"].AsInt;
 				cardObj.level = N["cardDeck"][i]["cardLevel"].AsInt;
+				cardObj.rarity = GlobalManager.GameSettings.csObj.characterProperties[cardObj.cardNumber-1].rarity;
 				
 				GlobalManager.UICard.localUserCardInventory.Add(cardObj);
 			}
@@ -207,6 +210,7 @@ public class Tab2_Page8_script : SubPageHandler {
 			}
 
 			SpawnLocalUserInventory();
+			scrollPanel.ResetPosition();
 
 			GlobalManager.LocalUser.gold += totalSellCost;
 			totalSellCost = 0;

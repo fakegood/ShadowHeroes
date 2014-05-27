@@ -249,14 +249,15 @@ public class Character : MonoBehaviour {
 		{
 			int skillTypeArrayIndex = (int)SkillType - 1;
 			int skillLevelArrayIndex = SkillLevel - 1;
-			SkillDuration = skillSettings.skillProperties[skillTypeArrayIndex].duration[skillLevelArrayIndex];
-			SkillDamageOnHit = skillSettings.skillProperties[skillTypeArrayIndex].damageOnHit[skillLevelArrayIndex];
-			SkillDamagePerSecond = skillSettings.skillProperties[skillTypeArrayIndex].damagePerSecond[skillLevelArrayIndex];
-			SkillAttackRange = skillSettings.skillProperties[skillTypeArrayIndex].attackRange[skillLevelArrayIndex];
-			SkillProbability = skillSettings.skillProperties[skillTypeArrayIndex].posibility[skillLevelArrayIndex];
+			if(skillTypeArrayIndex >= 13) // 13 - Total amount of KILLER & BOOST & CASTLE BREAKER
+			{
+				SkillDuration = skillSettings.skillProperties[skillTypeArrayIndex].duration[skillLevelArrayIndex];
+				SkillDamageOnHit = skillSettings.skillProperties[skillTypeArrayIndex].damageOnHit[skillLevelArrayIndex];
+				SkillDamagePerSecond = skillSettings.skillProperties[skillTypeArrayIndex].damagePerSecond[skillLevelArrayIndex];
+				SkillAttackRange = skillSettings.skillProperties[skillTypeArrayIndex].attackRange[skillLevelArrayIndex];
+				SkillProbability = skillSettings.skillProperties[skillTypeArrayIndex].posibility[skillLevelArrayIndex];
+			}
 		}
-
-		Debug.Log(DisplayUnit);
 	}
 
 	private void Update()
@@ -505,7 +506,6 @@ public class Character : MonoBehaviour {
 		{
 			if(GlobalManager.ProbabilityCounter(SkillProbability))
 			{
-				Debug.Log("knock back!");
 				damageApplyObject = new DamageApplyClass();
 				if(SkillDamageOnHit > 0)
 				{
