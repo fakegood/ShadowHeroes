@@ -58,7 +58,7 @@ public class Character : MonoBehaviour {
 
 	private CharacterProperties.CategoryColour extraDamageTarget = CharacterProperties.CategoryColour.NONE;
 	[HideInInspector]
-	public int[] bonusDamageDeck;
+	public int[] bonusDamageDeck = new int[6];
 	private bool showDamageAfterDied = false;
 
 	private DamageClass damageObject = new DamageClass();
@@ -245,14 +245,18 @@ public class Character : MonoBehaviour {
 			//healEffects.renderer.sortingLayerName = "Particle System";
 		}
 
-		if(UnitType != CharacterProperties.UnitType.BUILDING && skillSettings != null)
+		if(UnitType != CharacterProperties.UnitType.BUILDING && skillSettings != null && SkillType != CharacterProperties.SkillType.NONE)
 		{
-			SkillDuration = skillSettings.skillProperties[0].duration[SkillLevel-1];
-			SkillDamageOnHit = skillSettings.skillProperties[0].damageOnHit[SkillLevel-1];
-			SkillDamagePerSecond = skillSettings.skillProperties[0].damagePerSecond[SkillLevel-1];
-			SkillAttackRange = skillSettings.skillProperties[0].attackRange[SkillLevel-1];
-			SkillProbability = skillSettings.skillProperties[0].posibility[SkillLevel-1];
+			int skillTypeArrayIndex = (int)SkillType - 1;
+			int skillLevelArrayIndex = SkillLevel - 1;
+			SkillDuration = skillSettings.skillProperties[skillTypeArrayIndex].duration[skillLevelArrayIndex];
+			SkillDamageOnHit = skillSettings.skillProperties[skillTypeArrayIndex].damageOnHit[skillLevelArrayIndex];
+			SkillDamagePerSecond = skillSettings.skillProperties[skillTypeArrayIndex].damagePerSecond[skillLevelArrayIndex];
+			SkillAttackRange = skillSettings.skillProperties[skillTypeArrayIndex].attackRange[skillLevelArrayIndex];
+			SkillProbability = skillSettings.skillProperties[skillTypeArrayIndex].posibility[skillLevelArrayIndex];
 		}
+
+		Debug.Log(DisplayUnit);
 	}
 
 	private void Update()
@@ -267,6 +271,12 @@ public class Character : MonoBehaviour {
 					{
 						EnemyObject = null;
 					}
+
+					/*float distance = EnemyObject.transform.localPosition.x - this.gameObject.transform.localPosition.x;
+					if(distance <= AttackRange && distance < 0)
+					{
+						EnemyObject = null;
+					}*/
 				}
 				else
 				{
@@ -274,6 +284,12 @@ public class Character : MonoBehaviour {
 					{
 						EnemyObject = null;
 					}
+
+					/*float distance = this.gameObject.transform.localPosition.x - EnemyObject.transform.localPosition.x;
+					if(distance <= AttackRange && distance < 0)
+					{
+						EnemyObject = null;
+					}*/
 				}
 			}
 		}
@@ -338,11 +354,13 @@ public class Character : MonoBehaviour {
 			{
 				if(this.Team == CharacterProperties.Team.LEFT)
 				{
-					this.rigidbody2D.AddForce(-Vector2.right * 100f * 10000f);
+					float pos = this.transform.localPosition.x - SkillAttackRange;
+					iTween.MoveTo(this.gameObject, iTween.Hash("x", pos, "time", 1f, "islocal", true, "easetype", iTween.EaseType.easeOutExpo));
 				}
 				else
 				{
-					this.rigidbody2D.AddForce(Vector2.right * 100f * 10000f);
+					float pos = this.transform.localPosition.x + SkillAttackRange;
+					iTween.MoveTo(this.gameObject, iTween.Hash("x", pos, "time", 1f, "islocal", true, "easetype", iTween.EaseType.easeOutExpo));
 				}
 			}
 		}
@@ -487,6 +505,7 @@ public class Character : MonoBehaviour {
 		{
 			if(GlobalManager.ProbabilityCounter(SkillProbability))
 			{
+				Debug.Log("knock back!");
 				damageApplyObject = new DamageApplyClass();
 				if(SkillDamageOnHit > 0)
 				{
@@ -612,7 +631,10 @@ public class Character : MonoBehaviour {
 
 		if(bonus)
 		{
-			return TotalDamage / 2f;
+			int skillTypeArrayIndex = (int)SkillType - 1;
+			int skillLevelArrayIndex = SkillLevel - 1;
+			float percentage = skillSettings.skillProperties[skillTypeArrayIndex].damageBoost[skillLevelArrayIndex];
+			return TotalDamage * (percentage / 100f);
 		}
 		else
 		{
@@ -622,32 +644,10 @@ public class Character : MonoBehaviour {
 
 	private void ApplyConstantBonusDamage()
 	{
-		if(bonusDamageDeck != null)
+		int colourCategory = (int)Category - 1;
+		if(bonusDamageDeck[colourCategory] >= 0)
 		{
-			if(bonusDamageDeck[0] == 1 && SkillType == CharacterProperties.SkillType.FIRE_BOOST && Category == CharacterProperties.CategoryColour.RED)
-			{
-				TotalDamage += TotalDamage / 2f;
-			}
-			else if(bonusDamageDeck[1] == 1 && SkillType == CharacterProperties.SkillType.WATER_BOOST && Category == CharacterProperties.CategoryColour.BLUE)
-			{
-				TotalDamage += TotalDamage / 2f;
-			}
-			else if(bonusDamageDeck[2] == 1 && SkillType == CharacterProperties.SkillType.DARK_BOOST && Category == CharacterProperties.CategoryColour.PURPLE)
-			{
-				TotalDamage += TotalDamage / 2f;
-			}
-			else if(bonusDamageDeck[3] == 1 && SkillType == CharacterProperties.SkillType.NATURE_BOOST && Category == CharacterProperties.CategoryColour.GREEN)
-			{
-				TotalDamage += TotalDamage / 2f;
-			}
-			else if(bonusDamageDeck[4] == 1 && SkillType == CharacterProperties.SkillType.GROUND_BOOST && Category == CharacterProperties.CategoryColour.ORANGE)
-			{
-				TotalDamage += TotalDamage / 2f;
-			}
-			else if(bonusDamageDeck[5] == 1 && SkillType == CharacterProperties.SkillType.LIGHT_KILLER && Category == CharacterProperties.CategoryColour.WHITE)
-			{
-				TotalDamage += TotalDamage / 2f;
-			}
+			TotalDamage += TotalDamage * (bonusDamageDeck[colourCategory] / 100);
 		}
 	}
 	
@@ -954,9 +954,10 @@ public class Character : MonoBehaviour {
 				else
 				{
 					hitPointProgressBar.value = hpPercentage;
+					hitPointProgressBar.gameObject.SetActive(true);
 				}
 
-				if(DisplayUnit) hitPointProgressBar.gameObject.SetActive(false);
+				if(DisplayUnit)	hitPointProgressBar.gameObject.SetActive(false);
 			}
 		}
 		get{ return currentHitPoint; }

@@ -67,6 +67,10 @@ public class LoadingMenuHandler : MonoBehaviour {
 			GlobalManager.LocalUser.victoryPoint = N["victoryPoint"].AsInt;
 			GlobalManager.LocalUser.totalBattle = N["totalBattle"].AsInt;
 			GlobalManager.LocalUser.totalWin = N["totalWin"].AsInt;
+			GlobalManager.LocalUser.battlePoint = PlayerPrefs.GetInt("BATTLE_POINT", 100);
+			GlobalManager.LocalUser.actionPoint = PlayerPrefs.GetInt("ACTION_POINT", GlobalManager.LocalUser.ComputeActionPoint(1));
+			GlobalManager.LocalUser.bpTime = PlayerPrefs.GetString("BP_TIME", "");
+			GlobalManager.LocalUser.apTime = PlayerPrefs.GetString("AP_TIME", "");
 
 			//GlobalManager.UICard.localUserCardDeck.Clear();
 			for(int i = 0; i<N["cardDeck"].AsArray.Count; i++)

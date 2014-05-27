@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
+using SimpleJSON;
 
 public class LandingMenuHandler : MonoBehaviour {
 
@@ -33,6 +35,11 @@ public class LandingMenuHandler : MonoBehaviour {
 	public UIPanel[] tabPages = null;
 	private GameObject currentOpenedPage = null;
 
+	private int	battlePointTreshold = 30; // total minutes to reset battle point
+	private int	actionPointTreshold = 30; // total minutes to reset action point
+
+	private int currentPointCallback = -1;
+
 	// Use this for initialization
 	void Start () {
 		TopBarHandler();
@@ -61,6 +68,19 @@ public class LandingMenuHandler : MonoBehaviour {
 		else
 		{
 			tabPages[0].gameObject.GetComponent<TabPageHandler>().ActivateTab();
+		}
+	}
+
+	void Update()
+	{
+		if(GlobalManager.LocalUser.battlePoint < 100)
+		{
+			RechargeBattlePoint();
+		}
+
+		if(GlobalManager.LocalUser.actionPoint < GlobalManager.LocalUser.ComputeActionPoint(GlobalManager.LocalUser.level))
+		{
+			RechargeActionPoint();
 		}
 	}
 
@@ -106,10 +126,18 @@ public class LandingMenuHandler : MonoBehaviour {
 		mainPopup.GetComponent<MainPopupScript>().ResultDelegate -= BattlePointCallBack;
 		if(result)
 		{
-			GlobalManager.LocalUser.battlePoint = 100;
-			// need to reduce gem
-			// need to call api to reduce gem
-			UpdateUserDetailBar();
+			WWWForm form = new WWWForm(); //here you create a new form connection
+			form.AddField("userId", GlobalManager.LocalUser.UID);
+			form.AddField("type", 2);
+			form.AddField("amount", 1);
+			
+			NetworkHandler.self.ResultDelegate += ServerRequestCallback;
+			NetworkHandler.self.ErrorDelegate += ServerRequestError;
+			NetworkHandler.self.ServerRequest("http://touchtouch.biz/shadow/useresource.jsp", form);
+
+			currentPointCallback = 1;
+
+			OpenMainLoader(true);
 		}
 	}
 
@@ -118,10 +146,18 @@ public class LandingMenuHandler : MonoBehaviour {
 		mainPopup.GetComponent<MainPopupScript>().ResultDelegate -= ActionPointCallBack;
 		if(result)
 		{
-			GlobalManager.LocalUser.actionPoint = GlobalManager.LocalUser.ComputeActionPoint(GlobalManager.LocalUser.level);
-			// need to reduce gem
-			// need to call api to reduce gem
-			UpdateUserDetailBar();
+			WWWForm form = new WWWForm(); //here you create a new form connection
+			form.AddField("userId", GlobalManager.LocalUser.UID);
+			form.AddField("type", 2);
+			form.AddField("amount", 1);
+			
+			NetworkHandler.self.ResultDelegate += ServerRequestCallback;
+			NetworkHandler.self.ErrorDelegate += ServerRequestError;
+			NetworkHandler.self.ServerRequest("http://touchtouch.biz/shadow/useresource.jsp", form);
+			
+			currentPointCallback = 2;
+
+			OpenMainLoader(true);
 		}
 	}
 
@@ -207,5 +243,129 @@ public class LandingMenuHandler : MonoBehaviour {
 	public void UpdateUserDetailBar()
 	{
 		TopBarHandler();
+	}
+
+	public void RechargeBattlePoint()
+	{
+		if(GlobalManager.LocalUser.bpTime != "")
+		{
+			DateTime dt = DateTime.Parse(GlobalManager.LocalUser.bpTime);
+			//Debug.Log(DateTime.Now.Subtract(dt).TotalMinutes);
+			int minutesDiff = (int)DateTime.Now.Subtract(dt).TotalMinutes;
+			
+			if(minutesDiff >= battlePointTreshold)
+			{
+				if(GlobalManager.LocalUser.battlePoint < 100)
+				{
+					//int totalLife = minutesDiff % pumpkinTimeTreshold;
+					int totalLife = minutesDiff / battlePointTreshold;
+					int minutesOffset = minutesDiff - (totalLife * battlePointTreshold);
+					GlobalManager.LocalUser.bpTime = DateTime.Now.AddMinutes(-(minutesOffset)).ToString();
+					GlobalManager.LocalUser.battlePoint += (totalLife * 7);
+					
+					if(GlobalManager.LocalUser.battlePoint > 100)
+					{
+						GlobalManager.LocalUser.bpTime = "";
+						GlobalManager.LocalUser.battlePoint = 100;
+					}
+					
+					//GlobalManager.LocalUser.SaveDetails();
+				}
+				else
+				{
+					GlobalManager.LocalUser.battlePoint = 100;
+					GlobalManager.LocalUser.bpTime = "";
+				}
+
+				GlobalManager.LocalUser.SaveDetails();
+				UpdateUserDetailBar();
+			}
+		}
+	}
+
+	public void RechargeActionPoint()
+	{
+		if(GlobalManager.LocalUser.apTime != "")
+		{
+			DateTime dt = DateTime.Parse(GlobalManager.LocalUser.apTime);
+			//Debug.Log(DateTime.Now.Subtract(dt).TotalMinutes);
+			int minutesDiff = (int)DateTime.Now.Subtract(dt).TotalMinutes;
+			
+			if(minutesDiff >= actionPointTreshold)
+			{
+				if(GlobalManager.LocalUser.actionPoint < GlobalManager.LocalUser.ComputeActionPoint(GlobalManager.LocalUser.level))
+				{
+					//int totalLife = minutesDiff % pumpkinTimeTreshold;
+					int totalLife = minutesDiff / actionPointTreshold;
+					int minutesOffset = minutesDiff - (totalLife * actionPointTreshold);
+					GlobalManager.LocalUser.apTime = DateTime.Now.AddMinutes(-(minutesOffset)).ToString();
+					GlobalManager.LocalUser.actionPoint += (totalLife * 10);
+					
+					if(GlobalManager.LocalUser.actionPoint > GlobalManager.LocalUser.ComputeActionPoint(GlobalManager.LocalUser.level))
+					{
+						GlobalManager.LocalUser.apTime = "";
+						GlobalManager.LocalUser.actionPoint = GlobalManager.LocalUser.ComputeActionPoint(GlobalManager.LocalUser.level);
+					}
+
+					//GlobalManager.LocalUser.SaveDetails();
+				}
+				else
+				{
+					GlobalManager.LocalUser.actionPoint = GlobalManager.LocalUser.ComputeActionPoint(GlobalManager.LocalUser.level);
+					GlobalManager.LocalUser.apTime = "";
+				}
+
+				GlobalManager.LocalUser.SaveDetails();
+				UpdateUserDetailBar();
+			}
+		}
+	}
+
+	private void ServerRequestCallback(string result)
+	{
+		NetworkHandler.self.ResultDelegate -= ServerRequestCallback;
+		NetworkHandler.self.ErrorDelegate -= ServerRequestError;
+		OpenMainLoader(false);
+		
+		var N = JSONNode.Parse(result);
+		//Debug.Log("callback: " + N["userId"]);
+		bool tempUserID = N["result"].AsBool;
+		if(tempUserID)
+		{
+			if(currentPointCallback == 1)
+			{
+				GlobalManager.LocalUser.battlePoint = 100;
+				GlobalManager.LocalUser.gem -= 1;
+				// need to reduce gem
+				// need to call api to reduce gem
+				GlobalManager.LocalUser.SaveDetails();
+				UpdateUserDetailBar();
+			}
+			else if(currentPointCallback == 2)
+			{
+				GlobalManager.LocalUser.actionPoint = GlobalManager.LocalUser.ComputeActionPoint(GlobalManager.LocalUser.level);
+				GlobalManager.LocalUser.gem -= 1;
+				// need to call api to reduce gem
+				GlobalManager.LocalUser.SaveDetails();
+				UpdateUserDetailBar();
+			}
+		}
+		else
+		{
+			// no user -- show register popup
+			//OpenMainLoader(false);
+		}
+	}
+	
+	private void ServerRequestError(string result)
+	{
+		NetworkHandler.self.ResultDelegate -= ServerRequestCallback;
+		NetworkHandler.self.ErrorDelegate -= ServerRequestError;
+		
+		//loader.SetActive(false);
+		//var N = JSONNode.Parse(result);
+		//Debug.Log("callback: " + N["userId"]);
+
+		OpenMainLoader(false);
 	}
 }

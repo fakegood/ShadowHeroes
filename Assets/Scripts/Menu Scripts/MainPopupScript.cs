@@ -26,12 +26,16 @@ public class MainPopupScript : MonoBehaviour {
 		case PopupType.INFORMATION:
 			yesButton.gameObject.SetActive(false);
 			noButton.gameObject.SetActive(false);
+			okayButton.gameObject.SetActive(true);
 			break;
 		case PopupType.ERROR:
 			yesButton.gameObject.SetActive(false);
 			noButton.gameObject.SetActive(false);
+			okayButton.gameObject.SetActive(true);
 			break;
 		case PopupType.CONFIRMATION:
+			yesButton.gameObject.SetActive(true);
+			noButton.gameObject.SetActive(true);
 			okayButton.gameObject.SetActive(false);
 			break;
 		default:

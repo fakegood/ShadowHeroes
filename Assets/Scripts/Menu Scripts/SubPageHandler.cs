@@ -46,6 +46,7 @@ public class SubPageHandler : MonoBehaviour {
 		{
 			if(GlobalManager.LocalUser.deckCost + csObj.characterProperties[parent.currentSelectedDeckNum-1].unitCost <= GlobalManager.LocalUser.maxDeckCost)
 			{
+				Debug.Log(parent.currentSelectedDeckNum);
 				GlobalManager.UICard.SwapDeckAndInventory(parent.currentSelectedDeckNum, parent.currentOpenedDeckNum);
 				
 				parent.currentOpenedDeckNum = -1;

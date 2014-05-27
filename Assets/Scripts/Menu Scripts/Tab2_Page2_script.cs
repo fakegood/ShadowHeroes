@@ -21,6 +21,11 @@ public class Tab2_Page2_script : SubPageHandler {
 		UpdateDeckCost();
 		//base.StartSubPage();
 
+		if(GlobalManager.LocalUser.deckCost <= 0)
+		{
+			saveButton.isEnabled = false;
+		}
+
 		if(parent.currentSelectedDeckNum != -1)
 		{
 			base.OpenPopup(true);
@@ -108,7 +113,7 @@ public class Tab2_Page2_script : SubPageHandler {
 				deckSaveString = deckSaveString == "" ? deckSaveString += val : deckSaveString += "," + val;
 			}
 		}
-
+		Debug.Log(deckSaveString);
 		base.parent.tabParent.OpenMainLoader(true);
 		WWWForm form = new WWWForm(); //here you create a new form connection
 		form.AddField("userId", GlobalManager.LocalUser.UID);

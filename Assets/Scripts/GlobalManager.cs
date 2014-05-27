@@ -162,10 +162,16 @@ public class GlobalManager : MonoBehaviour {
 		}
 		else if(GlobalManager.cardSorting == GlobalManager.CardSortType.DAMAGE)
 		{
+			/*GlobalManager.UICard.localUserCardInventory = GlobalManager.UICard.localUserCardInventory.OrderByDescending(x => {
+				int totalDamage1 = (int)GlobalManager.GameSettings.csObj.characterProperties[x.cardNumber-1].damage + (int)(x.level * GlobalManager.GameSettings.csObj.characterProperties[x.cardNumber-1].damageIncreament);
+				int totalDamage2 = (int)GlobalManager.GameSettings.csObj.characterProperties[x.cardNumber-1].damage + (int)(x.level * GlobalManager.GameSettings.csObj.characterProperties[x.cardNumber-1].damageIncreament);
+				return totalDamage1.CompareTo(totalDamage2);
+			}).ToList();*/
 			GlobalManager.UICard.localUserCardInventory.Sort(SortByDamage);
 		}
 		else if(GlobalManager.cardSorting == GlobalManager.CardSortType.COST)
 		{
+			//GlobalManager.UICard.localUserCardInventory = GlobalManager.UICard.localUserCardInventory.OrderByDescending(x=>x.cost).ToList();
 			GlobalManager.UICard.localUserCardInventory.Sort(SortByCost);
 		}
 		else if(GlobalManager.cardSorting == GlobalManager.CardSortType.HP)
@@ -174,7 +180,7 @@ public class GlobalManager : MonoBehaviour {
 		}
 		else if(GlobalManager.cardSorting == GlobalManager.CardSortType.LEVEL)
 		{
-			GlobalManager.UICard.localUserCardInventory.Sort(SortByLevel);
+			GlobalManager.UICard.localUserCardInventory = GlobalManager.UICard.localUserCardInventory.OrderByDescending(x=>x.level).ToList();
 		}
 		else if(GlobalManager.cardSorting == GlobalManager.CardSortType.NAME)
 		{
@@ -204,11 +210,6 @@ public class GlobalManager : MonoBehaviour {
 		return totalHitPoint1.CompareTo(totalHitPoint2);
 	}
 	
-	public static int SortByLevel(CharacterCard go1, CharacterCard go2)
-	{
-		return go1.level.CompareTo(go2.level);
-	}
-	
 	public static int SortByName(CharacterCard go1, CharacterCard go2)
 	{
 		string name1 = GlobalManager.GameSettings.csObj.characterProperties[go1.cardNumber-1].characterName;
@@ -231,6 +232,16 @@ public class GlobalManager : MonoBehaviour {
 		public static int victoryPoint = 0;
 		public static int totalBattle = 0;
 		public static int totalWin = 0;
+		public static string bpTime = "";
+		public static string apTime = "";
+
+		public static void SaveDetails()
+		{
+			PlayerPrefs.SetInt("ACTION_POINT", actionPoint);
+			PlayerPrefs.SetInt("BATTLE_POINT", battlePoint);
+			PlayerPrefs.SetString("BP_TIME", bpTime);
+			PlayerPrefs.SetString("AP_TIME", apTime);
+		}
 
 		public static int ComputeNeedLevelupExp(int level)
 		{
@@ -351,6 +362,7 @@ public class GlobalManager : MonoBehaviour {
 				localUserCardDeck[to-1] = localUserCardInventory[from-1];
 				localUserCardDeck[to-1].order = to;
 				localUserCardInventory[from-1].order = -1;
+				Debug.Log(localUserCardDeck[to-1].UID);
 			}
 
 			changed = true;

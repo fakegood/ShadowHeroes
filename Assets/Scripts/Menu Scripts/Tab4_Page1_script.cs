@@ -46,7 +46,7 @@ public class Tab4_Page1_script : SubPageHandler {
 			{
 				Vector3 pos = Vector3.zero;
 				GameObject holder = Instantiate(rankingPrefab, Vector3.zero, Quaternion.identity) as GameObject;
-				pos.y = ((i * dimension.y) + (dimension.y / 2) + gap) * -1;
+				pos.y = ((i * dimension.y) + (dimension.y / 2) + (i * gap)) * -1;
 				holder.transform.parent = scrollView.transform;
 				holder.transform.localScale = holder.transform.lossyScale;
 				holder.transform.localPosition = pos;
@@ -56,6 +56,8 @@ public class Tab4_Page1_script : SubPageHandler {
 				holder.GetComponent<RankingObjectScript>().rankLabel.text = N["rankList"][i]["rank"];
 				holder.GetComponent<RankingObjectScript>().battleStatusLabel.text = N["rankList"][i]["totalWin"] + " Wins " + (N["rankList"][i]["totalBattle"].AsInt - N["rankList"][i]["totalWin"].AsInt).ToString() + " loses";
 				holder.GetComponent<RankingObjectScript>().victoryLabel.text = N["rankList"][i]["victoryPoint"];
+				holder.GetComponent<RankingObjectScript>().backgroundSprite.spriteName = i == 0 ? "box_1" : "btn_bg";
+				holder.GetComponent<RankingObjectScript>().Rank = i+1;
 				//UIEventListener.Get(holder).onClick += StageAreaClickHandler;
 			}
 

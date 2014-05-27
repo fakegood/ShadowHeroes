@@ -5,6 +5,7 @@ public class ButtonMainHandler : MonoBehaviour {
 
 	public DefenseHandler defObj;
 	public GameObject characterSettingsPrefab;
+	public SkillSettings skillSettings;
 	public GameObject[] skillButtonArray;
 	private int totalNumberOfButtons = 0;
 
@@ -50,6 +51,38 @@ public class ButtonMainHandler : MonoBehaviour {
 					skillLevel = (int)characterSettingsPrefab.GetComponent<CharacterSettings>().characterProperties[deckValue].skillLevel;
 					settingsAmt = deckValue;
 					buttonNumber = i;
+
+					if(skillType == CharacterProperties.SkillType.FIRE_BOOST)
+					{
+						int skillIndex = (int)CharacterProperties.SkillType.FIRE_BOOST - 1;
+						bonusDamageDeck[0] += (int)skillSettings.skillProperties[skillIndex].damageBoost[skillLevel];
+						Debug.Log(bonusDamageDeck[0]);
+					}
+					else if(skillType == CharacterProperties.SkillType.WATER_BOOST)
+					{
+						int skillIndex = (int)CharacterProperties.SkillType.WATER_BOOST - 1;
+						bonusDamageDeck[1] += (int)skillSettings.skillProperties[skillIndex].damageBoost[skillLevel];
+					}
+					else if(skillType == CharacterProperties.SkillType.NATURE_BOOST)
+					{
+						int skillIndex = (int)CharacterProperties.SkillType.NATURE_BOOST - 1;
+						bonusDamageDeck[2] += (int)skillSettings.skillProperties[skillIndex].damageBoost[skillLevel];
+					}
+					else if(skillType == CharacterProperties.SkillType.GROUND_BOOST)
+					{
+						int skillIndex = (int)CharacterProperties.SkillType.GROUND_BOOST - 1;
+						bonusDamageDeck[3] += (int)skillSettings.skillProperties[skillIndex].damageBoost[skillLevel];
+					}
+					else if(skillType == CharacterProperties.SkillType.DARK_BOOST)
+					{
+						int skillIndex = (int)CharacterProperties.SkillType.DARK_BOOST - 1;
+						bonusDamageDeck[4] += (int)skillSettings.skillProperties[skillIndex].damageBoost[skillLevel];
+					}
+					else if(skillType == CharacterProperties.SkillType.LIGHT_BOOST)
+					{
+						int skillIndex = (int)CharacterProperties.SkillType.LIGHT_BOOST - 1;
+						bonusDamageDeck[5] += (int)skillSettings.skillProperties[skillIndex].damageBoost[skillLevel];
+					}
 					
 					skillButtonArray[i].transform.Find("Background").GetComponent<UISprite>().spriteName = spriteName;
 					skillButtonArray[i].GetComponent<UIButton>().normalSprite = spriteName;
@@ -74,14 +107,7 @@ public class ButtonMainHandler : MonoBehaviour {
 					skillButtonArray[i].GetComponent<UnitButtonHandler>().DisableSelf();
 				} 
 			}
-			
-			//buttonXPos = ((i+1f)*31f)+(i*52.5f);
-			
-			//skillButtonArray[i] = CreateButton(tempParent, new Vector3(buttonXPos, 515, -1), tempReferenceNumber, category, spriteName, unitType, unitLevel, skillType, skillLevel, settingsAmt, buttonName, buttonNumber);
-			//skillButtonArray[i].collider.enabled = false;
 		}
-		
-		bonusDamageDeck[0] = 1;
 	}
 
 	public void IncreaseElement(string tempSpriteName){

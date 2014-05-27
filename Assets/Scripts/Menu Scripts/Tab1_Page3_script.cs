@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 public class Tab1_Page3_script : SubPageHandler {
@@ -68,6 +69,12 @@ public class Tab1_Page3_script : SubPageHandler {
 			//base.parent.tabParent.OpenMainPopup("Single Player Game", "Are you sure to start game with " + levelCost + " gems?", true, MainPopupScript.PopupType.CONFIRMATION);
 
 			GlobalManager.LocalUser.actionPoint -= levelCost;
+			if(GlobalManager.LocalUser.apTime == "")
+			{
+				GlobalManager.LocalUser.apTime = DateTime.Now.ToString();
+			}
+			GlobalManager.LocalUser.SaveDetails();
+
 			base.parent.tabParent.UpdateUserDetailBar();
 			Application.LoadLevel("PlaySceneNGUI");
 		}

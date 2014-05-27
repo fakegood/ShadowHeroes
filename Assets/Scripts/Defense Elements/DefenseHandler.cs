@@ -81,7 +81,7 @@ public class DefenseHandler : MonoBehaviour {
 		{
 			for(int i=0; i< Character.characterLeft.Count; i++)
 			{
-				if(Character.characterLeft[i] != null && Character.characterLeft[i].EnemyObject == null && Character.characterLeft[i].UnitType != CharacterProperties.UnitType.BUILDING && Character.characterLeft[i].ExternalStatus == CharacterProperties.ExternalStatus.NONE && Character.characterLeft[i].MovementState != CharacterProperties.CharacterState.DEAD)
+				if(Character.characterLeft[i] != null && Character.characterLeft[i].UnitType != CharacterProperties.UnitType.BUILDING && Character.characterLeft[i].ExternalStatus == CharacterProperties.ExternalStatus.NONE && Character.characterLeft[i].MovementState != CharacterProperties.CharacterState.DEAD)
 				{
 					Character nextEnemy = GetNextEnemy(Character.characterLeft[i].Team, Character.characterLeft[i].transform.localPosition.x, Character.characterLeft[i].AttackType, Character.characterLeft[i].AttackRange, Character.characterLeft[i].UnitType);
 					if(Character.characterLeft[i].UnitType == CharacterProperties.UnitType.HEALER)
@@ -115,7 +115,7 @@ public class DefenseHandler : MonoBehaviour {
 
 			for(int j=0; j< Character.characterRight.Count; j++)
 			{
-				if(Character.characterRight[j] != null && Character.characterRight[j].EnemyObject == null && Character.characterRight[j].UnitType != CharacterProperties.UnitType.BUILDING && Character.characterRight[j].ExternalStatus == CharacterProperties.ExternalStatus.NONE && Character.characterRight[j].MovementState != CharacterProperties.CharacterState.DEAD)
+				if(Character.characterRight[j] != null && Character.characterRight[j].UnitType != CharacterProperties.UnitType.BUILDING && Character.characterRight[j].ExternalStatus == CharacterProperties.ExternalStatus.NONE && Character.characterRight[j].MovementState != CharacterProperties.CharacterState.DEAD)
 				{
 					Character nextEnemy = GetNextEnemy(Character.characterRight[j].Team, Character.characterRight[j].transform.localPosition.x, Character.characterRight[j].AttackType, Character.characterRight[j].AttackRange, Character.characterRight[j].UnitType);
 					
@@ -129,7 +129,7 @@ public class DefenseHandler : MonoBehaviour {
 							}
 							else
 							{
-								Character.characterLeft[j].EnemyObject = null;
+								Character.characterRight[j].EnemyObject = null;
 							}
 						}
 						else

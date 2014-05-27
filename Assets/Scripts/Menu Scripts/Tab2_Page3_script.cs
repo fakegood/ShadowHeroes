@@ -86,7 +86,6 @@ public class Tab2_Page3_script : SubPageHandler {
 	{
 		// chosen card action
 		parent.currentSelectedDeckNum = int.Parse(go.name.Split(new char[]{'_'})[1]) - 1;
-		parent.currentSelectedCard = GlobalManager.UICard.localUserCardInventory[go.GetComponent<UICardScript>().inventoryIndex];
 		
 		if(parent.currentSelectedDeckNum == 0)
 		{
@@ -100,6 +99,7 @@ public class Tab2_Page3_script : SubPageHandler {
 		}
 		else
 		{
+			parent.currentSelectedCard = GlobalManager.UICard.localUserCardInventory[go.GetComponent<UICardScript>().inventoryIndex];
 			// show popup
 			base.OpenPopup(true);
 		}
