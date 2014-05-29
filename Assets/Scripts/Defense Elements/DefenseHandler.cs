@@ -17,8 +17,10 @@ public class DefenseHandler : MonoBehaviour {
 	public GameObject spawnPointRight;
 	public GameObject[] skillEffects;
 	public GameObject cardRewardPrefab;
+	public GameObject globalController;
 
 	private GameObject defenseParent;
+	private GameObject gameoverPopup = null;
 	private List<Character> enemies;
 	private int counter = 1;
 
@@ -397,12 +399,29 @@ public class DefenseHandler : MonoBehaviour {
 
 	public void CalculateEndGameReward(bool win, GameObject prefab, Transform parent)
 	{
+		// STOP ALL CHARACTER MOVEMENTS
+		for(int i=0; i<Character.characterLeft.Count; i++)
+		{
+			if(Character.characterLeft[i] != null)
+			{
+				Character.characterLeft[i].MovementState = CharacterProperties.CharacterState.IDLE;
+			}
+		}
+
+		for(int j=0; j<Character.characterRight.Count; j++)
+		{
+			if(Character.characterRight[j] != null)
+			{
+				Character.characterRight[j].MovementState = CharacterProperties.CharacterState.IDLE;
+			}
+		}
+
 		int areaNum = GlobalManager.GameSettings.chosenArea - 1;
 		int stageNum = GlobalManager.GameSettings.chosenStage - 1;
 		int totalCoinGain = 0;
 		int totalExpGain = 0;
 
-		GameObject gameoverPopup = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
+		gameoverPopup = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
 		gameoverPopup.transform.parent = parent;
 		gameoverPopup.transform.localScale = Vector3.one;
 
@@ -412,8 +431,6 @@ public class DefenseHandler : MonoBehaviour {
 			totalExpGain = Mathf.RoundToInt(Random.Range(stageSettingsObj.area[areaNum].subStage[stageNum].endGameExperience.x, stageSettingsObj.area[areaNum].subStage[stageNum].endGameExperience.y));
 
 			gameoverPopup.transform.Find("Background/Title").GetComponent<UILabel>().text = "Victory!";
-			gameoverPopup.transform.Find("Background/Coin Detail").GetComponent<UILabel>().text = totalCoinGain.ToString();
-			gameoverPopup.transform.Find("Background/Experience Detail").GetComponent<UILabel>().text = totalExpGain.ToString();
 		}
 		else
 		{
@@ -421,9 +438,11 @@ public class DefenseHandler : MonoBehaviour {
 			totalExpGain = Mathf.RoundToInt(Random.Range(stageSettingsObj.area[areaNum].subStage[stageNum].endGameExperience.x, stageSettingsObj.area[areaNum].subStage[stageNum].endGameExperience.y)) / 2;
 
 			gameoverPopup.transform.Find("Background/Title").GetComponent<UILabel>().text = "Defeated.";
-			gameoverPopup.transform.Find("Background/Coin Detail").GetComponent<UILabel>().text = totalCoinGain.ToString();
-			gameoverPopup.transform.Find("Background/Experience Detail").GetComponent<UILabel>().text = totalExpGain.ToString();
 		}
+
+		UIEventListener.Get(gameoverPopup.transform.Find("Background/Quit Button").gameObject).onClick += globalController.GetComponent<PuzzleHandler>().BackToMainMenu;
+
+		float userPrevExp = GlobalManager.LocalUser.experience; // store the previous exp before increment
 
 		GlobalManager.LocalUser.gold += totalCoinGain;
 		GlobalManager.LocalUser.experience += totalExpGain;
@@ -433,8 +452,11 @@ public class DefenseHandler : MonoBehaviour {
 		float prevLevelMaxExp = (float)GlobalManager.LocalUser.ComputeNeedLevelupExp(userCurrentLevel-1);
 		float nextLevelMaxExp = (float)GlobalManager.LocalUser.ComputeNeedLevelupExp(userCurrentLevel);
 
-		UIProgressBar expBar = gameoverPopup.transform.Find("Background/Experience Progress Bar").GetComponent<UIProgressBar>();
-		expBar.value = userCurrentExp / nextLevelMaxExp;
+		gameoverPopup.transform.Find("Background/Coin Detail").GetComponent<UILabel>().text = totalCoinGain.ToString();
+		gameoverPopup.transform.Find("Background/Experience Detail").GetComponent<UILabel>().text = totalExpGain.ToString() + "/" + nextLevelMaxExp.ToString();
+
+		iTween.ValueTo(this.gameObject, iTween.Hash("from", userPrevExp, "to", (userPrevExp + totalExpGain), "time", 2f, "onupdatetarget", this.gameObject, "onupdate", "UpdateExpText"));
+		iTween.ValueTo(this.gameObject, iTween.Hash("from", (userPrevExp / nextLevelMaxExp), "to", (userCurrentExp / nextLevelMaxExp), "time", 2f, "onupdatetarget", this.gameObject, "onupdate", "UpdateExpBar"));
 
 		if(GlobalManager.LocalUser.experience >= nextLevelMaxExp)
 		{
@@ -498,6 +520,19 @@ public class DefenseHandler : MonoBehaviour {
 		NetworkHandler.self.ResultDelegate += ServerRequestCallback;
 		NetworkHandler.self.ErrorDelegate += ServerRequestError;
 		NetworkHandler.self.ServerRequest(GlobalManager.NetworkSettings.GetFullURL(GlobalManager.RequestType.END_GAME), form);
+	}
+
+	private void UpdateExpText(float val)
+	{
+		int userCurrentLevel = GlobalManager.LocalUser.level;
+		float nextLevelMaxExp = (float)GlobalManager.LocalUser.ComputeNeedLevelupExp(userCurrentLevel);
+		gameoverPopup.transform.Find("Background/Experience Detail").GetComponent<UILabel>().text = ((int)val).ToString() + "/" + nextLevelMaxExp.ToString();
+	}
+
+	private void UpdateExpBar(float val)
+	{
+		UIProgressBar expBar = gameoverPopup.transform.Find("Background/Experience Progress Bar").GetComponent<UIProgressBar>();
+		expBar.value = val;
 	}
 
 	private void ServerRequestCallback(string result)

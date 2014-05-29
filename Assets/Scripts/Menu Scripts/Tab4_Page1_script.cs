@@ -35,29 +35,41 @@ public class Tab4_Page1_script : SubPageHandler {
 		base.parent.tabParent.OpenMainLoader(false);
 		
 		var N = JSONNode.Parse(result);
-		//Debug.Log("callback: " + N["userId"]);
+
+		Vector3 pos = Vector3.zero;
+		GameObject holder = Instantiate(rankingPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+		pos.y = ((0 * dimension.y) + (dimension.y / 2) + (0 * gap)) * -1;
+		holder.transform.parent = scrollView.transform;
+		holder.transform.localScale = holder.transform.lossyScale;
+		holder.transform.localPosition = pos;
+		holder.name = "My Rank";
+		holder.GetComponent<RankingObjectScript>().nameLabel.text = N["myRank"][0]["nickname"];
+		holder.GetComponent<RankingObjectScript>().levelLabel.text = N["myRank"][0]["userLevel"];
+		holder.GetComponent<RankingObjectScript>().rankLabel.text = N["myRank"][0]["rank"];
+		holder.GetComponent<RankingObjectScript>().battleStatusLabel.text = N["myRank"][0]["totalWin"] + " Wins " + (N["myRank"][0]["totalBattle"].AsInt - N["myRank"][0]["totalWin"].AsInt).ToString() + " loses";
+		holder.GetComponent<RankingObjectScript>().victoryLabel.text = N["myRank"][0]["victoryPoint"];
+		holder.GetComponent<RankingObjectScript>().backgroundSprite.spriteName = "box_1";
+		holder.GetComponent<RankingObjectScript>().Rank = N["myRank"][0]["rank"].AsInt;
+
 		int totalRank = N["rankList"].AsArray.Count;
 		if(totalRank > 0)
-		{
-			// user exist -- go to LandingScene
-			//N["totalWin"].AsInt;
-			
-			for(int i=0; i<totalRank; i++)
+		{	
+			for(int i=1; i<totalRank; i++)
 			{
-				Vector3 pos = Vector3.zero;
-				GameObject holder = Instantiate(rankingPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+				pos = Vector3.zero;
+				holder = Instantiate(rankingPrefab, Vector3.zero, Quaternion.identity) as GameObject;
 				pos.y = ((i * dimension.y) + (dimension.y / 2) + (i * gap)) * -1;
 				holder.transform.parent = scrollView.transform;
 				holder.transform.localScale = holder.transform.lossyScale;
 				holder.transform.localPosition = pos;
-				holder.name = "Rank_" + (i+1);
+				holder.name = "Rank_" + i;
 				holder.GetComponent<RankingObjectScript>().nameLabel.text = N["rankList"][i]["nickname"];
 				holder.GetComponent<RankingObjectScript>().levelLabel.text = N["rankList"][i]["userLevel"];
 				holder.GetComponent<RankingObjectScript>().rankLabel.text = N["rankList"][i]["rank"];
 				holder.GetComponent<RankingObjectScript>().battleStatusLabel.text = N["rankList"][i]["totalWin"] + " Wins " + (N["rankList"][i]["totalBattle"].AsInt - N["rankList"][i]["totalWin"].AsInt).ToString() + " loses";
 				holder.GetComponent<RankingObjectScript>().victoryLabel.text = N["rankList"][i]["victoryPoint"];
-				holder.GetComponent<RankingObjectScript>().backgroundSprite.spriteName = i == 0 ? "box_1" : "btn_bg";
-				holder.GetComponent<RankingObjectScript>().Rank = i+1;
+				holder.GetComponent<RankingObjectScript>().backgroundSprite.spriteName = "btn_bg";
+				holder.GetComponent<RankingObjectScript>().Rank = i;
 				//UIEventListener.Get(holder).onClick += StageAreaClickHandler;
 			}
 

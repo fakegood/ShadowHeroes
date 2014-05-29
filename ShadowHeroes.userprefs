@@ -1,27 +1,25 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Menu Scripts/Tab2_Page8_script.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Defense Elements/DefenseHandler.cs">
     <Files>
-      <File FileName="Assets/Scripts/GlobalManager.cs" Line="345" Column="4" />
-      <File FileName="Assets/Scripts/Menu Scripts/LoadingMenuHandler.cs" Line="106" Column="3" />
+      <File FileName="Assets/Scripts/GlobalManager.cs" Line="117" Column="64" />
+      <File FileName="Assets/Scripts/Menu Scripts/LoadingMenuHandler.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Menu Scripts/SubPageHandler.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Menu Scripts/LandingMenuHandler.cs" Line="132" Column="31" />
-      <File FileName="Assets/Scripts/Defense Elements/DefenseHandler.cs" Line="118" Column="44" />
-      <File FileName="Assets/Scripts/Defense Elements/CharacterSettings.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Defense Elements/Character.cs" Line="507" Column="5" />
-      <File FileName="Assets/Scripts/Defense Elements/Warrior.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Menu Scripts/Tab2_Page8_script.cs" Line="200" Column="48" />
+      <File FileName="Assets/Scripts/Defense Elements/DefenseHandler.cs" Line="400" Column="34" />
+      <File FileName="Assets/Scripts/Puzzle Elements/PuzzleHandler.cs" Line="1814" Column="22" />
+      <File FileName="Assets/Scripts/Defense Elements/Character.cs" Line="1069" Column="24" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True">
-              <Node name="Defense Elements" expanded="True" />
-              <Node name="Menu Scripts" expanded="True">
-                <Node name="Tab2_Page8_script.cs" selected="True" />
+              <Node name="Defense Elements" expanded="True">
+                <Node name="DefenseHandler.cs" selected="True" />
               </Node>
-              <Node name="Multiplayer Elements" expanded="True" />
+              <Node name="Helper Script" expanded="True" />
+              <Node name="Menu Scripts" expanded="True" />
               <Node name="Puzzle Elements" expanded="True" />
             </Node>
           </Node>

@@ -17,6 +17,7 @@ public class AspectRatioHandler : MonoBehaviour {
 		if(aspectRatio == 0.56f) // 9:16 ratio [640:1136 / 720:1280 / 1080:1920]
 		{
 			this.GetComponent<UIRoot>().manualHeight = 1136;
+			//this.GetComponent<UIRoot>().manualHeight = 1920;
 		}
 		else if(aspectRatio == 0.62f) // 5:8 ratio [640:1024 / 800:1280]
 		{

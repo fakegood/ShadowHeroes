@@ -119,7 +119,7 @@ public class GlobalManager : MonoBehaviour {
 	public static int row = 8;
 	public static int col = 8;
 	public static int gap = 12;
-	public static float size = 75f;
+	public static float size = 68f;
 	public static float sizeForCalc = 68f;
 	public static float offsetX = 0;
 	public static float offsetY = 0;

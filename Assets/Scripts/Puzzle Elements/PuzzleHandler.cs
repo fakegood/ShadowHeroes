@@ -31,7 +31,7 @@ public class PuzzleHandler : MonoBehaviour {
 	private int row = 7;
 	private int col = 8;
 	private int gap = 0;
-	private float size = 60f;
+	private float size = 68f;
 	private float scale;
 	private float offsetX = 0f;
 	private float offsetY = 0f;
@@ -1826,12 +1826,12 @@ public class PuzzleHandler : MonoBehaviour {
 			GlobalManager.gameover = true;
 			//Time.timeScale = 0f;
 			
-			StartCoroutine(BackToMainMenu());
+			//StartCoroutine(BackToMainMenu());
 		}
 	}
 
-	private IEnumerator BackToMainMenu(){
-		yield return new WaitForSeconds(5.0f);
+	public void BackToMainMenu(GameObject go = null){
+		//yield return new WaitForSeconds(5.0f);
 		if(GlobalManager.multiplyerGame){
 			this.gameObject.GetComponent<GameNetworkHandler>().NetworkMessage(GlobalManager.NetworkMessage.QuitGame);
 		}else{

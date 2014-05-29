@@ -20,7 +20,7 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: 5
+  textureFormat: -3
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
@@ -626,5 +626,5 @@ TextureImporter:
         height: 84
       alignment: 9
       pivot: {x: .79408282, y: .485407054}
-  spritePackingTag: 
+  spritePackingTag: Defense Unit
   userData: 
