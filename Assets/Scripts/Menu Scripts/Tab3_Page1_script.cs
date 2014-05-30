@@ -11,6 +11,7 @@ public class Tab3_Page1_script : SubPageHandler {
 
 	// Use this for initialization
 	void Start () {
+		base.parent.SetSubTitle("Build your deck");
 		UIEventListener.Get(pokiOne.gameObject).onClick += PokeHandler;
 		UIEventListener.Get(pokiOneOne.gameObject).onClick += PokeHandler;
 	}

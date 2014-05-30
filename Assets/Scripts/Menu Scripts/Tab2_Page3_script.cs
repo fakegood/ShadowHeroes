@@ -11,6 +11,7 @@ public class Tab2_Page3_script : SubPageHandler {
 
 	// Use this for initialization
 	void Start () {
+		base.parent.SetSubTitle("Choose one to replace");
 		if(deckObj == null) return;
 
 		deckDimension = deckObj.GetComponent<UISprite>().localSize;

@@ -20,6 +20,7 @@ public class Tab2_Page6_script : SubPageHandler {
 	
 	// Use this for initialization
 	void Start () {
+		base.parent.SetSubTitle("Enhance your card");
 		cardObj = parent.enhanceBaseCard;
 		if(cardObj == null) return;
 

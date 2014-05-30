@@ -11,6 +11,7 @@ public class Tab2_Page7_script : SubPageHandler {
 
 	// Use this for initialization
 	void Start () {
+		base.parent.SetSubTitle("Choose a card");
 		if(deckObj == null) return;
 
 		deckDimension = deckObj.GetComponent<UISprite>().localSize;

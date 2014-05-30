@@ -16,6 +16,7 @@ public class Tab2_Page8_script : SubPageHandler {
 	
 	// Use this for initialization
 	void Start () {
+		base.parent.SetSubTitle("Select multiple cards to sell");
 		if(deckObj == null) return;
 		
 		deckDimension = deckObj.GetComponent<UISprite>().localSize;
@@ -29,7 +30,7 @@ public class Tab2_Page8_script : SubPageHandler {
 		costLabel.text = totalSellCost.ToString();
 
 		Vector3 pos2 = new Vector3(sortingList.transform.localPosition.x, 0, sortingList.transform.localPosition.z);
-		pos2.y = this.transform.localPosition.y + (scrollPanel.panel.finalClipRegion.w/2) - 10f;
+		pos2.y = (scrollPanel.panel.finalClipRegion.w - scrollPanel.transform.localPosition.y) - 21f;
 		sortingList.transform.localPosition = pos2;
 
 		//base.StartSubPage();

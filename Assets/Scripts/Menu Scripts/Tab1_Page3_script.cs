@@ -10,10 +10,11 @@ public class Tab1_Page3_script : SubPageHandler {
 	public GameObject stageButton;
 	public UIScrollView scrollView;
 	private Vector2 dimension;
-	private float gap = 3f;
+	private float gap = 15f;
 
 	// Use this for initialization
 	void Start () {
+		base.parent.SetSubTitle("Select a level");
 		dimension = stageButton.GetComponent<UISprite>().localSize;
 
 		SpawnStageList();
@@ -30,12 +31,13 @@ public class Tab1_Page3_script : SubPageHandler {
 			{
 				Vector3 pos = Vector3.zero;
 				GameObject holder = Instantiate(stageButton, Vector3.zero, Quaternion.identity) as GameObject;
-				pos.y = ((i * dimension.y) + (dimension.y / 2) + gap) * -1;
+				pos.y = ((i * dimension.y) + (dimension.y / 2) + (i * gap)) * -1;
 				holder.transform.parent = scrollView.transform;
 				holder.transform.localScale = holder.transform.lossyScale;
 				holder.transform.localPosition = pos;
 				holder.name = "SubStage_" + (i+1);
 				holder.GetComponent<StageUIButtonScript>().StageName = stage.area[GlobalManager.GameSettings.chosenArea-1].subStage[i].subStageName;
+				holder.GetComponent<StageUIButtonScript>().APCost = stage.area[GlobalManager.GameSettings.chosenArea-1].subStage[i].energyCost;
 				holder.AddComponent<UIDragScrollView>();
 				UIEventListener.Get(holder).onClick += StageAreaClickHandler;
 			}
@@ -46,12 +48,13 @@ public class Tab1_Page3_script : SubPageHandler {
 			{
 				Vector3 pos = Vector3.zero;
 				GameObject holder = Instantiate(stageButton, Vector3.zero, Quaternion.identity) as GameObject;
-				pos.y = ((i * dimension.y) + (dimension.y / 2) + gap) * -1;
+				pos.y = ((i * dimension.y) + (dimension.y / 2) + (i * gap)) * -1;
 				holder.transform.parent = scrollView.transform;
 				holder.transform.localScale = holder.transform.lossyScale;
 				holder.transform.localPosition = pos;
 				holder.name = "SubStage_" + (i+1);
 				holder.GetComponent<StageUIButtonScript>().StageName = aiStage.area[GlobalManager.GameSettings.chosenArea-1].subStage[i].subStageName;
+				holder.GetComponent<StageUIButtonScript>().APCost = aiStage.area[GlobalManager.GameSettings.chosenArea-1].subStage[i].energyCost;
 				holder.AddComponent<UIDragScrollView>();
 				UIEventListener.Get(holder).onClick += StageAreaClickHandler;
 			}

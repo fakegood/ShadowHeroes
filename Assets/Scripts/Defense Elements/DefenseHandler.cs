@@ -23,6 +23,7 @@ public class DefenseHandler : MonoBehaviour {
 	private GameObject gameoverPopup = null;
 	private List<Character> enemies;
 	private int counter = 1;
+	private bool GUIlevelUp = false;
 
 	private void Awake()
 	{
@@ -149,42 +150,45 @@ public class DefenseHandler : MonoBehaviour {
 	}
 
 	public Character GetNextEnemy(CharacterProperties.Team tempPlayer, float currentPosition, CharacterProperties.AttackType tempAttackType, float tempAttackRange, CharacterProperties.UnitType tempUnitType){
-		if(tempUnitType == CharacterProperties.UnitType.HEALER)
+		if(!GlobalManager.gameover)
 		{
-			enemies = tempPlayer == CharacterProperties.Team.LEFT ? Character.characterLeft : Character.characterRight;
-		}
-		else
-		{
-			enemies = tempPlayer == CharacterProperties.Team.LEFT ? Character.characterRight : Character.characterLeft;
-		}
-		
-		for(int i=enemies.Count-1; i>=0; i--){
-			if(enemies[i].MovementState != CharacterProperties.CharacterState.DEAD)
+			if(tempUnitType == CharacterProperties.UnitType.HEALER)
 			{
-				float distance = tempPlayer == CharacterProperties.Team.LEFT ? enemies[i].transform.localPosition.x - currentPosition : currentPosition - enemies[i].transform.localPosition.x;
-				//Debug.Log(distance);
-				if(distance <= tempAttackRange && distance > 0){
-					//enemyTarget = enemies[i];
-					//status = "attacking";
-					
-					bool willAttack = false;
-					
-					Character charObj = enemies[i].gameObject.GetComponent<Character>();
-					if(charObj){
-						if(tempAttackType == CharacterProperties.AttackType.AIR && charObj.PositionType == CharacterProperties.PositionType.AIR){
-							willAttack = true;
-						}else if(tempAttackType == CharacterProperties.AttackType.GROUND && charObj.PositionType == CharacterProperties.PositionType.GROUND){
-							willAttack = true;
-						}else if(tempAttackType == CharacterProperties.AttackType.GROUND_AND_AIR && (charObj.PositionType == CharacterProperties.PositionType.GROUND || charObj.PositionType == CharacterProperties.PositionType.AIR)){
+				enemies = tempPlayer == CharacterProperties.Team.LEFT ? Character.characterLeft : Character.characterRight;
+			}
+			else
+			{
+				enemies = tempPlayer == CharacterProperties.Team.LEFT ? Character.characterRight : Character.characterLeft;
+			}
+			
+			for(int i=enemies.Count-1; i>=0; i--){
+				if(enemies[i].MovementState != CharacterProperties.CharacterState.DEAD)
+				{
+					float distance = tempPlayer == CharacterProperties.Team.LEFT ? enemies[i].transform.localPosition.x - currentPosition : currentPosition - enemies[i].transform.localPosition.x;
+					//Debug.Log(distance);
+					if(distance <= tempAttackRange && distance > 0){
+						//enemyTarget = enemies[i];
+						//status = "attacking";
+						
+						bool willAttack = false;
+						
+						Character charObj = enemies[i].gameObject.GetComponent<Character>();
+						if(charObj){
+							if(tempAttackType == CharacterProperties.AttackType.AIR && charObj.PositionType == CharacterProperties.PositionType.AIR){
+								willAttack = true;
+							}else if(tempAttackType == CharacterProperties.AttackType.GROUND && charObj.PositionType == CharacterProperties.PositionType.GROUND){
+								willAttack = true;
+							}else if(tempAttackType == CharacterProperties.AttackType.GROUND_AND_AIR && (charObj.PositionType == CharacterProperties.PositionType.GROUND || charObj.PositionType == CharacterProperties.PositionType.AIR)){
+								willAttack = true;
+							}
+						}else{
 							willAttack = true;
 						}
-					}else{
-						willAttack = true;
-					}
-					
-					if(willAttack){
-						return enemies[i];
-						break;
+						
+						if(willAttack){
+							return enemies[i];
+							break;
+						}
 					}
 				}
 			}
@@ -455,13 +459,19 @@ public class DefenseHandler : MonoBehaviour {
 		gameoverPopup.transform.Find("Background/Coin Detail").GetComponent<UILabel>().text = totalCoinGain.ToString();
 		gameoverPopup.transform.Find("Background/Experience Detail").GetComponent<UILabel>().text = totalExpGain.ToString() + "/" + nextLevelMaxExp.ToString();
 
-		iTween.ValueTo(this.gameObject, iTween.Hash("from", userPrevExp, "to", (userPrevExp + totalExpGain), "time", 2f, "onupdatetarget", this.gameObject, "onupdate", "UpdateExpText"));
-		iTween.ValueTo(this.gameObject, iTween.Hash("from", (userPrevExp / nextLevelMaxExp), "to", (userCurrentExp / nextLevelMaxExp), "time", 2f, "onupdatetarget", this.gameObject, "onupdate", "UpdateExpBar"));
-
 		if(GlobalManager.LocalUser.experience >= nextLevelMaxExp)
 		{
 			GlobalManager.LocalUser.level ++;
 			GlobalManager.LocalUser.experience -= (int)nextLevelMaxExp;
+			GUIlevelUp = true;
+
+			iTween.ValueTo(this.gameObject, iTween.Hash("from", userPrevExp, "to", nextLevelMaxExp, "time", 1f, "onupdatetarget", this.gameObject, "onupdate", "UpdateExpText", "oncompletetarget", this.gameObject, "oncomplete", "CompleteExpText"));
+			iTween.ValueTo(this.gameObject, iTween.Hash("from", (userPrevExp / nextLevelMaxExp), "to", 1f, "time", 1f, "onupdatetarget", this.gameObject, "onupdate", "UpdateExpBar"));
+		}
+		else
+		{
+			iTween.ValueTo(this.gameObject, iTween.Hash("from", userPrevExp, "to", (userPrevExp + totalExpGain), "time", 2f, "onupdatetarget", this.gameObject, "onupdate", "UpdateExpText"));
+			iTween.ValueTo(this.gameObject, iTween.Hash("from", (userPrevExp / nextLevelMaxExp), "to", (userCurrentExp / nextLevelMaxExp), "time", 2f, "onupdatetarget", this.gameObject, "onupdate", "UpdateExpBar"));
 		}
 
 		string cardRewardString = "";
@@ -524,7 +534,7 @@ public class DefenseHandler : MonoBehaviour {
 
 	private void UpdateExpText(float val)
 	{
-		int userCurrentLevel = GlobalManager.LocalUser.level;
+		int userCurrentLevel = GUIlevelUp ? GlobalManager.LocalUser.level - 1 : GlobalManager.LocalUser.level;
 		float nextLevelMaxExp = (float)GlobalManager.LocalUser.ComputeNeedLevelupExp(userCurrentLevel);
 		gameoverPopup.transform.Find("Background/Experience Detail").GetComponent<UILabel>().text = ((int)val).ToString() + "/" + nextLevelMaxExp.ToString();
 	}
@@ -533,6 +543,15 @@ public class DefenseHandler : MonoBehaviour {
 	{
 		UIProgressBar expBar = gameoverPopup.transform.Find("Background/Experience Progress Bar").GetComponent<UIProgressBar>();
 		expBar.value = val;
+	}
+
+	private void CompleteExpText()
+	{
+		int userCurrentLevel = GlobalManager.LocalUser.level;
+		float nextLevelMaxExp = (float)GlobalManager.LocalUser.ComputeNeedLevelupExp(userCurrentLevel);
+		GUIlevelUp = false;
+		iTween.ValueTo(this.gameObject, iTween.Hash("from", 0, "to", GlobalManager.LocalUser.experience, "time", 1f, "onupdatetarget", this.gameObject, "onupdate", "UpdateExpText"));
+		iTween.ValueTo(this.gameObject, iTween.Hash("from", 0, "to", (GlobalManager.LocalUser.experience / nextLevelMaxExp), "time", 1f, "onupdatetarget", this.gameObject, "onupdate", "UpdateExpBar"));
 	}
 
 	private void ServerRequestCallback(string result)

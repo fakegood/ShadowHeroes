@@ -11,6 +11,7 @@ public class Tab2_Page2_script : SubPageHandler {
 
 	// Use this for initialization
 	void Start () {
+		base.parent.SetSubTitle("Deck list");
 		if(deckObj == null) return;
 
 		UIEventListener.Get(saveButton.gameObject).onClick += SaveDeckHandler;

@@ -4,6 +4,7 @@ using System.Collections;
 public class TabPageHandler : MonoBehaviour {
 
 	public UILabel titleLabel;
+	public UILabel subTitleLabel;
 	public GameObject[] subPages;
 	public GameObject backButton;
 	public LandingMenuHandler tabParent;
@@ -82,7 +83,9 @@ public class TabPageHandler : MonoBehaviour {
 			Destroy(currentOpenedPage);
 			currentOpenedPage = null;
 		}
-		
+
+		SetSubTitle(""); // reset the sub title text
+
 		if(subPages.Length >= pageNumber)
 		{
 			GameObject holder = Instantiate(subPages[pageNumber-1], Vector3.zero, Quaternion.identity) as GameObject;
@@ -102,6 +105,11 @@ public class TabPageHandler : MonoBehaviour {
 				backButton.SetActive(false);
 			}
 		}
+	}
+
+	public void SetSubTitle(string text)
+	{
+		subTitleLabel.text = text;
 	}
 
 	public GameObject ActivePage

@@ -11,6 +11,7 @@ public class Tab4_Page1_script : SubPageHandler {
 
 	// Use this for initialization
 	void Start () {
+		base.parent.SetSubTitle("Top Players");
 		dimension = rankingPrefab.GetComponent<UISprite>().localSize;
 
 		base.parent.tabParent.OpenMainLoader(true);

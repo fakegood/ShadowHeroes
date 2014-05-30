@@ -264,7 +264,7 @@ public class Character : MonoBehaviour {
 	{
 		if(!DisplayUnit)
 		{
-			if(EnemyObject != null)
+			if(!GlobalManager.gameover && EnemyObject != null)
 			{
 				if(team == CharacterProperties.Team.LEFT)
 				{
@@ -298,7 +298,7 @@ public class Character : MonoBehaviour {
 
 	private void LateUpdate()
 	{
-		if(GlobalManager.initCheckDone && !DisplayUnit)
+		if(!GlobalManager.gameover && GlobalManager.initCheckDone && !DisplayUnit)
 		{
 			if(movementState == CharacterProperties.CharacterState.WALKING)
 			{

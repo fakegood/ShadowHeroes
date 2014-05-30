@@ -8,6 +8,7 @@ public class Tab2_Page1_script : SubPageHandler {
 
 	// Use this for initialization
 	void Start () {
+		base.parent.SetSubTitle("Customize your deck");
 		//base.StartSubPage();
 		StartSubPage();
 	}

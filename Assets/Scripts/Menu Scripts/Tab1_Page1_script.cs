@@ -5,6 +5,7 @@ public class Tab1_Page1_script : SubPageHandler {
 
 	// Use this for initialization
 	void Start () {
+		base.parent.SetSubTitle("Select play mode");
 		UIButton[] gos = this.transform.GetComponentsInChildren<UIButton>();
 		
 		foreach(UIButton obj in gos)
